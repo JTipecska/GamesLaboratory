@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.SceneManagement;
+//using UnityEngine.CoreModule;
 
 
 
@@ -17,11 +19,6 @@ public class MainMenu : MonoBehaviour {
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString();
         s.value = Array.IndexOf(resolutions, Screen.currentResolution);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     public void SoundChange(float s)
@@ -44,5 +41,12 @@ public class MainMenu : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void sceneChange(string name){
+
+        //CoreModule.LoadScene(name);
+       // SceneManagement.LoadScene(name);
+        //Application.LoadScene(name);
+        }
 
 }
