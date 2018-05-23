@@ -45,8 +45,9 @@ public class MainMenu : MonoBehaviour {
     public void sceneChange(string name){
 
         //CoreModule.LoadScene(name);
-       // SceneManagement.LoadScene(name);
+       //SceneManagement.LoadScene(name);
         //Application.LoadScene(name);
+
         }
 
 }
