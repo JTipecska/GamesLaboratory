@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShadowCharacterController : MonoBehaviour {
-    public GameObject realCam;
-    public GameObject shadowCam;
-    public GameObject realCharacter;
+    public GameObject cam;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        Data.shadowCharacter = gameObject;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +16,7 @@ public class ShadowCharacterController : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
 
         transform.Translate(Input.GetAxis("Character Horizontal") * Time.deltaTime * Data.speed, 0, 0);
-        shadowCam.transform.position = new Vector3(transform.position.x, shadowCam.transform.position.y, shadowCam.transform.position.z);
+        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
         if (Input.GetButtonDown("Switch World") && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
             ChangeToRealWorld();
@@ -30,8 +28,8 @@ public class ShadowCharacterController : MonoBehaviour {
     {
         print("Real World");
         Data.lastWorldSwitch = Time.time;
-        realCam.SetActive(true);
-        shadowCam.SetActive(false);
+        Data.realCharacter.GetComponent<RealCharacterController>().cam.SetActive(true);
+        cam.SetActive(false);
         Physics.gravity = new Vector3(0, -9.81f, 0);
         foreach (GameObject g in Data.shadowObjects)
         {
@@ -39,8 +37,8 @@ public class ShadowCharacterController : MonoBehaviour {
         }
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ShadowCharacterController>().enabled = false;
-        realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z - 0.5f, realCharacter.transform.position.z);
+        Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z - 0.5f, Data.realCharacter.transform.position.z);
         transform.position = new Vector3(transform.position.x, -0.499f, transform.position.z);
-        realCharacter.SetActive(true);
+        Data.realCharacter.SetActive(true);
     }
 }
