@@ -5,7 +5,7 @@ using System.Linq;
 
 public class ShadowScript : MonoBehaviour {
 
-    public Light lightSrc;
+    Light lightSrc;
     GameObject shadow;
 
     // Use this for initialization
@@ -17,7 +17,35 @@ public class ShadowScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        PickLightSource();
         CalculateShadowVerticesAndTriangles();
+    }
+
+    void PickLightSource()
+    {
+        Light result = null;
+        float maxIntensity = 0f;
+        foreach(GameObject g in Data.lights)
+        {
+            Light light = g.GetComponent<Light>();
+            RaycastHit hit;
+            Vector3 lightDir = transform.position - g.transform.position;
+            if(!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))
+                continue;
+
+            //LightSource does not hit GameObject
+            if (!hit.transform.Equals(g.transform) || Vector3.SignedAngle(g.transform.forward, lightDir, Vector3.Cross(g.transform.forward, lightDir)) > light.spotAngle)
+                continue;
+
+            float intensityAtGameObject = Vector3.Dot(hit.normal, lightDir) * light.intensity;
+
+            if(intensityAtGameObject > maxIntensity)
+            {
+                maxIntensity = intensityAtGameObject;
+                result = light;
+            }
+        }
+        lightSrc = result;
     }
 
     void ToggleShadowCollider()

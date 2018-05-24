@@ -6,10 +6,31 @@ public class Data : MonoBehaviour
 {
     public static GameObject realCharacter;
     public static GameObject shadowCharacter;
+    public static GameObject inquireLabel;
+    public static int amtLights = 0;
     public static float lastWorldSwitch = 0.0f;
     public static readonly float waitWorldSwitch = 0.3f;
     public static readonly float speed = 2f;
     public static readonly float characterReach = 5f;
     public static List<GameObject> shadowObjects = new List<GameObject>();
-    public static List<GameObject> reachableLights = new List<GameObject>();
+    public static List<GameObject> lights = new List<GameObject>();
+    public static List<GameObject> inquirableObjects = new List<GameObject>();
+    public static List<GameObject> interactableObjects = new List<GameObject>();
+
+    public static GameObject GetClosestGameObjectFromList(GameObject target, List<GameObject> objects)
+    {
+        GameObject closest = null;
+        float distance = float.MaxValue;
+        foreach (GameObject g in objects)
+        {
+            float tempDist = Vector3.Distance(g.transform.position, target.transform.position);
+            if (tempDist < distance)
+            {
+                closest = g;
+                distance = tempDist;
+            }
+        }
+
+        return closest;
+    }
 }
