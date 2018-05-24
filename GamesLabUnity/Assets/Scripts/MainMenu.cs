@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.SceneManagement;
-//using UnityEngine.CoreModule;
+using UnityEngine.SceneManagement;
 
 
 
@@ -43,11 +42,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void sceneChange(string name){
-
-        //CoreModule.LoadScene(name);
-       //SceneManagement.LoadScene(name);
-        //Application.LoadScene(name);
-
+        SceneManager.LoadScene(name);
         }
 
 }
