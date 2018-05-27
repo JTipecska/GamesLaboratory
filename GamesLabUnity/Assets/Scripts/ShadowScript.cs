@@ -7,6 +7,10 @@ public class ShadowScript : MonoBehaviour {
 
     Light lightSrc;
     GameObject shadow;
+    Light lastLightSrc;
+    Vector3 lastLightPos;
+    Quaternion lastLightRot;
+    Vector3 lastPos;
 
     // Use this for initialization
     private void Start() {
@@ -18,7 +22,12 @@ public class ShadowScript : MonoBehaviour {
     void Update()
     {
         PickLightSource();
-        CalculateShadowVerticesAndTriangles();
+        // Something changed -> recalculate
+        if (!(lightSrc.Equals(lastLightSrc)
+            && lastLightPos.Equals(lightSrc.transform.position)
+            && lastLightRot.Equals(lightSrc.transform.rotation)
+            && lastPos.Equals(transform.position)))
+                CalculateShadowVerticesAndTriangles();
     }
 
     void PickLightSource()
@@ -33,10 +42,11 @@ public class ShadowScript : MonoBehaviour {
             if(!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))
                 continue;
 
-            //LightSource does not hit GameObject
+            // LightSource does not hit GameObject
             if (!hit.transform.Equals(g.transform) || Vector3.SignedAngle(g.transform.forward, lightDir, Vector3.Cross(g.transform.forward, lightDir)) > light.spotAngle)
                 continue;
 
+            // Calculate Intensity and compare with current max
             float intensityAtGameObject = Vector3.Dot(hit.normal, lightDir) * light.intensity;
 
             if(intensityAtGameObject > maxIntensity)
@@ -63,8 +73,10 @@ public class ShadowScript : MonoBehaviour {
         transform.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
 
-        shadow = new GameObject("Shadow of " + transform.name);
-        shadow.layer = LayerMask.NameToLayer("ShadowWorld");
+        shadow = new GameObject("Shadow of " + transform.name)
+        {
+            layer = LayerMask.NameToLayer("ShadowWorld")
+        };
         shadow.AddComponent<MeshCollider>();
 
         CalculateShadowVerticesAndTriangles();
@@ -79,7 +91,7 @@ public class ShadowScript : MonoBehaviour {
         Mesh shadowMesh = new Mesh();
         List<Vector3> shadowVertices = new List<Vector3>();
 
-        // calculated shadow position for each vertex
+        // calculate shadow position for each vertex
         foreach (Vector3 vertex in vertices)
         {
             // Local -> World
@@ -87,7 +99,7 @@ public class ShadowScript : MonoBehaviour {
 
             RaycastHit hit;
             // Check if shadow hits Shadowplane 
-            if (Physics.Raycast(new Ray(currVertex, currVertex - lightSrc.transform.position), out hit, lightSrc.range, LayerMask.GetMask(new string[] { "ShadowPlane" })))
+            if (Physics.Raycast(new Ray(currVertex, currVertex - lightSrc.transform.position), out hit, lightSrc.range - Vector3.Distance(currVertex, lightSrc.transform.position), LayerMask.GetMask(new string[] { "ShadowPlane" })))
                 // Store shadow vertex
                 shadowVertices.Add(hit.point);
             else
@@ -95,10 +107,17 @@ public class ShadowScript : MonoBehaviour {
                 shadowVertices.Add(currVertex);
         }
 
-        // set vertices (calculated) and triangles (same as in original vertex)
+        // set vertices (calculated) and triangles (same as in original mesh)
         shadowMesh.SetVertices(shadowVertices);
         shadowMesh.SetTriangles(transform.GetComponent<MeshFilter>().mesh.triangles, 0);
         
         shadow.GetComponent<MeshCollider>().sharedMesh = shadowMesh;
+
+        // Set last positions/rotations
+        lastPos = transform.position;
+        lastLightSrc = lightSrc;
+        lastLightPos = lightSrc.transform.position;
+        lastLightRot = lightSrc.transform.rotation;
+
     }
 }
