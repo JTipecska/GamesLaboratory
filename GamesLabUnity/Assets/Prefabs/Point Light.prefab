@@ -88,6 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8176e10375e3f4eb2180322853cc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitX: {x: 0, y: 0}
-  limitY: {x: 10, y: 10}
-  id: 0
+  movePlaneMaterial: {fileID: 0}
+  limitX: NaN
+  limitY: NaN
