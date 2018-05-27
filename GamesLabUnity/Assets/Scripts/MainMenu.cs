@@ -2,11 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-//using UnityEngine.SceneManagement;
-//using UnityEngine.CoreModule;
-
-
 
 public class MainMenu : MonoBehaviour {
 
@@ -15,39 +12,31 @@ public class MainMenu : MonoBehaviour {
     Resolution[] resolutions;
     // Use this for initialization
     void Start () {
-       resolutions = Screen.resolutions;
+        resolutions = Screen.resolutions;
         s.maxValue = resolutions.Length - 1;
-        t.text = Screen.currentResolution.ToString();
-        s.value = Array.IndexOf(resolutions, Screen.currentResolution);
-	}
-
-    public void SoundChange(float s)
-    {
-        
-        AudioListener.volume = s/25;
+        t.text = Screen.currentResolution.ToString ();
+        s.value = Array.IndexOf (resolutions, Screen.currentResolution);
     }
 
-    public void resChange(float index)
-    {
-        t.text = resolutions[(int) index].ToString();
+    public void SoundChange (float s) {
+
+        AudioListener.volume = s / 25;
     }
 
-    public void apply()
-    {
-        Screen.SetResolution(resolutions[(int) s.value].width, resolutions[(int)s.value].height,true);
+    public void resChange (float index) {
+        t.text = resolutions[(int) index].ToString ();
     }
 
-    public void exit()
-    {
-        Application.Quit();
+    public void apply () {
+        Screen.SetResolution (resolutions[(int) s.value].width, resolutions[(int) s.value].height, true);
     }
 
-    public void sceneChange(string name){
+    public void exit () {
+        Application.Quit ();
+    }
 
-        //CoreModule.LoadScene(name);
-       //SceneManagement.LoadScene(name);
-        //Application.LoadScene(name);
-
-        }
+    public void sceneChange (string name) {
+        SceneManager.LoadScene (name);
+    }
 
 }
