@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RealCharacterController : MonoBehaviour {
-    public GameObject cam;
     private GameObject grabbedObject;
     private GameObject inquiredObject;
     private List<GameObject> grabableObjects = new List<GameObject>();
@@ -22,12 +21,12 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < 0.5f)
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        if (transform.position.y < 0.0f)
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
-        GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed, 0, 0));
-        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y + 0.5f);
-        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
+        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
+        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y);
+        Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
         if (currentLight)
         {
@@ -40,7 +39,7 @@ public class RealCharacterController : MonoBehaviour {
         }
 
         //Worlds
-        if (Input.GetButtonDown("Switch World") && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<transformCamera>().blendfinished && Data.cam.GetComponent<transformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
             ChangeToShadowWorld();
             return;
@@ -119,8 +118,7 @@ public class RealCharacterController : MonoBehaviour {
     {
         print("Shadow World");
         Data.lastWorldSwitch = Time.time;
-        cam.SetActive(false);
-        Data.shadowCharacter.GetComponent<ShadowCharacterController>().cam.SetActive(true);
+        Data.cam.GetComponent<transformCamera>().changePlane();
         Physics.gravity = new Vector3(0, 0, -9.81f);
         foreach(GameObject g in Data.shadowObjects)
         {

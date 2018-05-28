@@ -6,6 +6,7 @@ public class Data : MonoBehaviour
 {
     public static GameObject realCharacter;
     public static GameObject shadowCharacter;
+    public static GameObject cam;
     public static GameObject inquireLabel;
     public static int amtLights = 0;
     public static float lastWorldSwitch = 0.0f;

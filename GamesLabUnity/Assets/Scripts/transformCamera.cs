@@ -9,12 +9,14 @@ using UnityEngine;
 public class transformCamera : MonoBehaviour {
     public Camera c;
     bool shadow = false;
-    bool finished = true;
-    bool blendfinished = true;
+    public bool finished = true;
+    public bool blendfinished = true;
     RaycastHit hit;
     public float counter = 52f;
     public int speed = 80;
     public float transitduration = .75f;
+    public float offset = 1.2f;
+    Matrix4x4 pMatrix;
 
     public static Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float time)
     {
@@ -50,17 +52,20 @@ public class transformCamera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        Data.cam = gameObject;
+        pMatrix = GetComponent<Camera>().projectionMatrix;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (shadow && !finished)
         {
-
-
+            if (counter + Time.deltaTime * speed > 90)
+                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 90-counter);
+            else
             // this.gameObject.transform.Rotate(new Vector3(1.0f,0,0), Time.deltaTime,hit.point);
-            transform.RotateAround(hit.point, new Vector3(1.0f, 0, 0), Time.deltaTime * speed);
+                transform.RotateAround(new Vector3(transform.position.x,0,0 ), new Vector3(1.0f, 0, 0), Time.deltaTime * speed);
             counter = counter + Time.deltaTime * speed;
 
         }
@@ -71,15 +76,18 @@ public class transformCamera : MonoBehaviour {
             finished = true;
             BlendToMatrix(c.projectionMatrix, transitduration);
         }
-        if (!shadow && !finished)
+        if (!shadow && !finished && blendfinished)
         {
-            transform.RotateAround(hit.point, new Vector3(-1.0f, 0, 0), Time.deltaTime * speed);
+            if(counter - Time.deltaTime * speed < 52)
+                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 52-counter);
+            else
+                transform.RotateAround(new Vector3(transform.position.x,0, 0), new Vector3(1.0f, 0, 0), -Time.deltaTime * speed);
             counter = counter - Time.deltaTime * speed;
         }
         if (!finished && counter <=52 && !shadow)
         {
             finished = true;
-            BlendToMatrix(GetComponent<Camera>().projectionMatrix, transitduration);
+            
         }
     }
 
@@ -88,17 +96,20 @@ public class transformCamera : MonoBehaviour {
     {
         if (!shadow && finished && blendfinished)
         {
+            pMatrix = GetComponent<Camera>().projectionMatrix;
             //BlendToMatrix(c.projectionMatrix, .75f);
-            Physics.Raycast(transform.position, transform.forward, out hit);
+            //Physics.Raycast(transform.position, transform.forward, out hit);
             finished = false;
             shadow = true;
         }
         if (shadow && finished && blendfinished)
         {
             //BlendToMatrix(GetComponent<Camera>().projectionMatrix, .75f);
-            Physics.Raycast(transform.position, transform.forward, out hit);
-            finished = false;
+            //Physics.Raycast(transform.position, transform.forward, out hit);
             shadow = false;
+            BlendToMatrix(pMatrix, transitduration);
+            finished = false;
+
         }
         
         
