@@ -10,6 +10,7 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> grabableObjects = new List<GameObject>();
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLight;
+    private Transform grabParent;
 
 	// Use this for initialization
 	void Start ()
@@ -61,12 +62,13 @@ public class RealCharacterController : MonoBehaviour {
         {
             if (grabbedObject)
             {
-                grabbedObject.transform.parent = GameObject.Find("World/Terrain").transform;
+                grabbedObject.transform.parent = grabParent;
                 grabbedObject = null;
             }
             else if (grabableObjects.Count > 0)
             {
                 grabbedObject = Data.GetClosestGameObjectFromList(gameObject, grabableObjects);
+                grabParent = grabbedObject.transform.parent;
                 grabbedObject.transform.parent = transform;
             }
         }

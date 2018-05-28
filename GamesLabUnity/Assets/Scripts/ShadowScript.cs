@@ -15,20 +15,12 @@ public class ShadowScript : MonoBehaviour {
     // Use this for initialization
     private void Start() {
         Data.shadowObjects.Add(gameObject);
-        transform.parent = GameObject.Find("_Dynamic").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PickLightSource();
-        // Something changed -> recalculate
-        if(lightSrc)
-            if (!(lightSrc.Equals(lastLightSrc)
-                && lastLightPos.Equals(lightSrc.transform.position)
-                && lastLightRot.Equals(lightSrc.transform.rotation)
-                && lastPos.Equals(transform.position)))
-                    CalculateShadowVerticesAndTriangles();
+        CalculateShadowVerticesAndTriangles();
     }
 
     void PickLightSource()
@@ -44,7 +36,7 @@ public class ShadowScript : MonoBehaviour {
                 continue;
 
             // LightSource does not hit GameObject
-            if (!hit.transform.Equals(g.transform) || Vector3.SignedAngle(g.transform.forward, lightDir, Vector3.Cross(g.transform.forward, lightDir)) > light.spotAngle)
+            if (!hit.transform.Equals(transform))
                 continue;
 
             // Calculate Intensity and compare with current max
@@ -78,6 +70,7 @@ public class ShadowScript : MonoBehaviour {
         {
             layer = LayerMask.NameToLayer("ShadowWorld")
         };
+        shadow.transform.parent = GameObject.Find("_Dynamic").transform;
         shadow.AddComponent<MeshCollider>();
 
         CalculateShadowVerticesAndTriangles();
@@ -87,6 +80,15 @@ public class ShadowScript : MonoBehaviour {
     {
         if (!shadow)
             return;
+
+        PickLightSource();
+        // Something changed -> recalculate
+        if(!lightSrc
+            || (lightSrc.Equals(lastLightSrc)
+            && lastLightPos.Equals(lightSrc.transform.position)
+            && lastLightRot.Equals(lightSrc.transform.rotation)
+            && lastPos.Equals(transform.position)))
+                return;
 
         Vector3[] vertices = transform.GetComponent<MeshFilter>().sharedMesh.vertices;
         Mesh shadowMesh = new Mesh();
@@ -99,6 +101,7 @@ public class ShadowScript : MonoBehaviour {
             Vector3 currVertex = transform.position + vertex;
 
             RaycastHit hit;
+            print(lightSrc == null);
             // Check if shadow hits Shadowplane 
             if (Physics.Raycast(new Ray(currVertex, currVertex - lightSrc.transform.position), out hit, lightSrc.range - Vector3.Distance(currVertex, lightSrc.transform.position), LayerMask.GetMask(new string[] { "ShadowPlane" })))
                 // Store shadow vertex

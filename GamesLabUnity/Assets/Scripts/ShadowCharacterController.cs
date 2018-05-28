@@ -8,6 +8,7 @@ public class ShadowCharacterController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Data.shadowCharacter = gameObject;
+        GetComponent<ShadowCharacterController>().enabled = false;
     }
 	
 	// Update is called once per frame
