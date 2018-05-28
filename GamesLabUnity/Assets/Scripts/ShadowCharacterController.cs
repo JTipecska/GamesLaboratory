@@ -15,7 +15,7 @@ public class ShadowCharacterController : MonoBehaviour {
         if (transform.position.z < 1f)
             transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
 
-        GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("Character Horizontal") * Time.deltaTime * Data.speed, 0, 0));
+        GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed, 0, 0));
         cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
         if (Input.GetButtonDown("Switch World") && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {

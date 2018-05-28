@@ -15,6 +15,7 @@ public class RealCharacterController : MonoBehaviour {
 	void Start ()
     {
         Data.realCharacter = gameObject;
+        currentLight = GetFirstReachableLight();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class RealCharacterController : MonoBehaviour {
         if (transform.position.y < 0.5f)
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
 
-        GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("Character Horizontal") * Time.deltaTime * Data.speed, 0, 0));
+        GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed, 0, 0));
         Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y + 0.5f);
         cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
 
@@ -31,6 +32,10 @@ public class RealCharacterController : MonoBehaviour {
         {
             transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
             transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed, 0);
+            
+            //Light
+            if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
+                currentLight = GetNextReachableLight(currentLight);
         }
 
         //Worlds
@@ -39,7 +44,6 @@ public class RealCharacterController : MonoBehaviour {
             ChangeToShadowWorld();
             return;
         }
-
 
         if (Input.GetButtonDown("Switch Light"))
         {
@@ -51,10 +55,6 @@ public class RealCharacterController : MonoBehaviour {
                     currentLight = GetFirstReachableLight();
             }
         }
-
-        //Light
-        if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
-            currentLight = null;
 
         //Grab
         if (Input.GetButtonDown("Grab"))

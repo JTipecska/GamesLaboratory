@@ -14,6 +14,7 @@ public class Data : MonoBehaviour
     public static readonly float characterReach = 5f;
     public static List<GameObject> shadowObjects = new List<GameObject>();
     public static List<GameObject> lights = new List<GameObject>();
+    public static List<GameObject> staticLights = new List<GameObject>();
     public static List<GameObject> inquirableObjects = new List<GameObject>();
     public static List<GameObject> interactableObjects = new List<GameObject>();
 

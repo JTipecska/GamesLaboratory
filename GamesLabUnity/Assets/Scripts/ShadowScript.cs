@@ -23,18 +23,19 @@ public class ShadowScript : MonoBehaviour {
     {
         PickLightSource();
         // Something changed -> recalculate
-        if (!(lightSrc.Equals(lastLightSrc)
-            && lastLightPos.Equals(lightSrc.transform.position)
-            && lastLightRot.Equals(lightSrc.transform.rotation)
-            && lastPos.Equals(transform.position)))
-                CalculateShadowVerticesAndTriangles();
+        if(lightSrc)
+            if (!(lightSrc.Equals(lastLightSrc)
+                && lastLightPos.Equals(lightSrc.transform.position)
+                && lastLightRot.Equals(lightSrc.transform.rotation)
+                && lastPos.Equals(transform.position)))
+                    CalculateShadowVerticesAndTriangles();
     }
 
     void PickLightSource()
     {
         Light result = null;
         float maxIntensity = 0f;
-        foreach(GameObject g in Data.lights)
+        foreach(GameObject g in Data.lights.Union<GameObject>(Data.staticLights).ToList<GameObject>())
         {
             Light light = g.GetComponent<Light>();
             RaycastHit hit;
