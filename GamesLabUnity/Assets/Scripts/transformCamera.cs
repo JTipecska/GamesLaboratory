@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 
 
-public class transformCamera : MonoBehaviour {
+public class TransformCamera : MonoBehaviour {
     public Camera c;
     bool shadow = false;
     public bool finished = true;

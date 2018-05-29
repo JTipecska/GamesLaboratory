@@ -18,7 +18,7 @@ public class ShadowCharacterController : MonoBehaviour {
 
         GetComponent<Rigidbody>().MovePosition(new Vector3(Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed, 0, 0));
         Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
-        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<transformCamera>().blendfinished && Data.cam.GetComponent<transformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
             ChangeToRealWorld();
             return;
@@ -29,7 +29,7 @@ public class ShadowCharacterController : MonoBehaviour {
     {
         print("Real World");
         Data.lastWorldSwitch = Time.time;
-        Data.cam.GetComponent<transformCamera>().changePlane();
+        Data.cam.GetComponent<TransformCamera>().changePlane();
         Physics.gravity = new Vector3(0, -9.81f, 0);
         foreach (GameObject g in Data.shadowObjects)
         {

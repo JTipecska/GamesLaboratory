@@ -39,7 +39,7 @@ public class RealCharacterController : MonoBehaviour {
         }
 
         //Worlds
-        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<transformCamera>().blendfinished && Data.cam.GetComponent<transformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
             ChangeToShadowWorld();
             return;
@@ -118,7 +118,7 @@ public class RealCharacterController : MonoBehaviour {
     {
         print("Shadow World");
         Data.lastWorldSwitch = Time.time;
-        Data.cam.GetComponent<transformCamera>().changePlane();
+        Data.cam.GetComponent<TransformCamera>().changePlane();
         Physics.gravity = new Vector3(0, 0, -9.81f);
         foreach(GameObject g in Data.shadowObjects)
         {

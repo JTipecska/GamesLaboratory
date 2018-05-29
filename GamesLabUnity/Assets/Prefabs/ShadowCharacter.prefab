@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4974052470064178}
-  - component: {fileID: 114432407209709716}
   - component: {fileID: 54657553537960310}
   - component: {fileID: 212850666757655574}
+  - component: {fileID: 114432407209709716}
   m_Layer: 8
   m_Name: ShadowCharacter
   m_TagString: Untagged
