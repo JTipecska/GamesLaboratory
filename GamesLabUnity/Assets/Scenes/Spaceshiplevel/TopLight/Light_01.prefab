@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477736}
   - component: {fileID: 10844700}
-  - component: {fileID: 114817064849288754}
+  - component: {fileID: 114033437662231876}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -180,7 +180,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 156856}
   m_IsPrefabParent: 1
---- !u!114 &114817064849288754
+--- !u!114 &114033437662231876
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
