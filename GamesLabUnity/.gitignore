@@ -6,7 +6,7 @@
 Assets/AssetStoreTools*
 Assets/AssetStore*
 Assets/Standard*
-
+Library/
 
 # Visual Studio cache directory
 .vs/
@@ -30,21 +30,7 @@ ExportedObj/
 *.mdb
 
 # Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.tga.meta
-*.cs.meta
-*.mat.meta
-*.png.meta
-*.bmp.meta
-*.shader.meta
-*.jpg.meta
-*.FBX.meta
-*.fbx.meta
-*.physicmaterial.meta
-*.txt.meta
-*.psd.meta
-*.
+
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
