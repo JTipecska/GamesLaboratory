@@ -23,14 +23,16 @@ public class TriggerScript : MonoBehaviour {
     }
     private void OnTriggerStay(Collider other)
     {
-        key.transform.LookAt(Camera.main.transform.position, -Vector3.up);
-        if (Input.GetKeyDown("Inspect"))
+        key.transform.parent.forward = Camera.main.transform.forward;
+        if (Input.GetButtonDown("Inquire"))
         {
             message.SetActive(true);
+            key.SetActive(false);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         key.gameObject.SetActive(false);
+        message.SetActive(false);
     }
 }

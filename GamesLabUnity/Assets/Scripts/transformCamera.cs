@@ -62,7 +62,12 @@ public class TransformCamera : MonoBehaviour {
         if (shadow && !finished)
         {
             if (counter + Time.deltaTime * speed > 90)
-                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 90-counter);
+            {
+                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 90 - counter);
+                transform.position = new Vector3(transform.position.x,transform.position.y,0);
+                transform.forward = new Vector3(0, -1, 0);
+            }
+
             else
             // this.gameObject.transform.Rotate(new Vector3(1.0f,0,0), Time.deltaTime,hit.point);
                 transform.RotateAround(new Vector3(transform.position.x,0,0 ), new Vector3(1.0f, 0, 0), Time.deltaTime * speed);
