@@ -29,18 +29,16 @@ public class ShadowScript : MonoBehaviour {
         float maxIntensity = 0f;
         foreach(GameObject g in Data.lights.Union<GameObject>(Data.staticLights).ToList<GameObject>())
         {
-            print(g.name);
             Light light = g.GetComponent<Light>();
             RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
-            if(!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))
+            if(!Physics.Raycast(g.transform.position, lightDir, out hit, light.range, LayerMask.GetMask(new string[] { "Default" })))
                 continue;
-            print("Light hits something");
+            print(hit.collider.name + transform.name);
 
             // LightSource does not hit GameObject
             if (!hit.transform.Equals(transform))
                 continue;
-            print("Light hits object");
 
             // Calculate Intensity and compare with current max
             float intensityAtGameObject = Mathf.Abs(light.intensity/Vector3.Distance(hit.point,g.transform.position));
@@ -84,16 +82,16 @@ public class ShadowScript : MonoBehaviour {
     IEnumerator CalculateShadowVerticesAndTriangles()
     {
         if (!shadow)
-            yield return 1;
+            yield break;//return 1;
 
         PickLightSource();
         // Something changed -> recalculate
-        if(!lightSrc
+        if (!lightSrc
             || (lightSrc.Equals(lastLightSrc)
             && lastLightPos.Equals(lightSrc.transform.position)
             && lastLightRot.Equals(lightSrc.transform.rotation)
             && lastPos.Equals(transform.position)))
-            yield return 1;
+            yield break;//return 1;
 
         Vector3[] vertices = transform.GetComponent<MeshFilter>().mesh.vertices;
         Mesh shadowMesh = new Mesh();
@@ -106,7 +104,6 @@ public class ShadowScript : MonoBehaviour {
             Vector3 currVertex = transform.TransformPoint(vertex);
 
             RaycastHit hit;
-            print(lightSrc == null);
             // Check if shadow hits Shadowplane 
             if (Physics.Raycast(new Ray(currVertex, currVertex - lightSrc.transform.position), out hit, float.MaxValue, LayerMask.GetMask(new string[] { "ShadowPlane" })))
                 // Store shadow vertex
