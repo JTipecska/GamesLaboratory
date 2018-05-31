@@ -11,6 +11,7 @@ public class TransformCamera : MonoBehaviour {
     bool shadow = false;
     public bool finished = true;
     public bool blendfinished = true;
+    bool called = true;
     RaycastHit hit;
     public float counter = 52f;
     public int speed = 80;
@@ -94,30 +95,44 @@ public class TransformCamera : MonoBehaviour {
             finished = true;
             
         }
+        if (finished && blendfinished && !called)
+        {
+            if (shadow)
+            {
+                Data.realCharacter.SendMessage("ChangeToShadowWorld");
+            }
+            called = true;
+        }
     }
 
 
     public void changePlane()
     {
-        if (!shadow && finished && blendfinished)
+        if (finished && blendfinished)
         {
-            pMatrix = GetComponent<Camera>().projectionMatrix;
-            //BlendToMatrix(c.projectionMatrix, .75f);
-            //Physics.Raycast(transform.position, transform.forward, out hit);
-            finished = false;
-            shadow = true;
-        }
-        if (shadow && finished && blendfinished)
-        {
-            //BlendToMatrix(GetComponent<Camera>().projectionMatrix, .75f);
-            //Physics.Raycast(transform.position, transform.forward, out hit);
-            shadow = false;
-            BlendToMatrix(pMatrix, transitduration);
-            finished = false;
+            
+            if (shadow)
+            {
+                //BlendToMatrix(GetComponent<Camera>().projectionMatrix, .75f);
+                //Physics.Raycast(transform.position, transform.forward, out hit);
+                shadow = false;
+                BlendToMatrix(pMatrix, transitduration);
+                finished = false;
+                Data.shadowCharacter.SendMessage("ChangeToRealWorld");
 
+            }
+            else
+            {
+                pMatrix = GetComponent<Camera>().projectionMatrix;
+                //BlendToMatrix(c.projectionMatrix, .75f);
+                //Physics.Raycast(transform.position, transform.forward, out hit);
+                finished = false;
+                shadow = true;
+                called = false;
+            }
+
+            
         }
-        
-        
 
         
 

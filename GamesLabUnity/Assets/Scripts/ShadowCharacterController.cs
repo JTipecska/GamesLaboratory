@@ -13,15 +13,15 @@ public class ShadowCharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.z < 0f)
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+        if (!Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
+            return;
 
-        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.shadowSpeed);
+        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
         //transform.Translate( Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.shadowSpeed);
         Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
         if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
-            ChangeToRealWorld();
+            Data.cam.GetComponent<TransformCamera>().changePlane();
             return;
         }
     }
@@ -30,11 +30,15 @@ public class ShadowCharacterController : MonoBehaviour {
     {
         print("Real World");
         Data.lastWorldSwitch = Time.time;
-        Data.cam.GetComponent<TransformCamera>().changePlane();
+        Data.world.SetActive(true);
         Physics.gravity = new Vector3(0, -9.81f, 0);
         foreach (GameObject g in Data.shadowObjects)
         {
             g.SendMessageUpwards("ToggleShadowCollider");
+        }
+        foreach (GameObject g in Data.shadowFloors)
+        {
+            g.SetActive(false);
         }
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ShadowCharacterController>().enabled = false;

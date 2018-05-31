@@ -21,17 +21,20 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (!Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
+            return;
+
         if (transform.position.y < 0.0f)
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
-        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.realSpeed);
+        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
         Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 0.16f);
         Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
         if (currentLight)
         {
-            currentLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.realSpeed, 0, 0);
-            currentLight.transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.realSpeed, 0);
+            currentLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
+            currentLight.transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed, 0);
             
             //Light
             if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
@@ -41,7 +44,7 @@ public class RealCharacterController : MonoBehaviour {
         //Worlds
         if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
         {
-            ChangeToShadowWorld();
+            Data.cam.GetComponent<TransformCamera>().changePlane();
             return;
         }
 
@@ -118,16 +121,20 @@ public class RealCharacterController : MonoBehaviour {
     {
         print("Shadow World");
         Data.lastWorldSwitch = Time.time;
-        Data.cam.GetComponent<TransformCamera>().changePlane();
         Physics.gravity = new Vector3(0, 0, -9.81f);
-        foreach(GameObject g in Data.shadowObjects)
+        foreach (GameObject g in Data.shadowObjects)
         {
             g.SendMessageUpwards("ToggleShadowCollider");
         }
+        foreach (GameObject g in Data.shadowFloors)
+        {
+            g.SetActive(true);
+        }
         Data.shadow = true;
-        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 0.16f);
+        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y - 0.3f);
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
+        Data.world.SetActive(false);
         gameObject.SetActive(false);
     }
 
