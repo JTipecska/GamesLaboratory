@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: c6ea5797f7046c743851e8e92f57ea24
+guid: b5dd3bd3498d94549b7af918fcedec08
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

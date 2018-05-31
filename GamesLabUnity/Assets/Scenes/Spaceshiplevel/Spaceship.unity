@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39306056, g: 0.43485832, b: 0.49597722, a: 1}
+  m_IndirectSpecularColor: {r: 0.39334255, g: 0.4351067, b: 0.4959216, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2237,6 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
 --- !u!64 &104381058
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3309,6 +3310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
 --- !u!64 &165287555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10707,16 +10709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d3ef1a5bbfb4e0a910fbbe5830b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterMode: 2
-  disablePixelLights: 1
-  textureSize: 256
-  clipPlaneOffset: 0.07
-  reflectLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  refractLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!23 &300134971
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21574,7 +21566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039587c051912eb4ead9e58344c5f3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
 --- !u!23 &602526292
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36398,6 +36389,19 @@ MonoBehaviour:
   speed: 80
   transitduration: 0.75
   offset: 1.2
+--- !u!114 &868157371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868157366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd3bd3498d94549b7af918fcedec08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardMaterial: {fileID: 2100000, guid: 5d9747c33dd44a342abdf4a40e8f50f5, type: 2}
+  blackWhiteMaterial: {fileID: 2100000, guid: e8c3c34a660215444be6bac101fb237c, type: 2}
 --- !u!1001 &869055177
 Prefab:
   m_ObjectHideFlags: 0
@@ -37935,7 +37939,8 @@ GameObject:
   - component: {fileID: 958623545}
   - component: {fileID: 958623547}
   - component: {fileID: 958623546}
-  m_Layer: 0
+  - component: {fileID: 958623548}
+  m_Layer: 9
   m_Name: window_big_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38001,6 +38006,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958623544}
+  m_Mesh: {fileID: 4300000, guid: c93a7b6fab490314f9f3471aa2616c70, type: 3}
+--- !u!64 &958623548
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958623544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c93a7b6fab490314f9f3471aa2616c70, type: 3}
 --- !u!1 &961616680
 GameObject:
@@ -42518,6 +42537,16 @@ Prefab:
     - target: {fileID: 4861149845124602, guid: cdd0e3adf18726c43b534ab51ceb20c7, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54172097506258888, guid: cdd0e3adf18726c43b534ab51ceb20c7,
+        type: 2}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54172097506258888, guid: cdd0e3adf18726c43b534ab51ceb20c7,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdd0e3adf18726c43b534ab51ceb20c7, type: 2}
@@ -50806,6 +50835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
 --- !u!65 &1640194587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60183,6 +60213,26 @@ Prefab:
         type: 2}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54657553537960310, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54657553537960310, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65004522114729362, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65004522114729362, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea88d38c38a57d4489ba5ff1cc0bc15b, type: 2}

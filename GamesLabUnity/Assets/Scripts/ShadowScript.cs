@@ -5,6 +5,8 @@ using System.Linq;
 
 public class ShadowScript : MonoBehaviour {
 
+    public Material shadowMat;
+
     Light lightSrc;
     GameObject shadow;
     Light lastLightSrc;
@@ -46,7 +48,6 @@ public class ShadowScript : MonoBehaviour {
 
             if(intensityAtGameObject > maxIntensity)
             {
-                print("new best light source");
                 maxIntensity = intensityAtGameObject;
                 result = light;
             }
@@ -60,6 +61,7 @@ public class ShadowScript : MonoBehaviour {
         {
             print("Changing to OverWorld");
             Destroy(shadow);
+            lastLightSrc = null;
             transform.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             return;
         }
@@ -74,6 +76,8 @@ public class ShadowScript : MonoBehaviour {
             layer = LayerMask.NameToLayer("ShadowWorld")
         };
         shadow.transform.parent = GameObject.Find("_Dynamic").transform;
+        shadow.AddComponent<MeshFilter>();
+        shadow.AddComponent<MeshRenderer>().material = shadowMat;
         shadow.AddComponent<MeshCollider>();
 
         StartCoroutine(CalculateShadowVerticesAndTriangles());
@@ -82,7 +86,7 @@ public class ShadowScript : MonoBehaviour {
     IEnumerator CalculateShadowVerticesAndTriangles()
     {
         if (!shadow)
-            yield break;//return 1;
+            yield break;
 
         PickLightSource();
         // Something changed -> recalculate
@@ -91,33 +95,58 @@ public class ShadowScript : MonoBehaviour {
             && lastLightPos.Equals(lightSrc.transform.position)
             && lastLightRot.Equals(lightSrc.transform.rotation)
             && lastPos.Equals(transform.position)))
-            yield break;//return 1;
+            yield break;
 
+        ////////////////////////////////////////
         Vector3[] vertices = transform.GetComponent<MeshFilter>().mesh.vertices;
         Mesh shadowMesh = new Mesh();
         List<Vector3> shadowVertices = new List<Vector3>();
+        List<int> keptVertices = new List<int>();
 
         // calculate shadow position for each vertex
-        foreach (Vector3 vertex in vertices)
+        for (int i = 0; i < vertices.Length; i++)
         {
             // Local -> World
-            Vector3 currVertex = transform.TransformPoint(vertex);
+            Vector3 currVertex = transform.TransformPoint(vertices[i]);
+            Vector3 lightDir = currVertex - lightSrc.transform.position;
 
             RaycastHit hit;
             // Check if shadow hits Shadowplane 
-            if (Physics.Raycast(new Ray(currVertex, currVertex - lightSrc.transform.position), out hit, float.MaxValue, LayerMask.GetMask(new string[] { "ShadowPlane" })))
+            if (Physics.Raycast(new Ray(currVertex, lightDir), out hit, float.MaxValue, LayerMask.GetMask(new string[] { "ShadowPlane" })))
+            {
                 // Store shadow vertex
-                shadowVertices.Add(hit.point);
-            else
-                // Store actual vertex (behind shadowplane)
-                shadowVertices.Add(currVertex);
+                shadowVertices.Add(hit.point + Vector3.up * 0.01f);
+                ////keptVertices.Add(i);
+            }
+            else//
+                shadowVertices.Add(currVertex);//
         }
 
         // set vertices (calculated) and triangles (same as in original mesh)
         shadowMesh.SetVertices(shadowVertices);
-        shadowMesh.SetTriangles(transform.GetComponent<MeshFilter>().mesh.triangles, 0);
-        
+        shadowMesh.SetTriangles(transform.GetComponent<MeshFilter>().mesh.triangles, 0);//
+
+        int[] oldTriangles = transform.GetComponent<MeshFilter>().mesh.triangles;
+        List<int> newTriangles = new List<int>();
+        for (int i = 0; i < oldTriangles.Length; i += 3)
+        {
+            int fstV = keptVertices.BinarySearch(oldTriangles[i]);
+            int sndV = keptVertices.BinarySearch(oldTriangles[i+1]);
+            int thdV = keptVertices.BinarySearch(oldTriangles[i+2]);
+            if (fstV >= 0
+                && sndV >= 0
+                && thdV >= 0)
+            {
+                newTriangles.Add(fstV);
+                newTriangles.Add(sndV);
+                newTriangles.Add(thdV);
+            }
+        }
+        ////shadowMesh.SetTriangles(newTriangles, 0);
+        ////////////////////////////////////////////////
+
         shadow.GetComponent<MeshCollider>().sharedMesh = shadowMesh;
+        shadow.GetComponent<MeshFilter>().mesh = shadowMesh;
 
         // Set last positions/rotations
         lastPos = transform.position;
