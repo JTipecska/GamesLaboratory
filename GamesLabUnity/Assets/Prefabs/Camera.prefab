@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 20023476799383132}
   - component: {fileID: 124473586856328410}
   - component: {fileID: 81613530232941478}
-  - component: {fileID: 114058076596405984}
-  - component: {fileID: 114925748454181338}
+  - component: {fileID: 114732016241525060}
+  - component: {fileID: 114091520395222236}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752313166175824}
   m_LocalRotation: {x: 0.4383711, y: 0, z: 0, w: 0.89879405}
-  m_LocalPosition: {x: -7.4, y: 3.789, z: -2}
+  m_LocalPosition: {x: -7.4, y: 3.580209, z: -2.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,20 +87,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752313166175824}
   m_Enabled: 1
---- !u!114 &114058076596405984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1752313166175824}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a2678f768c011429f8148d6f4cb704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadow: 0
-  finished: 1
---- !u!114 &114925748454181338
+--- !u!114 &114091520395222236
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,6 +105,19 @@ MonoBehaviour:
   speed: 80
   transitduration: 0.75
   offset: 1.2
+--- !u!114 &114732016241525060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752313166175824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd3bd3498d94549b7af918fcedec08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardMaterial: {fileID: 2100000, guid: 5d9747c33dd44a342abdf4a40e8f50f5, type: 2}
+  blackWhiteMaterial: {fileID: 2100000, guid: e8c3c34a660215444be6bac101fb237c, type: 2}
 --- !u!124 &124473586856328410
 Behaviour:
   m_ObjectHideFlags: 1
