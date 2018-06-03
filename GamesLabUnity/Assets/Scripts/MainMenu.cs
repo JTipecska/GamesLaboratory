@@ -10,12 +10,14 @@ public class MainMenu : MonoBehaviour {
     public Slider s;
     public Text t;
     Resolution[] resolutions;
+    public GameObject music;
     // Use this for initialization
     void Start () {
         resolutions = Screen.resolutions;
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString ();
         s.value = Array.IndexOf (resolutions, Screen.currentResolution);
+        DontDestroyOnLoad(music);
     }
 
     public void SoundChange (float s) {
