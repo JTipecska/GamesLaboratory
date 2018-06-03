@@ -42,8 +42,10 @@ public class RealCharacterController : MonoBehaviour {
         }
 
         //Worlds
-        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time && CollisionShadow.canChange)
         {
+            Data.shadowCharacter.GetComponent<Collider>().isTrigger = false;
+            Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
             Data.cam.GetComponent<TransformCamera>().changePlane();
             return;
         }
