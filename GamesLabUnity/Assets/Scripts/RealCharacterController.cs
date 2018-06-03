@@ -10,9 +10,10 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLight;
     private Transform grabParent;
+    public GUIController test;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         Data.realCharacter = gameObject;
         currentLight = GetFirstReachableLight();
@@ -24,83 +25,89 @@ public class RealCharacterController : MonoBehaviour {
         if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
-        if (transform.position.y < 0.0f)
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
-        GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
-        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 0.16f);
-        Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
-
-        if (currentLight)
+        if (!test.GetMenuActive())
         {
-            currentLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
-            currentLight.transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed, 0);
-            
-            //Light
-            if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
-                currentLight = GetNextReachableLight(currentLight);
-        }
 
-        //Worlds
-        if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
-        {
-            Data.cam.GetComponent<TransformCamera>().changePlane();
-            return;
-        }
+            if (transform.position.y < 0.0f)
+                transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
-        if (Input.GetButtonDown("Switch Light"))
-        {
-            if(Data.lights.Count > 0)
+            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
+            Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 0.16f);
+            Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
+
+            if (currentLight)
             {
-                if (currentLight)
+                currentLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
+                currentLight.transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed, 0);
+
+                //Light
+                if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
                     currentLight = GetNextReachableLight(currentLight);
+            }
+
+            //Worlds
+            if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+            {
+                Data.cam.GetComponent<TransformCamera>().changePlane();
+                return;
+            }
+
+            if (Input.GetButtonDown("Switch Light"))
+            {
+                if (Data.lights.Count > 0)
+                {
+                    if (currentLight)
+                        currentLight = GetNextReachableLight(currentLight);
+                    else
+                        currentLight = GetFirstReachableLight();
+                }
+            }
+
+            //Grab
+            if (Input.GetButtonDown("Grab"))
+            {
+                if (grabbedObject)
+                {
+                    grabbedObject.transform.parent = grabParent;
+                    grabbedObject = null;
+                }
+                else if (grabableObjects.Count > 0)
+                {
+                    grabbedObject = Data.GetClosestGameObjectFromList(gameObject, grabableObjects);
+                    grabParent = grabbedObject.transform.parent;
+                    grabbedObject.transform.parent = transform;
+                }
+            }
+
+            //Inquire
+            if (Input.GetButtonDown("Inquire") && !inquiredObject && inquirableObjects.Count > 0)
+            {
+                GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.inquirableObjects);
+                if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
+                {
+                    inquiredObject = targetObject;
+                    inquiredObject.SendMessage("Inquire", true, SendMessageOptions.DontRequireReceiver);
+                }
+            }
+            else if (inquiredObject && (Input.GetButtonUp("Inquire") || Vector3.Distance(transform.position, inquiredObject.transform.position) > Data.characterReach))
+            {
+                inquiredObject.SendMessage("Inquire", false, SendMessageOptions.DontRequireReceiver);
+                inquiredObject = null;
+            }
+
+            //Take Action
+            if (Input.GetButtonDown("Action"))
+            {
+                GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.interactableObjects);
+                if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
+                {
+                    targetObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
+                }
                 else
-                    currentLight = GetFirstReachableLight();
-            }
-        }
-
-        //Grab
-        if (Input.GetButtonDown("Grab"))
-        {
-            if (grabbedObject)
-            {
-                grabbedObject.transform.parent = grabParent;
-                grabbedObject = null;
-            }
-            else if (grabableObjects.Count > 0)
-            {
-                grabbedObject = Data.GetClosestGameObjectFromList(gameObject, grabableObjects);
-                grabParent = grabbedObject.transform.parent;
-                grabbedObject.transform.parent = transform;
-            }
-        }
-
-        //Inquire
-        if (Input.GetButtonDown("Inquire") && !inquiredObject && inquirableObjects.Count > 0)
-        {
-            GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.inquirableObjects);
-            if(Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
-            {
-                inquiredObject = targetObject;
-                inquiredObject.SendMessage("Inquire", true, SendMessageOptions.DontRequireReceiver);
-            }
-        } else if (inquiredObject && (Input.GetButtonUp("Inquire") || Vector3.Distance(transform.position, inquiredObject.transform.position) > Data.characterReach))
-        {
-            inquiredObject.SendMessage("Inquire", false, SendMessageOptions.DontRequireReceiver);
-            inquiredObject = null;
-        }
-        
-        //Take Action
-        if (Input.GetButtonDown("Action"))
-        {
-            GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.interactableObjects);
-            if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
-            {
-                targetObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
-            }
-            else
-            {
-                print("Cannot reach " + transform.name + ". Distance: " + Vector3.Distance(transform.position, targetObject.transform.position) + " > " + Data.characterReach);
+                {
+                    print("Cannot reach " + transform.name + ". Distance: " + Vector3.Distance(transform.position, targetObject.transform.position) + " > " + Data.characterReach);
+                }
             }
         }
     }
