@@ -28,9 +28,9 @@ public class RealCharacterController : MonoBehaviour {
 
         if (!test.GetMenuActive())
         {
-
             if (transform.position.y < 0.0f)
                 transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
             Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 0.16f);
@@ -47,8 +47,10 @@ public class RealCharacterController : MonoBehaviour {
             }
 
             //Worlds
-            if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time)
+            if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time && CollisionShadow.canChange)
             {
+                Data.shadowCharacter.GetComponent<Collider>().isTrigger = false;
+                Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
                 Data.cam.GetComponent<TransformCamera>().changePlane();
                 return;
             }

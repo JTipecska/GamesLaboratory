@@ -92,6 +92,7 @@ public class TransformCamera : MonoBehaviour {
         }
         if (!finished && counter <=52 && !shadow)
         {
+            Data.shadowCharacter.GetComponent<Collider>().isTrigger = true;
             finished = true;
             
         }
