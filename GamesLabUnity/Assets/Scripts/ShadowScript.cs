@@ -18,6 +18,8 @@ public class ShadowScript : MonoBehaviour {
     private void Start() {
         Data.shadowObjects.Add(gameObject);
         CreateShadowGameObject();
+        if (transform.GetComponent<MeshRenderer>())
+            transform.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
     }
 
     // Update is called once per frame
@@ -28,54 +30,45 @@ public class ShadowScript : MonoBehaviour {
 
     void PickLightSource()
     {
+        print(transform.name);
         Light result = null;
         float maxIntensity = 0f;
-        foreach(GameObject g in Data.lights.Union<GameObject>(Data.staticLights).ToList<GameObject>())
+
+        foreach (GameObject g in Data.lights.Union<GameObject>(Data.staticLights).ToList<GameObject>())
         {
             Light light = g.GetComponent<Light>();
+            if (!light.enabled)
+                continue;
+
             RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
-            if(!Physics.Raycast(g.transform.position, lightDir, out hit, light.range, LayerMask.GetMask(new string[] { "Default" })))
+
+            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range, LayerMask.GetMask(new string[] { "Default" })))
                 continue;
-            print(hit.collider.name + transform.name);
+            Debug.DrawLine(g.transform.position, g.transform.position + Vector3.Normalize(lightDir) * light.range);
+            print(g.name + " -> " + hit.collider.name);
 
             // LightSource does not hit GameObject
-            if (!hit.transform.Equals(transform))
+            if (!hit.collider.transform.Equals(transform))
                 continue;
 
             // Calculate Intensity and compare with current max
-            float intensityAtGameObject = Mathf.Abs(light.intensity/Vector3.Distance(hit.point,g.transform.position));
-            print("Intensity: " + intensityAtGameObject);
+            float intensityAtGameObject = Mathf.Abs(light.intensity / Vector3.Distance(transform.position, g.transform.position));
 
-            if(intensityAtGameObject > maxIntensity)
+            if (intensityAtGameObject > maxIntensity)
             {
                 maxIntensity = intensityAtGameObject;
                 result = light;
             }
         }
-        lightSrc = result;
-    }
-
-    void ToggleShadowCollider()
-    {
-        if (shadow)
+        if (result)
         {
-            print("Changing to OverWorld");
-            //Destroy(shadow);
-            //lastLightSrc = null;
-            if(transform.GetComponent<MeshRenderer>())
-                transform.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            return;
+            //print(result.name + " -> " + transform.name);
+            print("Intensity: " + maxIntensity);
         }
-
-        print("Changing to ShadowWorld");
-
-        if(transform.GetComponent<MeshRenderer>())
-            transform.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-
-        /*
-        CreateShadowGameObject();
-        StartCoroutine(CalculateShadowVerticesAndTriangles());*/
+        else
+            print("No lightsource for " + transform.name);
+        lightSrc = result;
     }
 
     void CreateShadowGameObject()
@@ -89,10 +82,13 @@ public class ShadowScript : MonoBehaviour {
         shadow.AddComponent<MeshRenderer>().material = shadowMat;
         shadow.AddComponent<MeshCollider>();
     }
-
+    
     IEnumerator CalculateShadowVerticesAndTriangles()
     {
         if (!shadow)
+            yield break;
+
+        if (!transform.GetComponent<MeshFilter>())
             yield break;
 
         PickLightSource();
@@ -121,11 +117,9 @@ public class ShadowScript : MonoBehaviour {
             // Check if shadow hits Shadowplane 
             if (Physics.Raycast(new Ray(currVertex, lightDir), out hit, float.MaxValue, LayerMask.GetMask(new string[] { "ShadowPlane" })))
             {
-
                         // Store shadow vertex
                         shadowVertices.Add(hit.point + Vector3.up * 0.01f);
-                        keptVertices.Add(i);//
-
+                        ////keptVertices.Add(i);//
             }
             else//
                 shadowVertices.Add(currVertex);//
@@ -133,7 +127,7 @@ public class ShadowScript : MonoBehaviour {
 
         // set vertices (calculated) and triangles (same as in original mesh)
         shadowMesh.SetVertices(shadowVertices);
-        //shadowMesh.SetTriangles(transform.GetComponent<MeshFilter>().mesh.triangles, 0);//
+        shadowMesh.SetTriangles(transform.GetComponent<MeshFilter>().mesh.triangles, 0);//
 
         int[] oldTriangles = transform.GetComponent<MeshFilter>().mesh.triangles;
         List<int> newTriangles = new List<int>();
@@ -151,7 +145,7 @@ public class ShadowScript : MonoBehaviour {
                 newTriangles.Add(thdV);
             }
         }
-        shadowMesh.SetTriangles(newTriangles, 0);//
+        ////shadowMesh.SetTriangles(newTriangles, 0);//
         ////////////////////////////////////////////////
 
         shadow.GetComponent<MeshCollider>().sharedMesh = shadowMesh;

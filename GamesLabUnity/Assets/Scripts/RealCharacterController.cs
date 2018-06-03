@@ -21,7 +21,7 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (!Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
+        if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
         if (transform.position.y < 0.0f)
@@ -89,14 +89,18 @@ public class RealCharacterController : MonoBehaviour {
             inquiredObject.SendMessage("Inquire", false, SendMessageOptions.DontRequireReceiver);
             inquiredObject = null;
         }
-
+        
         //Take Action
         if (Input.GetButtonDown("Action"))
         {
             GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.interactableObjects);
             if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
             {
-                targetObject.SendMessage("Action", true, SendMessageOptions.DontRequireReceiver);
+                targetObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
+            }
+            else
+            {
+                print("Cannot reach " + transform.name + ". Distance: " + Vector3.Distance(transform.position, targetObject.transform.position) + " > " + Data.characterReach);
             }
         }
     }
@@ -122,10 +126,10 @@ public class RealCharacterController : MonoBehaviour {
         print("Shadow World");
         Data.lastWorldSwitch = Time.time;
         Physics.gravity = new Vector3(0, 0, -9.81f);
-        foreach (GameObject g in Data.shadowObjects)
+        /*foreach (GameObject g in Data.shadowObjects)
         {
             g.SendMessageUpwards("ToggleShadowCollider");
-        }
+        }*/
         foreach (GameObject g in Data.shadowFloors)
         {
             g.SetActive(true);
@@ -143,7 +147,7 @@ public class RealCharacterController : MonoBehaviour {
         if (Data.lights.Count <= 0)
             return null;
 
-        Data.lights.Sort(CompareByDistanceToPlayer);
+        Data.lights.Sort(CompareByDistanceToStart);
         for (int i = 0; i < Data.lights.Count; i++)
         {
             float currDist = Vector3.Distance(transform.position, Data.lights[i].transform.position);
@@ -165,7 +169,7 @@ public class RealCharacterController : MonoBehaviour {
         if (Data.lights.Count <= 0)
             return null;
 
-        Data.lights.Sort(CompareByDistanceToPlayer);
+        Data.lights.Sort(CompareByDistanceToStart);
         if (currLight)
         {
             int idx = Data.lights.IndexOf(currLight);
@@ -181,7 +185,7 @@ public class RealCharacterController : MonoBehaviour {
         return null;
     }
 
-    private int CompareByDistanceToPlayer(GameObject g1, GameObject g2)
+    private int CompareByDistanceToStart(GameObject g1, GameObject g2)
     {
         if (g1.transform.position.x > g2.transform.position.x)
             return 1;

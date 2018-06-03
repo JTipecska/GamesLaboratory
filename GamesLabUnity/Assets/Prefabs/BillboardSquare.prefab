@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
+  - component: {fileID: 114431327005872032}
   m_Layer: 0
   m_Name: BillboardSquare
   m_TagString: Untagged
@@ -4778,6 +4779,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183870451413092}
   m_Mesh: {fileID: 4300062, guid: 5cfef2d0d6c6279458ebadcb3af1bb41, type: 3}
+--- !u!114 &114431327005872032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5db66e1570f84e84e08a4906097de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights: []
 --- !u!198 &198575734487884124
 ParticleSystem:
   m_ObjectHideFlags: 1

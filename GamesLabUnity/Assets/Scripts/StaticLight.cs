@@ -18,6 +18,11 @@ public class StaticLight : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
+
+    void Action()
+    {
+        GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSwitch : MonoBehaviour {
-    List<GameObject> lights = new List<GameObject>();
+    public List<GameObject> lights = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,14 @@ public class LightSwitch : MonoBehaviour {
 
     void Action()
     {
+        // Toggle Billboard_ON and Billboard_OFF
+        foreach(Transform child in transform)
+        {
+            if (child.name.StartsWith("Billboard_O"))
+                child.gameObject.SetActive(!child.gameObject.activeSelf);
+        }
+
+        // Toggle every light attached to this object
         foreach (GameObject g in lights)
             g.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
     }

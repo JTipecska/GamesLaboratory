@@ -22,7 +22,17 @@ public class MovableLight : MonoBehaviour {
         movePlane.GetComponent<Renderer>().material = movePlaneMaterial;
         Destroy(movePlane.GetComponent<MeshCollider>());
         movePlane.SetActive(false);
-	}
+    }
+
+    void OnEnable()
+    {
+        Data.lights.Add(gameObject);
+    }
+
+    void OnDisable()
+    {
+        Data.lights.Remove(gameObject);
+    }
 
     // Update is called once per frame
     void Update () {
@@ -32,22 +42,11 @@ public class MovableLight : MonoBehaviour {
     void Action()
     {
         GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
-        if (GetComponent<Light>().enabled)
-        {
-            Data.lights.Add(gameObject);
-        }
-        else
-        {
-            Data.lights.Remove(gameObject);
-        }
     }
 
     void ToggleLightMoveArea()
     {
-        if (movePlane.activeSelf)
-            movePlane.SetActive(false);
-        else
-            movePlane.SetActive(true);
+        movePlane.SetActive(!movePlane.activeSelf);
     }
 
     private float Clamp(float min, float max, float val)

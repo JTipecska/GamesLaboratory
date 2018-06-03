@@ -13,7 +13,7 @@ public class ShadowCharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
+        if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
         GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
@@ -32,10 +32,10 @@ public class ShadowCharacterController : MonoBehaviour {
         Data.lastWorldSwitch = Time.time;
         Data.world.SetActive(true);
         Physics.gravity = new Vector3(0, -9.81f, 0);
-        foreach (GameObject g in Data.shadowObjects)
+        /*foreach (GameObject g in Data.shadowObjects)
         {
             g.SendMessageUpwards("ToggleShadowCollider");
-        }
+        }*/
         foreach (GameObject g in Data.shadowFloors)
         {
             g.SetActive(false);
