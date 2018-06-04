@@ -2,8 +2,8 @@
 
 Shader "Outlined/Silhouette Only" {
 	Properties {
-		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
-		_Outline ("Outline width", Range (0.0, 0.03)) = .005
+		_OutlineColor ("Outline Color", Color) = (0,1,0,1)
+		_Outline ("Outline width", Range (0.0, 0.03)) = .03
 	}
  
 CGINCLUDE
@@ -19,8 +19,8 @@ struct v2f {
 	float4 color : COLOR;
 };
  
-uniform float _Outline;
-uniform float4 _OutlineColor;
+uniform float _Outline ;
+uniform float4 _OutlineColor ;
  
 v2f vert(appdata v) {
 	// just make a copy of incoming vertex data but scaled according to normal direction
