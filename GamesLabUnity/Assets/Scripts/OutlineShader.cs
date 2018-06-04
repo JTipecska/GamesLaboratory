@@ -7,14 +7,35 @@ public class OutlineShader : MonoBehaviour {
 
     public Shader outlineMaterial;
     public Material outlineMaterial2;
+    public List<Material> materials = new List<Material>();
+
+
     public void Start()
     {
-       this.GetComponent<Camera>().SetReplacementShader(outlineMaterial, "Puzzles");
+
+        GameObject p = GameObject.Find("Puzzles");
+        MeshRenderer[] mr = p.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer m in mr)
+        {
+            materials.Add(m.material);
+        }
+
     }
-    private void OnPreRender()
+ 
+
+    public void addOutline()
     {
-        this.GetComponent<Camera>().SetReplacementShader(outlineMaterial, "Puzzles");
+        foreach(Material m in materials)
+        {
+            m.shader = Shader.Find("Outlined/Silhouette Only");
+        }
     }
 
-
+    public void removeOutline()
+    {
+        foreach (Material m in materials)
+        {
+            m.shader = Shader.Find("Standard");
+        }
+    }
 }

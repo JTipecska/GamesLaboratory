@@ -101,6 +101,7 @@ public class TransformCamera : MonoBehaviour {
             if (shadow)
             {
                 Data.realCharacter.SendMessage("ChangeToShadowWorld");
+                GetComponentInChildren<OutlineShader>().addOutline();
             }
             called = true;
         }
@@ -116,6 +117,7 @@ public class TransformCamera : MonoBehaviour {
             {
                 //BlendToMatrix(GetComponent<Camera>().projectionMatrix, .75f);
                 //Physics.Raycast(transform.position, transform.forward, out hit);
+                GetComponentInChildren<OutlineShader>().removeOutline();
                 shadow = false;
                 BlendToMatrix(pMatrix, transitduration);
                 finished = false;
