@@ -4,38 +4,43 @@ using UnityEngine;
 
 public class OutlineShader : MonoBehaviour {
 
-
-    public Shader outlineMaterial;
-    public Material outlineMaterial2;
-    public List<Material> materials = new List<Material>();
+    public List<Renderer> materials = new List<Renderer>();
 
 
     public void Start()
     {
 
-        GameObject p = GameObject.Find("Puzzles");
+       /* GameObject p = GameObject.Find("Puzzles");
         MeshRenderer[] mr = p.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer m in mr)
         {
             materials.Add(m.material);
-        }
+        }*/
 
     }
- 
+
+    public void Update()
+    {
+        this.transform.position.Set(Data.cam.transform.position.x, this.transform.position.y, this.transform.position.z);
+    }
+
 
     public void addOutline()
     {
-        foreach(Material m in materials)
+        foreach(Renderer m in materials)
         {
-            m.shader = Shader.Find("Outlined/Silhouette Only");
+            
+            m.material.shader = Shader.Find("Outlined/Silhouette Only");
+            m.material.SetColor("_OutlineColor", Color.green);
+            m.material.SetFloat("_Outline",0.03f);
         }
     }
 
     public void removeOutline()
     {
-        foreach (Material m in materials)
+        foreach (Renderer m in materials)
         {
-            m.shader = Shader.Find("Standard");
+            m.material.shader = Shader.Find("Standard");
         }
     }
 }
