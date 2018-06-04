@@ -15206,7 +15206,7 @@ GameObject:
   - component: {fileID: 300134971}
   - component: {fileID: 300134970}
   - component: {fileID: 300134969}
-  m_Layer: 4
+  m_Layer: 2
   m_Name: WaterProNighttime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48939,6 +48939,10 @@ Prefab:
     - target: {fileID: 450040, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10844700, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}
+      propertyPath: m_DrawHalo
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}

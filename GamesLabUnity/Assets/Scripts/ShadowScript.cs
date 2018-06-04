@@ -43,7 +43,7 @@ public class ShadowScript : MonoBehaviour {
             RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
 
-            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range, LayerMask.GetMask(new string[] { "Default" })))
+            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))//, LayerMask.GetMask(new string[] { "Default" })))
                 continue;
             Debug.DrawLine(g.transform.position, g.transform.position + Vector3.Normalize(lightDir) * light.range);
             print(g.name + " -> " + hit.collider.name);
@@ -133,16 +133,18 @@ public class ShadowScript : MonoBehaviour {
         List<int> newTriangles = new List<int>();
         for (int i = 0; i < oldTriangles.Length; i += 3)
         {
-            int fstV = keptVertices.BinarySearch(oldTriangles[i]);
-            int sndV = keptVertices.BinarySearch(oldTriangles[i+1]);
-            int thdV = keptVertices.BinarySearch(oldTriangles[i+2]);
-            if (fstV >= 0
-                && sndV >= 0
-                && thdV >= 0)
+            Vector3 fstV = shadowVertices[oldTriangles[i]];
+            Vector3 sndV = shadowVertices[oldTriangles[i+1]];
+            Vector3 thdV = shadowVertices[oldTriangles[i+2]];
+
+            Vector3 center = (fstV + sndV + thdV)/ 3;
+            Vector3 triNormal = Vector3.Cross(sndV - fstV, thdV - fstV);
+
+            if (Vector3.Dot(triNormal, lightSrc.transform.position - center) > 0.0f)
             {
-                newTriangles.Add(fstV);
-                newTriangles.Add(sndV);
-                newTriangles.Add(thdV);
+                newTriangles.Add(oldTriangles[i]);
+                newTriangles.Add(oldTriangles[i+1]);
+                newTriangles.Add(oldTriangles[i+2]);
             }
         }
         ////shadowMesh.SetTriangles(newTriangles, 0);//
