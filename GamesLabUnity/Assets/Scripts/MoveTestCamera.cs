@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class MoveTestCamera : MonoBehaviour {
 
-    public GUIController test;
-
 	void Update () {
 
-        if (!test.GetMenuActive())
+        if (!GUIController.GetMenuActive())
         {
 
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;

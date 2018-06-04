@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShadowCharacterController : MonoBehaviour {
 
-    public GUIController test;
-
     void Start () {
         Data.shadowCharacter = gameObject;
         GetComponent<ShadowCharacterController>().enabled = false;
@@ -17,7 +15,7 @@ public class ShadowCharacterController : MonoBehaviour {
         if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
-        if (!test.GetMenuActive())
+        if (!GUIController.GetMenuActive())
         {
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * Input.GetAxis("CharacterHorizontal") * Time.deltaTime * Data.speed);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);

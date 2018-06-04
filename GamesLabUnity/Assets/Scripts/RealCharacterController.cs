@@ -10,7 +10,6 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLight;
     private Transform grabParent;
-    public GUIController test;
 
     // Use this for initialization
     void Start ()
@@ -26,7 +25,7 @@ public class RealCharacterController : MonoBehaviour {
             return;
 
 
-        if (!test.GetMenuActive())
+        if (!GUIController.GetMenuActive())
         {
             if (transform.position.y < 0.0f)
                 transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
