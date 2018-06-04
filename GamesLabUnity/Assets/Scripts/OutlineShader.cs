@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class OutlineShader : MonoBehaviour {
 
-
-    public Camera mainCamera;
     public List<Renderer> materials = new List<Renderer>();
 
 
@@ -23,7 +21,7 @@ public class OutlineShader : MonoBehaviour {
 
     public void Update()
     {
-        this.transform.position.Set(mainCamera.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.transform.position.Set(Data.cam.transform.position.x, this.transform.position.y, this.transform.position.z);
     }
 
 

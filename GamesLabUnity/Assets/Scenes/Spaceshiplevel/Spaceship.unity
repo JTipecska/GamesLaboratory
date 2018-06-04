@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204801, g: 0.4135345, b: 0.68625015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3112,7 +3112,6 @@ Transform:
   - {fileID: 1527739741}
   - {fileID: 1405625008}
   - {fileID: 551865426}
-  - {fileID: 933238764}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3760,7 +3759,7 @@ GameObject:
   - component: {fileID: 104381059}
   - component: {fileID: 104381058}
   - component: {fileID: 104381057}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel_StandardS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6031,7 +6030,7 @@ GameObject:
   - component: {fileID: 165287556}
   - component: {fileID: 165287555}
   - component: {fileID: 165287554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel_BoxGreyS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6148,7 +6147,7 @@ GameObject:
   - component: {fileID: 167112550}
   - component: {fileID: 167112552}
   - component: {fileID: 167112551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: crate_lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6257,7 +6256,7 @@ GameObject:
   - component: {fileID: 168910150}
   - component: {fileID: 168910149}
   - component: {fileID: 168910152}
-  m_Layer: 4
+  m_Layer: 10
   m_Name: SimpleLightningBoltPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8733,7 +8732,7 @@ GameObject:
   - component: {fileID: 247599094}
   - component: {fileID: 247599093}
   - component: {fileID: 247599095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15206,7 +15205,7 @@ GameObject:
   - component: {fileID: 300134971}
   - component: {fileID: 300134970}
   - component: {fileID: 300134969}
-  m_Layer: 4
+  m_Layer: 10
   m_Name: WaterProNighttime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18484,6 +18483,7 @@ Transform:
   - {fileID: 1870268566}
   - {fileID: 2041200644}
   - {fileID: 1616117265}
+  - {fileID: 1272630909}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21239,7 +21239,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 500753759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25167,6 +25167,11 @@ Prefab:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 20023476799383132, guid: d6ebe562af2ce06418c60a8f9e21cf70,
+        type: 2}
+      propertyPath: m_Depth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ebe562af2ce06418c60a8f9e21cf70, type: 2}
   m_IsPrefabParent: 0
@@ -26493,7 +26498,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 670465042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29364,7 +29369,7 @@ GameObject:
   - component: {fileID: 765114267}
   - component: {fileID: 765114269}
   - component: {fileID: 765114268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: console
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32149,7 +32154,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 829533986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34879,7 +34884,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 933238764}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34904,8 +34909,8 @@ Transform:
   - {fileID: 829533986}
   - {fileID: 500753759}
   - {fileID: 670465042}
-  m_Father: {fileID: 83362441}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933877010
 GameObject:
@@ -37307,7 +37312,7 @@ GameObject:
   - component: {fileID: 995828409}
   - component: {fileID: 995828411}
   - component: {fileID: 995828410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shelf_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38763,7 +38768,7 @@ GameObject:
   - component: {fileID: 1028238343}
   - component: {fileID: 1028238345}
   - component: {fileID: 1028238344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SimpleLightningBoltPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38953,7 +38958,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1035077047}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43737,7 +43742,7 @@ GameObject:
   - component: {fileID: 1177293104}
   - component: {fileID: 1177293103}
   - component: {fileID: 1177293102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: container_small (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44749,7 +44754,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1205912093}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46527,7 +46532,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1250304765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47028,6 +47033,92 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268238839}
   m_Mesh: {fileID: 4300000, guid: 7ed7804698d136f41af808075536d7d9, type: 3}
+--- !u!1 &1272630908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1272630909}
+  - component: {fileID: 1272630912}
+  - component: {fileID: 1272630911}
+  - component: {fileID: 1272630910}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1272630909
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272630908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419684732}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272630910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272630908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c68778f2137265488064d224c5a207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials: []
+--- !u!124 &1272630911
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272630908}
+  m_Enabled: 1
+--- !u!20 &1272630912
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272630908}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 2
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &1276114189
 GameObject:
   m_ObjectHideFlags: 0
@@ -51972,6 +52063,18 @@ Prefab:
       propertyPath: EndPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 106988, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 171180, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 163122, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
   m_IsPrefabParent: 0
@@ -53590,7 +53693,7 @@ GameObject:
   - component: {fileID: 1463312327}
   - component: {fileID: 1463312329}
   - component: {fileID: 1463312328}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58540,7 +58643,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1614901008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59392,7 +59495,7 @@ GameObject:
   - component: {fileID: 1640194588}
   - component: {fileID: 1640194587}
   - component: {fileID: 1640194586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel_BoxGreyS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62255,7 +62358,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1718397982}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63157,7 +63260,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1736933463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63367,7 +63470,7 @@ GameObject:
   - component: {fileID: 1749473984}
   - component: {fileID: 1749473986}
   - component: {fileID: 1749473985}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel_TriPlatesS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65048,7 +65151,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1804401320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65158,7 +65261,7 @@ GameObject:
   - component: {fileID: 1809403461}
   - component: {fileID: 1809403463}
   - component: {fileID: 1809403462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hydroponic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65783,7 +65886,7 @@ GameObject:
   - component: {fileID: 1823367695}
   - component: {fileID: 1823367697}
   - component: {fileID: 1823367696}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Girder_Short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67920,7 +68023,7 @@ GameObject:
   - component: {fileID: 1904494929}
   - component: {fileID: 1904494928}
   - component: {fileID: 1904494927}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: container_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69648,7 +69751,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1965572713}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69961,7 +70064,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1979603671}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71633,6 +71736,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -119.285
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
   m_IsPrefabParent: 0
@@ -72749,7 +72856,7 @@ GameObject:
   - component: {fileID: 2046678579}
   - component: {fileID: 2046678581}
   - component: {fileID: 2046678580}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Girder_Long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
