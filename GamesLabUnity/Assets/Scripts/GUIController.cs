@@ -6,11 +6,11 @@ public class GUIController : MonoBehaviour {
 
     public GameObject IngameMenu;
 
-    private bool menuActive = false;
+    private static bool menuActive = false;
 
     private void Update()
     {
-        if (Input.GetKey("escape")) {
+        if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start")) {
             Action();
         }
     }
@@ -22,7 +22,7 @@ public class GUIController : MonoBehaviour {
 
     }
 
-    public bool GetMenuActive() {
+    public static bool GetMenuActive() {
         return menuActive;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8204871, g: 0.41352865, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6002,7 +6002,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 655ab5fa2ffaa3e41ab92605a7c86b68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06d69d2a8001b5d4aa2d1b85b212061e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17851,13 +17851,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114059754755819250, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114291698846309856, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -41978,13 +41976,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114059754755819250, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114291698846309856, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -48986,10 +48982,6 @@ Prefab:
     - target: {fileID: 450040, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 138980, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}
-      propertyPath: m_Name
-      value: Spotlight2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 530f5ce44fdac4197a29f5bec8818d85, type: 2}
@@ -62691,7 +62683,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4e78ff0f3ad85e44faed62fea748d8ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02369135fdb5d124f8fb313cbba08187, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -62847,25 +62839,6 @@ Prefab:
     - target: {fileID: 415124, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114308566992882922, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291698846309856, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114059754755819250, guid: 820591594dcfa124d8a9c5d016d6c22c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6461558, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 2}
-      propertyPath: m_Convex
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 2}
@@ -71163,6 +71136,21 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 65612099873373044, guid: 2b35eaf17eca76341a62c5026f089bc8,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 7.6393485
+      objectReference: {fileID: 0}
+    - target: {fileID: 65612099873373044, guid: 2b35eaf17eca76341a62c5026f089bc8,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.032654602
+      objectReference: {fileID: 0}
+    - target: {fileID: 65612099873373044, guid: 2b35eaf17eca76341a62c5026f089bc8,
+        type: 2}
+      propertyPath: m_Center.y
+      value: -0.0830244
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b35eaf17eca76341a62c5026f089bc8, type: 2}
   m_IsPrefabParent: 0
@@ -71533,7 +71521,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.322
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalPosition.y
@@ -71541,7 +71529,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.587
+      value: -1.259
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalRotation.x
@@ -71549,7 +71537,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.9045551
+      value: -0.86288685
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalRotation.z
@@ -71557,7 +71545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.42635676
+      value: 0.50539714
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_RootOrder
@@ -71565,7 +71553,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -129.52701
+      value: -119.285
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9ef37067d47dc0408e2eff6cd447cde, type: 2}
@@ -76574,7 +76562,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5486b9ed90fe5b44da1e1545f46567f7,
+      objectReference: {fileID: 21300000, guid: 4a3cb81644d25f241881ba461aa90b84,
         type: 3}
     - target: {fileID: 224097602507996708, guid: 43782366c6534df4e81a609f6d8fd42c,
         type: 2}
@@ -76600,6 +76588,11 @@ Prefab:
         type: 2}
       propertyPath: needPress
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114188229655802292, guid: 43782366c6534df4e81a609f6d8fd42c,
+        type: 2}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43782366c6534df4e81a609f6d8fd42c, type: 2}
