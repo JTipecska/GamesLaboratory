@@ -11,13 +11,19 @@ public class MainMenu : MonoBehaviour {
     public Text t;
     Resolution[] resolutions;
     public GameObject music;
+    static bool startedMusic = false;
     // Use this for initialization
     void Start () {
         resolutions = Screen.resolutions;
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString ();
         s.value = Array.IndexOf (resolutions, Screen.currentResolution);
-        DontDestroyOnLoad(music);
+        if (music!= null && !startedMusic)
+        {
+            startedMusic = true;
+            DontDestroyOnLoad(music);
+        }
+            
     }
 
     public void SoundChange (float s) {

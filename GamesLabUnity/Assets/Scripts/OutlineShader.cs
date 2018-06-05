@@ -5,34 +5,42 @@ using UnityEngine;
 public class OutlineShader : MonoBehaviour {
 
     public List<Renderer> materials = new List<Renderer>();
+    public List<Renderer> dontChange = new List<Renderer>();
+    Renderer[] all;
 
 
     public void Start()
     {
-
-       /* GameObject p = GameObject.Find("Puzzles");
-        MeshRenderer[] mr = p.GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer m in mr)
-        {
-            materials.Add(m.material);
-        }*/
+        Data.outlineCam = gameObject;
+        GameObject p = GameObject.Find("Puzzles");
+        all  = p.GetComponentsInChildren<Renderer>();
 
     }
 
     public void Update()
     {
-        this.transform.position.Set(Data.cam.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(Data.cam.transform.position.x, this.transform.position.y, this.transform.position.z);
     }
 
 
     public void addOutline()
     {
+        foreach (Renderer r in all)
+        {
+            r.enabled = false;
+        }
+        foreach (Renderer r in dontChange)
+        {
+            r.enabled = true;
+        }
         foreach(Renderer m in materials)
         {
-            
+            m.enabled = true;
             m.material.shader = Shader.Find("Outlined/Silhouette Only");
-            m.material.SetColor("_OutlineColor", Color.green);
-            m.material.SetFloat("_Outline",0.03f);
+            m.material.SetColor("_OutlineColor", new Color(0,56,255,0.5f));
+            m.material.SetFloat("_Outline",0.1f);
+            /*m.material.shader = Shader.Find("Additive Tint");
+            m.material.SetColor("_Color", new Color(0, 56, 255, 1));*/
         }
     }
 
@@ -41,6 +49,9 @@ public class OutlineShader : MonoBehaviour {
         foreach (Renderer m in materials)
         {
             m.material.shader = Shader.Find("Standard");
+            //m.material.SetColor("_Color", new Color(1, 1, 1, 1));
         }
+        foreach (Renderer r in all)
+            r.enabled = true;
     }
 }

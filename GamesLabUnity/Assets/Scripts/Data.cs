@@ -9,6 +9,8 @@ public class Data : MonoBehaviour
     public static GameObject cam;
     public static GameObject inquireLabel;
     public static GameObject world;
+    public static GameObject outlineCam;
+    public static GameObject puzzles;
     public static bool shadow = false;
     public static int amtLights = 0;
     public static float lastWorldSwitch = 0.0f;

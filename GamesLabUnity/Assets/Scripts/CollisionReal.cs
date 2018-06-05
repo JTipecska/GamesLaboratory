@@ -18,7 +18,7 @@ public class CollisionReal : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.transform.IsChildOf(Data.shadowCharacter.transform))
+        if (other.gameObject.transform.IsChildOf(Data.realCharacter.transform.root))
         {
             canChange = true;
         }
@@ -26,7 +26,7 @@ public class CollisionReal : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("parent:" + other.gameObject.transform.root.name);
-        if (other.gameObject.transform.IsChildOf(Data.shadowCharacter.transform))
+        if (other.gameObject.transform.IsChildOf(Data.realCharacter.transform.root))
         {
             canChange = false;
         }

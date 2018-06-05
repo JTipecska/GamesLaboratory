@@ -148,6 +148,9 @@ public class RealCharacterController : MonoBehaviour {
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
         gameObject.SetActive(false);
+        Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
+        Data.outlineCam.SetActive(true);
+        InitPuzzles.changeTrigger();
     }
 
     private GameObject GetFirstReachableLight()

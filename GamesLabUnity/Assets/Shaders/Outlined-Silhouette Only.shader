@@ -3,7 +3,7 @@
 Shader "Outlined/Silhouette Only" {
 	Properties {
 		_OutlineColor ("Outline Color", Color) = (0,1,0,1)
-		_Outline ("Outline width", Range (0.0, 0.03)) = .03
+		_Outline ("Outline width", Range (0.0, 0.1)) = .1
 	}
  
 CGINCLUDE
@@ -60,9 +60,9 @@ ENDCG
 			Cull Front
  
 			// you can choose what kind of blending mode you want for the outline
-			//Blend SrcAlpha OneMinusSrcAlpha // Normal
+			Blend SrcAlpha OneMinusSrcAlpha // Normal
 			//Blend One One // Additive
-			Blend One OneMinusDstColor // Soft Additive
+			//Blend One OneMinusDstColor // Soft Additive
 			//Blend DstColor Zero // Multiplicative
 			//Blend DstColor SrcColor // 2x Multiplicative
  

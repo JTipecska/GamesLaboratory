@@ -15237,9 +15237,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.9999999
-  m_Height: 0
+  m_Height: 2.2987547
   m_Direction: 1
-  m_Center: {x: -0.00000032782563, y: 0, z: 0.00000032782572}
+  m_Center: {x: -0.00000035805576, y: 0, z: 0.0000003111492}
 --- !u!114 &300134970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34884,6 +34884,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 933238764}
+  - component: {fileID: 933238765}
   m_Layer: 10
   m_Name: Puzzles
   m_TagString: Untagged
@@ -34912,6 +34913,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933238765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933238763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13f8d8f115d6154ebc4c8b207bbe036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &933877010
 GameObject:
   m_ObjectHideFlags: 0
@@ -38949,6 +38961,11 @@ Transform:
   m_Father: {fileID: 1468445240}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!120 &1033592328 stripped
+LineRenderer:
+  m_PrefabParentObject: {fileID: 12010332, guid: 15dec7b07032b2f4aa6f855bfbe120f7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1420376929}
 --- !u!1 &1035077046
 GameObject:
   m_ObjectHideFlags: 0
@@ -46361,6 +46378,21 @@ Prefab:
       propertyPath: m_Name
       value: BillboardSquare1
       objectReference: {fileID: 0}
+    - target: {fileID: 199564564993916822, guid: 51e8f129583a51a4093515aa5e6b849c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198575734487884124, guid: 51e8f129583a51a4093515aa5e6b849c,
+        type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23932871779154428, guid: 51e8f129583a51a4093515aa5e6b849c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114431327005872032, guid: 51e8f129583a51a4093515aa5e6b849c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 51e8f129583a51a4093515aa5e6b849c, type: 2}
@@ -47045,7 +47077,7 @@ GameObject:
   - component: {fileID: 1272630911}
   - component: {fileID: 1272630910}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: OutlineCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47058,7 +47090,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272630908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.91, z: 0}
+  m_LocalPosition: {x: 0, y: 1.35, z: -4.544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 419684732}
@@ -47075,7 +47107,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c68778f2137265488064d224c5a207b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials: []
+  materials:
+  - {fileID: 1640194589}
+  - {fileID: 104381060}
+  dontChange:
+  - {fileID: 247599093}
+  - {fileID: 1033592328}
+  - {fileID: 1028238345}
+  - {fileID: 168910151}
 --- !u!124 &1272630911
 Behaviour:
   m_ObjectHideFlags: 0
@@ -47104,7 +47143,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 2
-  m_Depth: 0
+  m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1024
