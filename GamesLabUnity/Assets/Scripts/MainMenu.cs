@@ -8,10 +8,16 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
 
     public Slider s;
+    public Button resetResBut;
     public Text t;
+    public Text countdown;
     Resolution[] resolutions;
     public GameObject music;
     static bool startedMusic = false;
+    bool applyMenu = false;
+    float timer = 10;
+    Resolution old;
+
     // Use this for initialization
     void Start () {
         resolutions = Screen.resolutions;
@@ -26,6 +32,16 @@ public class MainMenu : MonoBehaviour {
             
     }
 
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        countdown.text = "Resolution will reset in " + (int)timer + " sec.";
+        if (timer <= 0)
+        {
+            resetResBut.onClick.Invoke();
+        }
+    }
+
     public void SoundChange (float s) {
 
         AudioListener.volume = s / 25;
@@ -36,6 +52,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void apply () {
+        old = Screen.currentResolution;
         Screen.SetResolution (resolutions[(int) s.value].width, resolutions[(int) s.value].height, true);
     }
 
@@ -47,4 +64,13 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene (name);
     }
 
+    public void startApplyMenu()
+    {
+        applyMenu = true;
+        timer = 10;
+    }
+    public void resetRes()
+    {
+        Screen.SetResolution(old.width, old.height, true);
+    }
 }
