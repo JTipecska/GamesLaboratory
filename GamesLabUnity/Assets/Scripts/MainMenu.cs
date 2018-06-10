@@ -20,6 +20,12 @@ public class MainMenu : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if (PlayerPrefs.HasKey("width") && PlayerPrefs.HasKey("height"))
+        {
+            Screen.SetResolution(PlayerPrefs.GetInt("width"), PlayerPrefs.GetInt("height"), true);
+        }
+        if (PlayerPrefs.HasKey("volume"))
+            AudioListener.volume = PlayerPrefs.GetFloat("volume");
         resolutions = Screen.resolutions;
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString ();
@@ -45,6 +51,7 @@ public class MainMenu : MonoBehaviour {
     public void SoundChange (float s) {
 
         AudioListener.volume = s / 25;
+        PlayerPrefs.SetFloat("volume", s / 25);
     }
 
     public void resChange (float index) {
@@ -54,6 +61,8 @@ public class MainMenu : MonoBehaviour {
     public void apply () {
         old = Screen.currentResolution;
         Screen.SetResolution (resolutions[(int) s.value].width, resolutions[(int) s.value].height, true);
+        PlayerPrefs.SetInt("width", resolutions[(int) s.value].width);
+        PlayerPrefs.SetInt("height", resolutions[(int)s.value].height);
     }
 
     public void exit () {
@@ -72,5 +81,7 @@ public class MainMenu : MonoBehaviour {
     public void resetRes()
     {
         Screen.SetResolution(old.width, old.height, true);
+        PlayerPrefs.SetInt("width", old.width);
+        PlayerPrefs.SetInt("height", old.height);
     }
 }
