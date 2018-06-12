@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour {
             if (PlayerPrefs.HasKey("level"))
                 levels = PlayerPrefs.GetInt("level");
 
-            for (int i = levels; i < levelparent.transform.childCount-2; i++)
+            for (int i = levels; i < levelparent.transform.childCount-1; i++)
             {
                 levelparent.transform.GetChild(i).GetComponent<Button>().interactable = false;
             }
