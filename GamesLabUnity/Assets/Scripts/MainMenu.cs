@@ -11,21 +11,38 @@ public class MainMenu : MonoBehaviour {
     public Button resetResBut;
     public Text t;
     public Text countdown;
+    public GameObject levelparent;
+    public bool ingame;
     Resolution[] resolutions;
     public GameObject music;
     static bool startedMusic = false;
+    static int levels = 1;
     bool applyMenu = false;
     float timer = 10;
     Resolution old;
 
     // Use this for initialization
     void Start () {
-        if (PlayerPrefs.HasKey("width") && PlayerPrefs.HasKey("height"))
+        if (!ingame)
         {
-            Screen.SetResolution(PlayerPrefs.GetInt("width"), PlayerPrefs.GetInt("height"), true);
+            if (PlayerPrefs.HasKey("width") && PlayerPrefs.HasKey("height"))
+            {
+                if (Screen.currentResolution.width != PlayerPrefs.GetInt("width") || Screen.currentResolution.height != PlayerPrefs.GetInt("height"))
+                    Screen.SetResolution(PlayerPrefs.GetInt("width"), PlayerPrefs.GetInt("height"), true);
+            }
+            if (PlayerPrefs.HasKey("volume"))
+                AudioListener.volume = PlayerPrefs.GetFloat("volume");
+
+            if (PlayerPrefs.HasKey("level"))
+                levels = PlayerPrefs.GetInt("level");
+
+            for (int i = levels; i < levelparent.transform.childCount-2; i++)
+            {
+                levelparent.transform.GetChild(i).GetComponent<Button>().interactable = false;
+            }
         }
-        if (PlayerPrefs.HasKey("volume"))
-            AudioListener.volume = PlayerPrefs.GetFloat("volume");
+        
+
         resolutions = Screen.resolutions;
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString ();
@@ -40,8 +57,11 @@ public class MainMenu : MonoBehaviour {
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        countdown.text = "Resolution will reset in " + (int)timer + " sec.";
+        if (applyMenu)
+        {
+            timer -= Time.deltaTime;
+            countdown.text = "Resolution will reset in " + (int)timer + " sec.";
+        }
         if (timer <= 0)
         {
             resetResBut.onClick.Invoke();
