@@ -12,7 +12,7 @@ public class GUIController : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start")) {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) {
             SetMenuActive();
         }
     }
@@ -21,10 +21,9 @@ public class GUIController : MonoBehaviour {
     {
         Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
         IngameMenu.SetActive(!IngameMenu.gameObject.activeSelf);
-        Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(IngameMenu.transform.GetChild(1).gameObject);//.GetComponent<Button>().Select();
+        Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(IngameMenu.transform.GetChild(1).gameObject);
 
         menuActive = !menuActive;
-
     }
 
     public static bool GetMenuActive() {

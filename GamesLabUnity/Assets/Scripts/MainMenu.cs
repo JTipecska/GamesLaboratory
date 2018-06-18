@@ -90,6 +90,10 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void sceneChange (string name) {
+        if (name.Equals("MainMenu") && Data.shadow)
+            Data.cam.GetComponent<TransformCamera>().changePlane();
+        if (name.Equals("Spaceship") && levels == 1)
+            name = "cutscene00";
         SceneManager.LoadScene (name);
     }
 

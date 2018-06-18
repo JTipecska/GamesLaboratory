@@ -14,6 +14,7 @@ public class OutlineShader : MonoBehaviour {
         Data.outlineCam = gameObject;
         GameObject p = GameObject.Find("Puzzles");
         all  = p.GetComponentsInChildren<Renderer>();
+        gameObject.SetActive(false);
 
     }
 

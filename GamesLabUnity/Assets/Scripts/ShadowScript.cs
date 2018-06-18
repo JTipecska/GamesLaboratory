@@ -30,7 +30,7 @@ public class ShadowScript : MonoBehaviour {
 
     void PickLightSource()
     {
-        print(transform.name);
+        //print(transform.name);
         Light result = null;
         float maxIntensity = 0f;
 
@@ -43,10 +43,13 @@ public class ShadowScript : MonoBehaviour {
             RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
 
-            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))//, LayerMask.GetMask(new string[] { "Default" })))
+           /* if (lightDir.y > 0)
+                continue;*/
+
+            if (!Physics.Raycast(g.transform.position, lightDir, out hit, float.MaxValue))//, LayerMask.GetMask(new string[] { "Puzzles" })))
                 continue;
             Debug.DrawLine(g.transform.position, g.transform.position + Vector3.Normalize(lightDir) * light.range);
-            print(g.name + " -> " + hit.collider.name);
+            print(transform.name + " -> " + hit.collider.name);
 
             // LightSource does not hit GameObject
             if (!hit.collider.transform.Equals(transform))
@@ -64,7 +67,7 @@ public class ShadowScript : MonoBehaviour {
         if (result)
         {
             //print(result.name + " -> " + transform.name);
-            print("Intensity: " + maxIntensity);
+            //print("Intensity: " + maxIntensity);
         }
         else
             print("No lightsource for " + transform.name);
@@ -122,7 +125,10 @@ public class ShadowScript : MonoBehaviour {
                         ////keptVertices.Add(i);//
             }
             else//
+            {
                 shadowVertices.Add(currVertex);//
+                print("No HIt" + transform.name);
+            }
         }
 
         // set vertices (calculated) and triangles (same as in original mesh)
