@@ -11,13 +11,14 @@ public class RealCharacterController : MonoBehaviour {
     private GameObject currentLight;
     private Transform grabParent;
     private Animator anim;
+    public Animator animeShadow;
 
     // Use this for initialization
     void Start ()
     {
         Data.realCharacter = gameObject;
         currentLight = GetFirstReachableLight();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -30,12 +31,32 @@ public class RealCharacterController : MonoBehaviour {
         if (!GUIController.GetMenuActive())
         {
             if (transform.position.y < 0.0f)
-                 transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                 transform.position = new Vector3(transform.position.x, 0.12f, transform.position.z);
 
-            float charMovement = Input.GetAxis("CharacterHorizontal");
-            anim.SetFloat("Speed", charMovement);
+           // float charMovement = Input.GetAxis("CharacterHorizontal");
+            //anim.SetFloat("Speed", charMovement);
 
-            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * charMovement * Time.deltaTime * Data.speed);
+
+            float characterMovement = Input.GetAxis("CharacterHorizontal");
+            if (characterMovement > 0.2f)
+            {
+                anim.SetTrigger("Test");
+                anim.ResetTrigger("TestBack");
+                animeShadow.SetTrigger("Test");
+                animeShadow.ResetTrigger("TestBack");
+            }
+            //("StartWalking");
+            else
+            {
+                anim.SetTrigger("TestBack");
+                anim.ResetTrigger("Test");
+                animeShadow.SetTrigger("TestBack");
+                animeShadow.ResetTrigger("Test");
+            }
+
+            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
+
+           // GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * charMovement * Time.deltaTime * Data.speed);
             Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 1.3f);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
@@ -147,7 +168,7 @@ public class RealCharacterController : MonoBehaviour {
             g.SetActive(true);
         }
         Data.shadow = true;
-        Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y - 0.3f);
+        //Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y - 0.3f);
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
