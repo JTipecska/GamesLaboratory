@@ -22,18 +22,29 @@ public class ShadowCharacterController : MonoBehaviour {
         if (!GUIController.GetMenuActive())
         {
             float characterMovement = Input.GetAxis("CharacterHorizontal");
-            if (characterMovement > 0.2f)
+
+            if (characterMovement > 0.001f || characterMovement < -0.001f)
             {
-                
-                animeShadow.SetTrigger("Test");
-                animeShadow.ResetTrigger("TestBack");
+                if (animeShadow.GetBool("LookingForward") && characterMovement < -0.001f)
+                {
+                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler( 180, 90, 90));
+                    animeShadow.SetBool("LookingForward", false);
+                }
+                else if (!animeShadow.GetBool("LookingForward") && characterMovement > 0.001f)
+                {
+                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 90, 90));
+                    animeShadow.SetBool("LookingForward", true);
+                }
+                else
+                {
+                    animeShadow.SetTrigger("StartWalking");
+                    animeShadow.ResetTrigger("StopWalking");
+                }
             }
-            //("StartWalking");
             else
             {
-                
-                animeShadow.SetTrigger("TestBack");
-                animeShadow.ResetTrigger("Test");
+                animeShadow.SetTrigger("StopWalking");
+                animeShadow.ResetTrigger("StartWalking");
             }
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);

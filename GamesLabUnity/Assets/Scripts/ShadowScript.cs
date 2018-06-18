@@ -49,7 +49,7 @@ public class ShadowScript : MonoBehaviour {
             if (!Physics.Raycast(g.transform.position, lightDir, out hit, float.MaxValue))//, LayerMask.GetMask(new string[] { "Puzzles" })))
                 continue;
             Debug.DrawLine(g.transform.position, g.transform.position + Vector3.Normalize(lightDir) * light.range);
-            print(transform.name + " -> " + hit.collider.name);
+            //print(transform.name + " -> " + hit.collider.name);
 
             // LightSource does not hit GameObject
             if (!hit.collider.transform.Equals(transform))
