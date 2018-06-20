@@ -10,6 +10,9 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLight;
     private Transform grabParent;
+    private float lastShadowPlaneHeight;
+
+
     private Animator anim;
     public Animator animeShadow;
     public Rigidbody rigidShadow;
@@ -25,14 +28,22 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + 0.16f * Vector3.up, Vector3.down, out hit, float.MaxValue, LayerMask.GetMask("ShadowPlane")))
+        {
+            lastShadowPlaneHeight = hit.collider.transform.position.y;
+            print("ShadowPlane \"" + hit.collider.name + "\": " + lastShadowPlaneHeight + ", Character Feet: " + transform.position);
+
+        }
+
         if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
 
         if (!GUIController.GetMenuActive())
         {
-            if (transform.position.y < 0.0f)
-                 transform.position = new Vector3(transform.position.x, 0.12f, transform.position.z);
+            if (transform.position.y < lastShadowPlaneHeight - 0.1f)
+                 transform.position = new Vector3(transform.position.x, lastShadowPlaneHeight, transform.position.z);
 
             float characterMovement = Input.GetAxis("CharacterHorizontal");
 
@@ -106,8 +117,9 @@ public class RealCharacterController : MonoBehaviour {
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
 
-            Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f, transform.position.y - 1.3f);
-            Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
+            Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f + lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
+            Data.cam.transform.position = new Vector3(transform.position.x, transform.position.y + 3.45f, Data.cam.transform.position.z);
+            //Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
             if (currentLight)
             {
