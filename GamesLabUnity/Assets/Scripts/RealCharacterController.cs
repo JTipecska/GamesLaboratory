@@ -14,8 +14,8 @@ public class RealCharacterController : MonoBehaviour {
 
 
     private Animator anim;
-    public Animator animeShadow;
-    public Rigidbody rigidShadow;
+    public Animator animShadow;
+    public Transform rigidShadow;
 
     // Use this for initialization
     void Start ()
@@ -89,28 +89,30 @@ public class RealCharacterController : MonoBehaviour {
             {
                 if (anim.GetBool("LookingForward") && characterMovement < -0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 180, 0));
-                    rigidShadow.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(180, 90, 90));
+                    GetComponent<Transform>().Rotate(0, 180, 0);
+                    rigidShadow.Rotate(0, 180, 0); 
                     anim.SetBool("LookingForward", false);
+                    animShadow.SetBool("LookingForward", false);
                 }
                 else if (!anim.GetBool("LookingForward") && characterMovement > 0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 0, 0));
-                    rigidShadow.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 90, 90));
+                    GetComponent<Transform>().Rotate( 0, -180, 0);
+                    rigidShadow.Rotate(0, -180, 0);
                     anim.SetBool("LookingForward", true);
+                    animShadow.SetBool("LookingForward", true);
                 }
                 else
                 {
-                    animeShadow.SetTrigger("StartWalking");
-                    animeShadow.ResetTrigger("StopWalking");
+                    animShadow.SetTrigger("StartWalking");
+                    animShadow.ResetTrigger("StopWalking");
                     anim.SetTrigger("StartWalking");
                     anim.ResetTrigger("StopWalking");
                 }
             }
             else
             {
-                animeShadow.SetTrigger("StopWalking");
-                animeShadow.ResetTrigger("StartWalking");
+                animShadow.SetTrigger("StopWalking");
+                animShadow.ResetTrigger("StartWalking");
                 anim.SetTrigger("StopWalking");
                 anim.ResetTrigger("StartWalking");
             }
