@@ -28,4 +28,12 @@ public class PlatformController : MonoBehaviour {
 
         transform.position += direction * Time.deltaTime * currSpeed;
     }
+
+    void Action()
+    {
+        Debug.Log("Changed Stuff");
+        speed = 0.5f;
+        distance = 4;
+        Start();
+    }
 }
