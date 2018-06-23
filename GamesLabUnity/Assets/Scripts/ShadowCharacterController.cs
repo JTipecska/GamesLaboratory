@@ -88,8 +88,8 @@ public class ShadowCharacterController : MonoBehaviour {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ShadowCharacterController>().enabled = false;
         Data.shadow = false;
-        Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + 1.3f, Data.realCharacter.transform.position.z);
-        Data.realCharacter.SetActive(true);
+        //Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + 1.3f, Data.realCharacter.transform.position.z);
+        Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;//SetActive(true);
         InitPuzzles.changeTrigger();
 
     }

@@ -197,7 +197,7 @@ public class RealCharacterController : MonoBehaviour {
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
-        gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;//SetActive(false);
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
         InitPuzzles.changeTrigger();
