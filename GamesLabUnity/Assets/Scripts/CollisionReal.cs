@@ -25,7 +25,7 @@ public class CollisionReal : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("parent:" + other.gameObject.transform.root.name);
+        //Debug.Log("parent:" + other.gameObject.transform.root.name);
         if (other.gameObject.transform.IsChildOf(Data.realCharacter.transform.root))
         {
             canChange = false;

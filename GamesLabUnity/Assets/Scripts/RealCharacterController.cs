@@ -196,13 +196,10 @@ public class RealCharacterController : MonoBehaviour {
             g.SetActive(true);
         }
         Data.shadow = true;
-        //Data.shadowCharacter.transform.position = new Vector3(transform.position.x, Data.shadowCharacter.transform.position.y, transform.position.y - 0.3f);
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
         Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-        //Data.realCharacter.GetComponentInChildren<BoxCollider>().enabled = false;
-        //Data.realCharacter.SetActive(false);
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
         InitPuzzles.changeTrigger();

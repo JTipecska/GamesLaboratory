@@ -27,7 +27,6 @@ public class Timer : MonoBehaviour {
         }
         else
         {
-            Debug.Log("else works");
             if (CollisionReal.canChange)
                 Data.cam.GetComponent<TransformCamera>().changePlane();
             else
