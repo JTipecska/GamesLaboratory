@@ -56,7 +56,7 @@ public class PlatformController : MonoBehaviour {
 
     void Action()
     {
-        transform.position += new Vector3(0, 0.02f, 0);
+        transform.position += new Vector3(0, 0.05f, 0);
         speed = 0.5f;
         distance = 4;
         Start();

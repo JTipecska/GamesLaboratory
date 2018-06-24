@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33062430836459210}
   - component: {fileID: 23832032817480042}
   - component: {fileID: 114569618928351498}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BillboardSquareElevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 23148256459587884}
   - component: {fileID: 198248876520366080}
   - component: {fileID: 199700690084338058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Billboard_ON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4664,7 +4664,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c8a41bab75a9af74f90c92581eea0e97, type: 2}
+  - {fileID: 2100000, guid: b64270b919c8ace4ea935a416e80ce07, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
