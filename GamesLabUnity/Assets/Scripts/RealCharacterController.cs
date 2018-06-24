@@ -81,8 +81,11 @@ public class RealCharacterController : MonoBehaviour {
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
 
-            Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f + lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
-            Data.cam.transform.position = new Vector3(transform.position.x, transform.position.y + 3.45f, Data.cam.transform.position.z);
+            if (!Data.shadow)
+            {
+                Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f + lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
+                Data.cam.transform.position = new Vector3(transform.position.x, transform.position.y + 3.45f, Data.cam.transform.position.z);
+            }
             //Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
             if (currentLight)
@@ -197,7 +200,9 @@ public class RealCharacterController : MonoBehaviour {
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
-        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;//SetActive(false);
+        Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+        //Data.realCharacter.GetComponentInChildren<BoxCollider>().enabled = false;
+        //Data.realCharacter.SetActive(false);
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
         InitPuzzles.changeTrigger();

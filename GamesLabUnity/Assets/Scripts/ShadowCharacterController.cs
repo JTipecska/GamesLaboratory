@@ -25,7 +25,7 @@ public class ShadowCharacterController : MonoBehaviour {
         {
             float characterMovement = Input.GetAxis("CharacterHorizontal");
 
-            if (characterMovement > 0.001f || characterMovement < -0.001f)
+           if (characterMovement > 0.001f || characterMovement < -0.001f)
             {
                 if (animShadow.GetBool("LookingForward") && characterMovement < -0.001f)
                 {
@@ -59,6 +59,7 @@ public class ShadowCharacterController : MonoBehaviour {
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
+            Data.realCharacter.GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
             if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time && CollisionReal.canChange)
             {
                 //Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
@@ -89,7 +90,9 @@ public class ShadowCharacterController : MonoBehaviour {
         GetComponent<ShadowCharacterController>().enabled = false;
         Data.shadow = false;
         //Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + 1.3f, Data.realCharacter.transform.position.z);
-        Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;//SetActive(true);
+        Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        //Data.realCharacter.GetComponentInChildren<BoxCollider>().enabled = true;
+        //Data.realCharacter.SetActive(true);
         InitPuzzles.changeTrigger();
 
     }
