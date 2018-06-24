@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ShadowCharacterController : MonoBehaviour {
 
-    private Animator animeShadow;
+    private Animator animShadow;
+    public Animator animCharacter;
+    public Transform rigidCharacter;
 
     void Start () {
         Data.shadowCharacter = gameObject;
         GetComponent<ShadowCharacterController>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
 
-        animeShadow = this.GetComponentInChildren<Animator>();
+        animShadow = this.GetComponentInChildren<Animator>();
     }
 	
 	// Update is called once per frame
@@ -25,26 +27,34 @@ public class ShadowCharacterController : MonoBehaviour {
 
             if (characterMovement > 0.001f || characterMovement < -0.001f)
             {
-                if (animeShadow.GetBool("LookingForward") && characterMovement < -0.001f)
+                if (animShadow.GetBool("LookingForward") && characterMovement < -0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler( 180, 90, 90));
-                    animeShadow.SetBool("LookingForward", false);
+                    GetComponent<Transform>().Rotate(0, 180, 0);
+                    rigidCharacter.Rotate(0, 180, 0);
+                    animShadow.SetBool("LookingForward", false);
+                    animCharacter.SetBool("LookingForward", false);
                 }
-                else if (!animeShadow.GetBool("LookingForward") && characterMovement > 0.001f)
+                else if (!animShadow.GetBool("LookingForward") && characterMovement > 0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 90, 90));
-                    animeShadow.SetBool("LookingForward", true);
+                    GetComponent<Transform>().Rotate(0, -180, 0);
+                    rigidCharacter.Rotate(0, -180, 0);
+                    animShadow.SetBool("LookingForward", true);
+                    animCharacter.SetBool("LookingForward", true);
                 }
                 else
                 {
-                    animeShadow.SetTrigger("StartWalking");
-                    animeShadow.ResetTrigger("StopWalking");
+                    animShadow.SetTrigger("StartWalking");
+                    animShadow.ResetTrigger("StopWalking");
+                    animCharacter.SetTrigger("StartWalking");
+                    animCharacter.ResetTrigger("StopWalking");
                 }
             }
             else
             {
-                animeShadow.SetTrigger("StopWalking");
-                animeShadow.ResetTrigger("StartWalking");
+                animShadow.SetTrigger("StopWalking");
+                animShadow.ResetTrigger("StartWalking");
+                animCharacter.SetTrigger("StopWalking");
+                animCharacter.ResetTrigger("StartWalking");
             }
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
@@ -78,8 +88,8 @@ public class ShadowCharacterController : MonoBehaviour {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ShadowCharacterController>().enabled = false;
         Data.shadow = false;
-        Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + 1.3f, Data.realCharacter.transform.position.z);
-        Data.realCharacter.SetActive(true);
+        //Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + 1.3f, Data.realCharacter.transform.position.z);
+        Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;//SetActive(true);
         InitPuzzles.changeTrigger();
 
     }

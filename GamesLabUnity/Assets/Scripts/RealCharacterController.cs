@@ -14,8 +14,8 @@ public class RealCharacterController : MonoBehaviour {
 
 
     private Animator anim;
-    public Animator animeShadow;
-    public Rigidbody rigidShadow;
+    public Animator animShadow;
+    public Transform rigidShadow;
 
     // Use this for initialization
     void Start ()
@@ -32,7 +32,7 @@ public class RealCharacterController : MonoBehaviour {
         if (Physics.Raycast(transform.position + 0.16f * Vector3.up, Vector3.down, out hit, float.MaxValue, LayerMask.GetMask("ShadowPlane")))
         {
             lastShadowPlaneHeight = hit.collider.transform.position.y;
-            print("ShadowPlane \"" + hit.collider.name + "\": " + lastShadowPlaneHeight + ", Character Feet: " + transform.position);
+           // print("ShadowPlane \"" + hit.collider.name + "\": " + lastShadowPlaneHeight + ", Character Feet: " + transform.position);
 
         }
 
@@ -47,70 +47,34 @@ public class RealCharacterController : MonoBehaviour {
 
             float characterMovement = Input.GetAxis("CharacterHorizontal");
 
-            /*if (characterMovement > 0.001f || characterMovement < -0.001f)
-            {
-                animeShadow.SetTrigger("StartWalking");
-                animeShadow.ResetTrigger("StopWalking");
-                anim.SetTrigger("StartWalking");
-                anim.ResetTrigger("StopWalking");
-
-                if (anim.GetBool("LookingForward") && characterMovement < -0.001f)
-                {
-
-                    animeShadow.SetTrigger("TurnBack");
-                    animeShadow.SetBool("LookingForward", false);
-                    anim.SetTrigger("TurnBack");
-                    anim.SetBool("LookingForward", false);
-                    animeShadow.ResetTrigger("StartWalking");
-                    anim.ResetTrigger("StartWalking");
-                    
-                }
-
-                if (!anim.GetBool("LookingForward") && characterMovement > 0.001f)
-                {
-
-                    animeShadow.SetTrigger("TurnBack");
-                    animeShadow.SetBool("LookingForward", true);
-                    anim.SetTrigger("TurnBack");
-                    anim.SetBool("LookingForward", true);
-                    animeShadow.ResetTrigger("StartWalking");
-                    anim.ResetTrigger("StartWalking");
-                }
-            }
-            else
-            {
-                animeShadow.SetTrigger("StopWalking");
-                animeShadow.ResetTrigger("StartWalking");
-                anim.SetTrigger("StopWalking");
-                anim.ResetTrigger("StartWalking");
-            }*/
-
             if (characterMovement > 0.001f || characterMovement < -0.001f)
             {
                 if (anim.GetBool("LookingForward") && characterMovement < -0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 180, 0));
-                    rigidShadow.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(180, 90, 90));
+                    GetComponent<Transform>().Rotate(0, 180, 0);
+                    rigidShadow.Rotate(0, 180, 0); 
                     anim.SetBool("LookingForward", false);
+                    animShadow.SetBool("LookingForward", false);
                 }
                 else if (!anim.GetBool("LookingForward") && characterMovement > 0.001f)
                 {
-                    GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 0, 0));
-                    rigidShadow.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, 90, 90));
+                    GetComponent<Transform>().Rotate( 0, -180, 0);
+                    rigidShadow.Rotate(0, -180, 0);
                     anim.SetBool("LookingForward", true);
+                    animShadow.SetBool("LookingForward", true);
                 }
                 else
                 {
-                    animeShadow.SetTrigger("StartWalking");
-                    animeShadow.ResetTrigger("StopWalking");
+                    animShadow.SetTrigger("StartWalking");
+                    animShadow.ResetTrigger("StopWalking");
                     anim.SetTrigger("StartWalking");
                     anim.ResetTrigger("StopWalking");
                 }
             }
             else
             {
-                animeShadow.SetTrigger("StopWalking");
-                animeShadow.ResetTrigger("StartWalking");
+                animShadow.SetTrigger("StopWalking");
+                animShadow.ResetTrigger("StartWalking");
                 anim.SetTrigger("StopWalking");
                 anim.ResetTrigger("StartWalking");
             }
@@ -233,7 +197,7 @@ public class RealCharacterController : MonoBehaviour {
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
         Data.world.SetActive(false);
-        gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;//SetActive(false);
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
         InitPuzzles.changeTrigger();
