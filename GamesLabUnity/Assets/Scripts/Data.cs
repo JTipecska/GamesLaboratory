@@ -12,6 +12,7 @@ public class Data : MonoBehaviour
     public static GameObject outlineCam;
     public static GameObject puzzles;
     public static GameObject timer;
+    public static GameObject dead;
     public static bool shadow = false;
     public static int amtLights = 0;
     public static float lastWorldSwitch = 0.0f;

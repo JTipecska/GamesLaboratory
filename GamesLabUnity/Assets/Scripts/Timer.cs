@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour {
             if (CollisionReal.canChange)
                 Data.cam.GetComponent<TransformCamera>().changePlane();
             else
-                ;//TODO: dead
+                Data.dead.SetActive(true);//TODO: dead
         }
         
 	}
