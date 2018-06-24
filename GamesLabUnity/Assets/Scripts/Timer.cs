@@ -27,10 +27,11 @@ public class Timer : MonoBehaviour {
         }
         else
         {
+            Debug.Log("else works");
             if (CollisionReal.canChange)
                 Data.cam.GetComponent<TransformCamera>().changePlane();
             else
-                Data.dead.SetActive(true);//TODO: dead
+                Data.dead.SetActive(true);
         }
         
 	}
