@@ -60,18 +60,19 @@ public class TransformCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        float height = Data.realCharacter.transform.position.y > 3.8f ? 4f : 0;
         if (shadow && !finished)
         {
             if (counter + Time.deltaTime * speed > 90)
             {
-                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 90 - counter);
+                transform.RotateAround(new Vector3(transform.position.x, height, 0), new Vector3(1.0f, 0, 0), 90 - counter);
                 transform.position = new Vector3(transform.position.x,transform.position.y,0);
                 transform.forward = new Vector3(0, -1, 0);
             }
 
             else
             // this.gameObject.transform.Rotate(new Vector3(1.0f,0,0), Time.deltaTime,hit.point);
-                transform.RotateAround(new Vector3(transform.position.x,0,0 ), new Vector3(1.0f, 0, 0), Time.deltaTime * speed);
+                transform.RotateAround(new Vector3(transform.position.x,height,0 ), new Vector3(1.0f, 0, 0), Time.deltaTime * speed);
             counter = counter + Time.deltaTime * speed;
 
         }
@@ -85,9 +86,9 @@ public class TransformCamera : MonoBehaviour {
         if (!shadow && !finished && blendfinished)
         {
             if(counter - Time.deltaTime * speed < 52)
-                transform.RotateAround(new Vector3(transform.position.x, 0, 0), new Vector3(1.0f, 0, 0), 52-counter);
+                transform.RotateAround(new Vector3(transform.position.x, height, 0), new Vector3(1.0f, 0, 0), 52-counter);
             else
-                transform.RotateAround(new Vector3(transform.position.x,0, 0), new Vector3(1.0f, 0, 0), -Time.deltaTime * speed);
+                transform.RotateAround(new Vector3(transform.position.x,height, 0), new Vector3(1.0f, 0, 0), -Time.deltaTime * speed);
             counter = counter - Time.deltaTime * speed;
         }
         if (!finished && counter <=52 && !shadow)

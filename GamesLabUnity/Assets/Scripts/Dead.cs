@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Dead : MonoBehaviour {
+public class Dead : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-        Data.dead = gameObject;
+    // Use this for initialization
+    void Start()
+    {
+        Data.dead = this.gameObject;
         gameObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnEnable()
     {
-        this.GetComponent<Animator>().StartPlayback();
+        this.GetComponent<Animator>().Play("dead");
     }
 
     public void resetScene()
@@ -29,5 +32,5 @@ public class Dead : MonoBehaviour {
     }
 
 
-   
+
 }

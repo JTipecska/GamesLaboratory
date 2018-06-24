@@ -7,6 +7,7 @@ public class TriggerScript : MonoBehaviour {
     public GameObject key;
     public GameObject message;
     public bool needPress;
+    public GameObject door;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,10 @@ public class TriggerScript : MonoBehaviour {
         {
             message.SetActive(true);
             key.SetActive(false);
+        }
+        if(Input.GetButtonDown("Action") && door!=null)
+        {
+            door.GetComponent<Animator>().SetBool(0, !door.GetComponent<Animator>().GetBool(0));
         }
         
     }

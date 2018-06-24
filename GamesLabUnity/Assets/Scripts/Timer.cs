@@ -2,28 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : MonoBehaviour {
+public class Timer : MonoBehaviour
+{
 
 
     public float duration;
     float currPos;
-    float end = 300f;
+    public float end = 300f;
     float start = 30f;
     float speed;
     RectTransform t;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         t = GetComponent<RectTransform>();
         Data.timer = gameObject;
         gameObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (currPos > -end)
+        start = t.rect.height;
+        end = t.rect.height;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (end > 0)
         {
-            currPos -= Time.deltaTime * speed;
-            t.offsetMax = new Vector2(t.offsetMax.x, currPos);
+            end -= Time.deltaTime * speed;
+            t.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, end);
+            //t.offsetMax = new Vector2(t.offsetMax.x, currPos);
         }
         else
         {
@@ -33,12 +39,12 @@ public class Timer : MonoBehaviour {
             else
                 Data.dead.SetActive(true);
         }
-        
-	}
+
+    }
 
     void OnEnable()
     {
-        currPos = -start;
-        speed = (end - start)/ duration;
+        end = start;        
+        speed = end / duration;
     }
 }
