@@ -59,7 +59,8 @@ public class ShadowCharacterController : MonoBehaviour {
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
-            Data.realCharacter.GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
+            Data.realCharacter.transform.position = new Vector3(transform.position.x, Data.realCharacter.transform.position.y, Data.realCharacter.transform.position.z);
+            //.GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
             if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time && CollisionReal.canChange)
             {
                 //Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();

@@ -17,5 +17,6 @@ public class ElevatorSwitch : MonoBehaviour
 
         elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
         this.transform.GetChild(0).gameObject.SetActive(false);
+        Debug.Log("elevator set aktive");
     }
 }

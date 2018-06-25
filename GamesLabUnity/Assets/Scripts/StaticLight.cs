@@ -25,4 +25,10 @@ public class StaticLight : MonoBehaviour {
     {
         GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
     }
+
+    void Reset()
+    {
+        GetComponent<Light>().enabled = true;
+        Debug.Log("was reset");
+    }
 }
