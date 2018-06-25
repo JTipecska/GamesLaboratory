@@ -18,7 +18,16 @@ public class PowerOrb : MonoBehaviour {
 
 
         this.gameObject.SetActive(false);
-        Data.holdingOrb = true;
+        if (this.gameObject.name == "Sphere")
+        {
+            Data.holdingOrb = true;
+            Debug.Log("Holding Sphere");
+        }
+        if (this.gameObject.name == "Capsule")
+        {
+            Data.holdingRod = true;
+            Debug.Log("Holding Capsule");
+        }
         Data.interactableObjects.Remove(gameObject);
 
     }

@@ -27,5 +27,13 @@ public class PowerGenerator : MonoBehaviour {
 
             elevatorswitch.enabled = true;
         }
+
+        if (Data.holdingRod) {
+
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //foreach (GameObject g in objects)
+               // g.SetActive(true);
+
+        }
     }
 }
