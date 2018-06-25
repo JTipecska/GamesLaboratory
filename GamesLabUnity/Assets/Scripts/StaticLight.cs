@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class StaticLight : MonoBehaviour {
 
+    private bool isON;
+
 	// Use this for initialization
 	void Start () {
-	}
+
+        isON = GetComponent<Light>().enabled;
+
+    }
 	
 	void OnEnable(){
 		Data.staticLights.Add(gameObject);
@@ -28,7 +33,7 @@ public class StaticLight : MonoBehaviour {
 
     void Reset()
     {
-        GetComponent<Light>().enabled = true;
+        GetComponent<Light>().enabled = isON;
         Debug.Log("was reset");
     }
 }

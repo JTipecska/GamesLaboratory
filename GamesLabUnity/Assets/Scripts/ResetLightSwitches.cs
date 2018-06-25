@@ -5,23 +5,44 @@ using UnityEngine;
 public class ResetLightSwitches : MonoBehaviour {
 
     public List<GameObject> lights = new List<GameObject>();
-    public List<GameObject> switches = new List<GameObject>();
+    public List<GameObject> lightSwitch = new List<GameObject>();
+    public Dictionary<GameObject, bool> switches = new Dictionary<GameObject, bool>();
 
     void Start()
     {
         Data.interactableObjects.Add(gameObject);
-    }
 
-    void Action()
+        foreach (GameObject ls in lightSwitch) {
+
+            switches.Add(ls, true);
+        }
+
+        foreach (GameObject s in switches.Keys)
+        {
+            switches[s] = s.transform.GetChild(0).gameObject.activeSelf;
+        }
+
+    }
+        void Action()
     {
 
         // Reset every light attached to this object
         foreach (GameObject g in lights) 
             g.SendMessage("Reset", SendMessageOptions.DontRequireReceiver);
 
-        foreach (GameObject s in switches) { 
-            s.transform.GetChild(0).gameObject.SetActive(true);
-            s.transform.GetChild(1).gameObject.SetActive(false);
+        foreach (GameObject s in switches.Keys) {
+
+                if (switches[s])
+                {
+                    s.transform.GetChild(0).gameObject.SetActive(true);
+                    s.transform.GetChild(1).gameObject.SetActive(false);
+                Debug.Log("set ON");
+                }
+                else {
+
+                    s.transform.GetChild(0).gameObject.SetActive(false);
+                    s.transform.GetChild(1).gameObject.SetActive(true);
+                }
         }
     }
 }

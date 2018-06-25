@@ -7,6 +7,7 @@ public class OutlineShader : MonoBehaviour {
     public List<Renderer> materials = new List<Renderer>();
     public List<Renderer> dontChange = new List<Renderer>();
     Renderer[] all;
+    float startPos;
 
 
     public void Start()
@@ -15,12 +16,13 @@ public class OutlineShader : MonoBehaviour {
         GameObject p = GameObject.Find("Puzzles");
         all  = p.GetComponentsInChildren<Renderer>();
         gameObject.SetActive(false);
+        startPos = Data.cam.transform.position.y;
 
     }
 
     public void Update()
     {
-        this.transform.position = new Vector3(Data.cam.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(Data.cam.transform.position.x, this.transform.position.y + Data.cam.transform.position.y - startPos, this.transform.position.z);
     }
 
 
