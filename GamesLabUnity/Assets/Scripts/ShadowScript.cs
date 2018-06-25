@@ -42,13 +42,14 @@ public class ShadowScript : MonoBehaviour {
 
             RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
+            if (GetComponent<BoxCollider>())
+                lightDir = transform.TransformPoint(GetComponent<BoxCollider>().center) - g.transform.position;
 
            /* if (lightDir.y > 0)
                 continue;*/
 
-            if (!Physics.Raycast(g.transform.position, lightDir, out hit, float.MaxValue))//, LayerMask.GetMask(new string[] { "Puzzles" })))
+            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))//, LayerMask.GetMask(new string[] { "Puzzles" })))
                 continue;
-            Debug.DrawLine(g.transform.position, g.transform.position + Vector3.Normalize(lightDir) * light.range);
             //print(transform.name + " -> " + hit.collider.name);
 
             // LightSource does not hit GameObject
@@ -64,13 +65,13 @@ public class ShadowScript : MonoBehaviour {
                 result = light;
             }
         }
-        if (result)
+        /*if (result)
         {
             //print(result.name + " -> " + transform.name);
             //print("Intensity: " + maxIntensity);
         }
         else
-            print("No lightsource for " + transform.name);
+            print("No lightsource for " + transform.name);*/
         lightSrc = result;
     }
 
@@ -102,6 +103,7 @@ public class ShadowScript : MonoBehaviour {
             && lastLightRot.Equals(lightSrc.transform.rotation)
             && lastPos.Equals(transform.position)))
             yield break;
+        Debug.DrawLine(transform.position, lightSrc.transform.position);
 
         ////////////////////////////////////////
         Vector3[] vertices = transform.GetComponent<MeshFilter>().mesh.vertices;

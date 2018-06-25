@@ -22,18 +22,15 @@ public class MovableLightController : MonoBehaviour {
     void Update()
     {
         direction = Vector3.Normalize(direction);
-        bool lightAtStart = Vector3.Normalize(transform.position - startPosition) == -direction;
+        bool lightAtStart = !OneDirection(direction, Vector3.Normalize(transform.position - startPosition));
         bool lightAtMaxDistance = Vector3.Distance(startPosition, transform.position) > distance;
-
-        
 
         if (lightAtStart)
         {
             currSpeed = speed;
 
         }
-
-        if (lightAtMaxDistance )
+        else if (lightAtMaxDistance )
         {
             currSpeed = -speed;
 
@@ -42,6 +39,10 @@ public class MovableLightController : MonoBehaviour {
         transform.position += direction * Time.deltaTime * currSpeed;
     }
 
-
+    bool OneDirection(Vector3 dir1, Vector3 dir2)
+    {
+        float length = Vector3.SqrMagnitude(dir1+dir2);
+        return length > Vector3.SqrMagnitude(dir1);
+    }
 }
 
