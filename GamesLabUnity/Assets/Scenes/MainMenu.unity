@@ -322,7 +322,7 @@ Prefab:
     - target: {fileID: 114104688732884456, guid: b3d0586bfad0a2441882724b0928752e,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
-      value: Outdoor
+      value: Spaceship
       objectReference: {fileID: 0}
     - target: {fileID: 114104688732884456, guid: b3d0586bfad0a2441882724b0928752e,
         type: 2}
@@ -333,6 +333,44 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104688732884456, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104688732884456, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104688732884456, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379277409466716, guid: b3d0586bfad0a2441882724b0928752e, type: 2}
+      propertyPath: m_Name
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728101073834742, guid: b3d0586bfad0a2441882724b0928752e, type: 2}
+      propertyPath: m_Name
+      value: Cutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347844921404262, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: cutscene00
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441816572030864, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_Text
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956914342801428, guid: b3d0586bfad0a2441882724b0928752e,
+        type: 2}
+      propertyPath: m_Text
+      value: Start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3d0586bfad0a2441882724b0928752e, type: 2}
