@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 23384659}
   - component: {fileID: 23384661}
   - component: {fileID: 23384660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14154,7 +14154,7 @@ GameObject:
   - component: {fileID: 280997471}
   - component: {fileID: 280997473}
   - component: {fileID: 280997472}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32637,7 +32637,7 @@ GameObject:
   - component: {fileID: 695920383}
   - component: {fileID: 695920385}
   - component: {fileID: 695920384}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35314,7 +35314,7 @@ GameObject:
   - component: {fileID: 775954631}
   - component: {fileID: 775954633}
   - component: {fileID: 775954632}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45538,7 +45538,7 @@ GameObject:
   - component: {fileID: 1062852026}
   - component: {fileID: 1062852028}
   - component: {fileID: 1062852027}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46057,7 +46057,7 @@ GameObject:
   - component: {fileID: 1083101084}
   - component: {fileID: 1083101086}
   - component: {fileID: 1083101085}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48443,7 +48443,7 @@ GameObject:
   - component: {fileID: 1160017868}
   - component: {fileID: 1160017870}
   - component: {fileID: 1160017869}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52222,8 +52222,6 @@ MonoBehaviour:
   materials:
   - {fileID: 1640194589}
   - {fileID: 104381060}
-  - {fileID: 409386542}
-  - {fileID: 1893443078}
   dontChange:
   - {fileID: 247599093}
   - {fileID: 1033592328}
@@ -54363,7 +54361,7 @@ GameObject:
   - component: {fileID: 1346457401}
   - component: {fileID: 1346457403}
   - component: {fileID: 1346457402}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60738,7 +60736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1512141850
 Transform:
   m_ObjectHideFlags: 0
@@ -71074,7 +71072,7 @@ GameObject:
   - component: {fileID: 1697623902}
   - component: {fileID: 1697623904}
   - component: {fileID: 1697623903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floor_2_no_lattice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76904,11 +76902,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 0.19608502, z: 4}
   m_Center: {x: 0, y: 0.0940137, z: 0}
---- !u!23 &1893443078 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23633079297845600, guid: 3788dfcc99d863943aebec4f57ec4b3c,
-    type: 2}
-  m_PrefabInternal: {fileID: 290559888}
 --- !u!1 &1894597678
 GameObject:
   m_ObjectHideFlags: 0
