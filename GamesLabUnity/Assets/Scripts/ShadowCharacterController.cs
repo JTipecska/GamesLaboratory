@@ -59,20 +59,25 @@ public class ShadowCharacterController : MonoBehaviour {
 
             GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
-            Data.realCharacter.transform.position = new Vector3(transform.position.x, Data.realCharacter.transform.position.y, Data.realCharacter.transform.position.z);
+            Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + Data.realCharacter.GetComponent<RealCharacterController>().lastShadowPlaneHeight + 1.3f, -1.3f);
             //.GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
-            if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time && CollisionReal.canChange)
+            if (Input.GetButtonDown("Switch World") && Data.cam.GetComponent<TransformCamera>().blendfinished && Data.cam.GetComponent<TransformCamera>().finished && Data.lastWorldSwitch + Data.waitWorldSwitch < Time.time )
             {
-                //Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
-                Data.cam.GetComponent<TransformCamera>().changePlane();
-                GetComponent<Collider>().isTrigger = true;
-                return;
+                if (CollisionReal.canChange) {
+                    //Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
+                    //Data.cam.GetComponent<TransformCamera>().changePlane();
+                    GetComponent<Collider>().isTrigger = true;
+                    return;
+                }
+               
             }
         }
+
     }
 
     private void ChangeToRealWorld()
     {
+        
         print("Real World");
         Data.lastWorldSwitch = Time.time;
         Data.cam.GetComponent<Camera>().cullingMask = -1;
@@ -90,6 +95,7 @@ public class ShadowCharacterController : MonoBehaviour {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ShadowCharacterController>().enabled = false;
         Data.shadow = false;
+        Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + Data.realCharacter.GetComponent<RealCharacterController>().lastShadowPlaneHeight + 1.3f, -1.3f);
         Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         InitPuzzles.changeTrigger();
 

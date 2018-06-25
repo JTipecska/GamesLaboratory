@@ -10,7 +10,7 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLight;
     private Transform grabParent;
-    private float lastShadowPlaneHeight;
+    public float lastShadowPlaneHeight;
 
 
     private Animator anim;
@@ -84,7 +84,15 @@ public class RealCharacterController : MonoBehaviour {
             if (!Data.shadow)
             {
                 Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f + lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
-                Data.cam.transform.position = new Vector3(transform.position.x, transform.position.y + 3.45f, Data.cam.transform.position.z);
+                if(Data.onElevator)
+                {
+                    Data.cam.transform.position = new Vector3(transform.position.x, 3.45f + Data.realCharacter.transform.position.y, Data.cam.transform.position.z);
+                }
+                else
+                {
+                    int floor = (int) Data.realCharacter.transform.position.y / 4;
+                    Data.cam.transform.position = new Vector3(transform.position.x, 3.589873f + 4 * floor, Data.cam.transform.position.z);
+                }
             }
             //Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
@@ -103,7 +111,8 @@ public class RealCharacterController : MonoBehaviour {
             {
                 Data.shadowCharacter.GetComponent<Collider>().isTrigger = false;
                 //Data.world.GetComponentInChildren<InitPuzzles>().changeTrigger();
-                Data.cam.GetComponent<TransformCamera>().changePlane();
+                if (!Data.shadow || CollisionReal.canChange)
+                    Data.cam.GetComponent<TransformCamera>().changePlane();
                 return;
             }
 

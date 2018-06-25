@@ -16,6 +16,7 @@ public class Data : MonoBehaviour
     public static bool shadow = false;
     public static bool holdingOrb = false;
     public static bool holdingRod = false;
+    public static bool onElevator = false;
     public static int amtLights = 0;
     public static float lastWorldSwitch = 0.0f;
     public static readonly float waitWorldSwitch = 0.3f;
