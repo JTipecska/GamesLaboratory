@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PowerGenerator : MonoBehaviour {
 
     //public List<GameObject> objects = new List<GameObject>();
 
     public GameObject elevator, elevatorShadow;
+
 
     // Use this for initialization
     void Start()
@@ -25,6 +27,7 @@ public class PowerGenerator : MonoBehaviour {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
             elevatorShadow.SetActive(true);
+
         }
 
         if (Data.holdingRod) {
