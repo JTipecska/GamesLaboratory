@@ -42,11 +42,15 @@ public class OutlineShader : MonoBehaviour {
         foreach(Renderer m in materials)
         {
             m.enabled = true;
-            m.material.shader = Shader.Find("Outlined/Silhouette Only");
-            m.material.SetColor("_OutlineColor", new Color(0,56,255,0.5f));
-            m.material.SetFloat("_Outline",0.1f);
-            /*m.material.shader = Shader.Find("Additive Tint");
-            m.material.SetColor("_Color", new Color(0, 56, 255, 1));*/
+            foreach(Material mat in m.materials)
+            {
+                mat.shader = Shader.Find("Outlined/Silhouette Only");
+                mat.SetColor("_OutlineColor", new Color(0, 56, 255, 0.5f));
+                mat.SetFloat("_Outline", 0.1f);
+                /*m.material.shader = Shader.Find("Additive Tint");
+                m.material.SetColor("_Color", new Color(0, 56, 255, 1));*/
+            }
+
         }
     }
 
@@ -54,7 +58,8 @@ public class OutlineShader : MonoBehaviour {
     {
         foreach (Renderer m in materials)
         {
-            m.material.shader = Shader.Find("Standard");
+            foreach (Material mat in m.materials)
+            mat.shader = Shader.Find("Standard");
             //m.material.SetColor("_Color", new Color(1, 1, 1, 1));
         }
         foreach (Renderer r in all)
