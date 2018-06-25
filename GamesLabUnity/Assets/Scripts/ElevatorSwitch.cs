@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ElevatorSwitch : MonoBehaviour
 {
-    public GameObject elevator;
 
     void Start()
     {
@@ -12,11 +11,10 @@ public class ElevatorSwitch : MonoBehaviour
     }
 
 
-    void Action()
+    public void Action()
     {
 
-        elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
-        this.transform.GetChild(0).gameObject.SetActive(false);
+        this.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
         Debug.Log("elevator set aktive");
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PowerGenerator : MonoBehaviour {
 
-    public List<GameObject> objects = new List<GameObject>();
-    public ElevatorSwitch elevatorswitch;
+    //public List<GameObject> objects = new List<GameObject>();
+
+    public GameObject elevator, elevatorShadow;
 
     // Use this for initialization
     void Start()
@@ -22,10 +23,8 @@ public class PowerGenerator : MonoBehaviour {
         if (Data.holdingOrb)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            foreach (GameObject g in objects)
-                g.SetActive(true);
-
-            elevatorswitch.enabled = true;
+            elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
+            elevatorShadow.SetActive(true);
         }
 
         if (Data.holdingRod) {
