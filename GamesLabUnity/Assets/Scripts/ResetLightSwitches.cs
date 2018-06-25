@@ -14,14 +14,8 @@ public class ResetLightSwitches : MonoBehaviour {
 
         foreach (GameObject ls in lightSwitch) {
 
-            switches.Add(ls, true);
+            switches.Add(ls, ls.transform.GetChild(0).gameObject.activeSelf);
         }
-
-        foreach (GameObject s in switches.Keys)
-        {
-            switches[s] = s.transform.GetChild(0).gameObject.activeSelf;
-        }
-
     }
         void Action()
     {
@@ -29,8 +23,9 @@ public class ResetLightSwitches : MonoBehaviour {
         // Reset every light attached to this object
         foreach (GameObject g in lights) 
             g.SendMessage("Reset", SendMessageOptions.DontRequireReceiver);
-
+        
         foreach (GameObject s in switches.Keys) {
+            print(s.name);
 
                 if (switches[s])
                 {
