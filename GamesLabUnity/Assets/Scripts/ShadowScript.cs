@@ -65,13 +65,13 @@ public class ShadowScript : MonoBehaviour {
                 result = light;
             }
         }
-        /*if (result)
+        if (result)
         {
             //print(result.name + " -> " + transform.name);
             //print("Intensity: " + maxIntensity);
         }
         else
-            print("No lightsource for " + transform.name);*/
+            print("No lightsource for " + transform.name);
         lightSrc = result;
     }
 
@@ -129,7 +129,7 @@ public class ShadowScript : MonoBehaviour {
             else//
             {
                 shadowVertices.Add(currVertex);//
-                print("No HIt" + transform.name);
+                //print("No HIt" + transform.name);
             }
         }
 

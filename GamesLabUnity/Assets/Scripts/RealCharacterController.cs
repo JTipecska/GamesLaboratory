@@ -169,7 +169,7 @@ public class RealCharacterController : MonoBehaviour {
                 }
                 else
                 {
-                    print("Cannot reach " + transform.name + ". Distance: " + Vector3.Distance(transform.position, targetObject.transform.position) + " > " + Data.characterReach);
+                    //print("Cannot reach " + transform.name + ". Distance: " + Vector3.Distance(transform.position, targetObject.transform.position) + " > " + Data.characterReach);
                 }
             }
         }
