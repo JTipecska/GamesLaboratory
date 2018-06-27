@@ -21,7 +21,7 @@ public class GUIController : MonoBehaviour {
     {
         Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
         IngameMenu.SetActive(!IngameMenu.gameObject.activeSelf);
-        Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(IngameMenu.transform.GetChild(1).gameObject);
+        Eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(IngameMenu.transform.Find("Main/Play").gameObject);
 
         menuActive = !menuActive;
     }
