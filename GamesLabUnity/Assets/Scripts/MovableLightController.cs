@@ -21,6 +21,9 @@ public class MovableLightController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (!Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
+            return;
+
         direction = Vector3.Normalize(direction);
         bool lightAtStart = !OneDirection(direction, Vector3.Normalize(transform.position - startPosition));
         bool lightAtMaxDistance = Vector3.Distance(startPosition, transform.position) > distance;

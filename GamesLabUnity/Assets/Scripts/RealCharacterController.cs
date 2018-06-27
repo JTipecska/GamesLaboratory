@@ -124,6 +124,14 @@ public class RealCharacterController : MonoBehaviour {
                         currentLight = GetNextReachableLight(currentLight);
                     else
                         currentLight = GetFirstReachableLight();
+                    if (currentLight)
+                        print("Current Light: " + currentLight.name);
+                    else
+                        print(Vector3.Distance(transform.position, Data.lights[0].transform.position));
+                }
+                else
+                {
+                    print("No Lights found!");
                 }
             }
 
@@ -219,21 +227,21 @@ public class RealCharacterController : MonoBehaviour {
         if (Data.lights.Count <= 0)
             return null;
 
+        GameObject lastReachable = null;
+
         Data.lights.Sort(CompareByDistanceToStart);
         for (int i = 0; i < Data.lights.Count; i++)
         {
             float currDist = Vector3.Distance(transform.position, Data.lights[i].transform.position);
-            if (currDist > Data.characterReach)
+            if (currDist < Data.characterReach)
             {
-                if (i == 0)
-                    return null;
-                else
-                    return Data.lights[i - 1];
+                lastReachable = Data.lights[i];
             }
+            else break;
         }
 
         // No reachable Lights
-        return null;
+        return lastReachable;
     }
 
     private GameObject GetNextReachableLight(GameObject currLight)

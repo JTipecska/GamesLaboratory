@@ -18,26 +18,31 @@ public class Cheats : MonoBehaviour {
         {
             Data.realCharacter.transform.position = new Vector3(-6.0f, 0.12f, -1.3f);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Data.realCharacter.transform.position = new Vector3(24.0f, 0.12f, -1.3f);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Data.realCharacter.transform.position = new Vector3(9.0f, 0.12f, -1.3f);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Data.realCharacter.transform.position = new Vector3(18.0f, 4.12f, -1.3f);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Data.realCharacter.transform.position = new Vector3(-2.0f, 4.12f, -1.3f);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Data.realCharacter.transform.position = new Vector3(-16.0f, 4.12f, -1.3f);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            Data.realCharacter.transform.position = new Vector3(-10.0f, 4.12f, -1.3f);
+        }
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             timer.enabled = false;
