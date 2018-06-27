@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8204871, g: 0.41352865, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22210,7 +22210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1 &474414909
 GameObject:
   m_ObjectHideFlags: 0
@@ -22341,7 +22341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1 &478592177
 GameObject:
   m_ObjectHideFlags: 0
@@ -47409,7 +47409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1 &1073536359
 GameObject:
   m_ObjectHideFlags: 0
@@ -50597,7 +50597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1 &1175926393
 GameObject:
   m_ObjectHideFlags: 0
@@ -60044,7 +60044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1 &1434980556
 GameObject:
   m_ObjectHideFlags: 0
@@ -82479,7 +82479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+  shadowMat: {fileID: 0}
 --- !u!1001 &1996024282
 Prefab:
   m_ObjectHideFlags: 0
