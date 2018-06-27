@@ -15,13 +15,18 @@ public class MovableLight : MonoBehaviour {
     void Start () {
         anchor = transform.position;
 
-        // Create MovePlane
-        movePlane = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Quad));
-        movePlane.transform.position = anchor;
-        movePlane.transform.localScale = new Vector3(2 * limitX, 2 * limitY, 1);
-        movePlane.GetComponent<Renderer>().material = movePlaneMaterial;
-        Destroy(movePlane.GetComponent<MeshCollider>());
-        movePlane.SetActive(false);
+        if (movePlaneMaterial)
+        {
+            // Create MovePlane
+            movePlane = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Quad));
+            movePlane.name = "MovePlane of " + transform.name;
+            movePlane.transform.parent = GameObject.Find("_Dynamic").transform;
+            movePlane.transform.position = anchor;
+            movePlane.transform.localScale = new Vector3(2 * limitX, 2 * limitY, 1);
+            movePlane.GetComponent<Renderer>().material = movePlaneMaterial;
+            Destroy(movePlane.GetComponent<MeshCollider>());
+            movePlane.SetActive(false);
+        }
     }
 
     void OnEnable()
@@ -41,12 +46,24 @@ public class MovableLight : MonoBehaviour {
 
     void Action()
     {
-        GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
+        Light light;
+        if (GetComponent<Light>())
+        {
+            light = GetComponent<Light>();
+        }
+        else
+        {
+            light = transform.GetComponentInChildren<Light>();
+        }
+
+        if(light)
+            GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
     }
 
     void ToggleLightMoveArea()
     {
-        movePlane.SetActive(!movePlane.activeSelf);
+        if(movePlane)
+            movePlane.SetActive(!movePlane.activeSelf);
     }
 
     private float Clamp(float min, float max, float val)
