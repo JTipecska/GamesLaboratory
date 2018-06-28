@@ -8,7 +8,7 @@ public class RealCharacterController : MonoBehaviour {
     private GameObject inquiredObject;
     private List<GameObject> grabableObjects = new List<GameObject>();
     private List<GameObject> inquirableObjects = new List<GameObject>();
-    private GameObject currentLight;
+    private GameObject currentLightController;
     private Transform grabParent;
     public float lastShadowPlaneHeight;
 
@@ -21,7 +21,6 @@ public class RealCharacterController : MonoBehaviour {
     void Start ()
     {
         Data.realCharacter = gameObject;
-        currentLight = GetFirstReachableLight();
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -96,14 +95,14 @@ public class RealCharacterController : MonoBehaviour {
             }
             //Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
 
-            if (currentLight)
+            if (currentLightController)
             {
-                currentLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
-                currentLight.transform.Translate(0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed, 0);
+                currentLightController.GetComponent<LightController>().controlledLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
+                currentLightController.GetComponent<LightController>().controlledLight.transform.Translate(0, 0, -Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
 
                 //Light
-                if (Vector3.Distance(transform.position, currentLight.transform.position) > Data.characterReach)
-                    currentLight = GetNextReachableLight(currentLight);
+                if (Vector3.Distance(transform.position, currentLightController.transform.position) > Data.characterReach)
+                    currentLightController.SendMessage("Action");
             }
 
             //Worlds
@@ -116,24 +115,24 @@ public class RealCharacterController : MonoBehaviour {
                 return;
             }
 
-            if (Input.GetButtonDown("Switch Light"))
-            {
-                if (Data.lights.Count > 0)
-                {
-                    if (currentLight)
-                        currentLight = GetNextReachableLight(currentLight);
-                    else
-                        currentLight = GetFirstReachableLight();
-                    if (currentLight)
-                        print("Current Light: " + currentLight.name);
-                    else
-                        print(Vector3.Distance(transform.position, Data.lights[0].transform.position));
-                }
-                else
-                {
-                    print("No Lights found!");
-                }
-            }
+            //if (Input.GetButtonDown("Switch Light"))
+            //{
+            //    if (Data.lights.Count > 0)
+            //    {
+            //        if (currentLightController)
+            //            currentLightController = GetNextReachableLight(currentLightController);
+            //        else
+            //            currentLightController = GetFirstReachableLight();
+            //        if (currentLightController)
+            //            print("Current Light: " + currentLightController.name);
+            //        else
+            //            print(Vector3.Distance(transform.position, Data.lights[0].transform.position));
+            //    }
+            //    else
+            //    {
+            //        print("No Lights found!");
+            //    }
+            //}
 
             //Grab
             if (Input.GetButtonDown("Grab"))
@@ -199,6 +198,15 @@ public class RealCharacterController : MonoBehaviour {
         }
     }
 
+    public void SetLightController(GameObject lightController)
+    {
+        //No LightConroller set or set LightController is not the controller found
+        if (!currentLightController || currentLightController.GetInstanceID() != lightController.GetInstanceID())
+            currentLightController = lightController;
+        else // Controller is set and is the new LightController
+            currentLightController = null;
+    }
+
     private void ChangeToShadowWorld()
     {
         print("Shadow World");
@@ -212,6 +220,8 @@ public class RealCharacterController : MonoBehaviour {
         {
             g.SetActive(true);
         }
+        if (currentLightController)
+            currentLightController.SendMessage("Action");
         Data.shadow = true;
         Data.shadowCharacter.GetComponent<ShadowCharacterController>().enabled = true;
         Data.shadowCharacter.GetComponent<Rigidbody>().isKinematic = false;
@@ -222,48 +232,48 @@ public class RealCharacterController : MonoBehaviour {
         InitPuzzles.changeTrigger();
     }
 
-    private GameObject GetFirstReachableLight()
-    {
-        if (Data.lights.Count <= 0)
-            return null;
+    //private GameObject GetFirstReachableLight()
+    //{
+    //    if (Data.lights.Count <= 0)
+    //        return null;
 
-        GameObject lastReachable = null;
+    //    GameObject lastReachable = null;
 
-        Data.lights.Sort(CompareByDistanceToStart);
-        for (int i = 0; i < Data.lights.Count; i++)
-        {
-            float currDist = Vector3.Distance(transform.position, Data.lights[i].transform.position);
-            if (currDist < Data.characterReach)
-            {
-                lastReachable = Data.lights[i];
-            }
-            else break;
-        }
+    //    Data.lights.Sort(CompareByDistanceToStart);
+    //    for (int i = 0; i < Data.lights.Count; i++)
+    //    {
+    //        float currDist = Vector3.Distance(transform.position, Data.lights[i].transform.position);
+    //        if (currDist < Data.characterReach)
+    //        {
+    //            lastReachable = Data.lights[i];
+    //        }
+    //        else break;
+    //    }
 
-        // No reachable Lights
-        return lastReachable;
-    }
+    //    // No reachable Lights
+    //    return lastReachable;
+    //}
 
-    private GameObject GetNextReachableLight(GameObject currLight)
-    {
-        if (Data.lights.Count <= 0)
-            return null;
+    //private GameObject GetNextReachableLight(GameObject currLight)
+    //{
+    //    if (Data.lights.Count <= 0)
+    //        return null;
 
-        Data.lights.Sort(CompareByDistanceToStart);
-        if (currLight)
-        {
-            int idx = Data.lights.IndexOf(currLight);
-            if (idx == Data.lights.Count - 1 
-                || Vector3.Distance(transform.position, Data.lights[idx + 1].transform.position) > Data.characterReach)
-                return GetFirstReachableLight();
-            else
-                return Data.lights[idx + 1];
+    //    Data.lights.Sort(CompareByDistanceToStart);
+    //    if (currLight)
+    //    {
+    //        int idx = Data.lights.IndexOf(currLight);
+    //        if (idx == Data.lights.Count - 1 
+    //            || Vector3.Distance(transform.position, Data.lights[idx + 1].transform.position) > Data.characterReach)
+    //            return GetFirstReachableLight();
+    //        else
+    //            return Data.lights[idx + 1];
 
-        }
+    //    }
 
-        // No reachable Lights
-        return null;
-    }
+    //    // No reachable Lights
+    //    return null;
+    //}
 
     private int CompareByDistanceToStart(GameObject g1, GameObject g2)
     {

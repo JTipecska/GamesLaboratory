@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableLight : MonoBehaviour {
+public class LightController : MonoBehaviour
+{
+    public GameObject controlledLight;
     public Material movePlaneMaterial;
-    public float limitX = 1;
-    public float limitZ = 1;
+    public float limitX = 10;
+    public float limitZ = 10;
 
     GameObject movePlane;
     Vector3 anchor;
 
-
-    // Use this for initialization
-    void Start () {
-        anchor = transform.position;
+	// Use this for initialization
+	void Start () {
+        Data.interactableObjects.Add(gameObject);
+        anchor = controlledLight.transform.position;
 
         if (movePlaneMaterial)
         {
@@ -28,41 +30,20 @@ public class MovableLight : MonoBehaviour {
             movePlane.SetActive(false);
         }
     }
-
-    void OnEnable()
-    {
-        Data.lights.Add(gameObject);
-    }
-
-    void OnDisable()
-    {
-        Data.lights.Remove(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update () {
-        transform.position = new Vector3(Clamp(anchor.x - limitX, anchor.x + limitX, transform.position.x), transform.position.y, Clamp(anchor.z - limitZ, anchor.z + limitZ, transform.position.z));
+	
+	// Update is called once per frame
+	void Update () {
+        controlledLight.transform.position = new Vector3(Clamp(anchor.x - limitX, anchor.x + limitX, controlledLight.transform.position.x), controlledLight.transform.position.y, Clamp(anchor.z - limitZ, anchor.z + limitZ, controlledLight.transform.position.z));
     }
 
     void Action()
     {
-        Light light;
-        if (GetComponent<Light>())
-        {
-            light = GetComponent<Light>();
-        }
-        else
-        {
-            light = transform.GetComponentInChildren<Light>();
-        }
-
-        if(light)
-            GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
+        Data.realCharacter.GetComponent<RealCharacterController>().SetLightController(gameObject);
+        ToggleLightMoveArea();
     }
-
     void ToggleLightMoveArea()
     {
-        if(movePlane)
+        if (movePlane)
             movePlane.SetActive(!movePlane.activeSelf);
     }
 

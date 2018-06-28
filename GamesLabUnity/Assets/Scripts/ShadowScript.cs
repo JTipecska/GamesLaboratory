@@ -42,7 +42,6 @@ public class ShadowScript : MonoBehaviour
             if (!light.enabled)
                 continue;
 
-            RaycastHit hit;
             Vector3 lightDir = transform.position - g.transform.position;
             if (GetComponent<BoxCollider>())
                 lightDir = transform.TransformPoint(GetComponent<BoxCollider>().center) - g.transform.position;
@@ -50,13 +49,15 @@ public class ShadowScript : MonoBehaviour
             /* if (lightDir.y > 0)
                  continue;*/
 
-            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range))//, LayerMask.GetMask(new string[] { "Puzzles" })))
+            RaycastHit hit;
+            if (!Physics.Raycast(g.transform.position, lightDir, out hit, light.range, LayerMask.GetMask(new string[] { "ShadowPlane" })))
                 continue;
             //print(transform.name + " -> " + hit.collider.name);
-
-            // LightSource does not hit GameObject
-            if (!hit.collider.transform.Equals(transform))
-                continue;
+            else
+            {
+                if (hit.distance < Vector3.Distance(g.transform.position, transform.position))
+                    continue;
+            }
 
             // Calculate Intensity and compare with current max
             float intensityAtGameObject = Mathf.Abs(light.intensity / Vector3.Distance(transform.position, g.transform.position));
@@ -98,12 +99,23 @@ public class ShadowScript : MonoBehaviour
             yield break;
 
         PickLightSource();
+        // No light -> no shadow
+        if (!lightSrc)
+        {
+            if (!Data.shadow)
+            {
+                shadow.GetComponent<MeshCollider>().sharedMesh = new Mesh();
+                shadow.GetComponent<MeshFilter>().mesh = new Mesh();
+            }
+            yield break;
+        }
+
+
         // Something changed -> recalculate
-        if (!lightSrc
-            || (lightSrc.Equals(lastLightSrc)
+        if (lightSrc.Equals(lastLightSrc)
             && lastLightPos.Equals(lightSrc.transform.position)
             && lastLightRot.Equals(lightSrc.transform.rotation)
-            && lastPos.Equals(transform.position)))
+            && lastPos.Equals(transform.position))
             yield break;
         Debug.DrawLine(transform.position, lightSrc.transform.position);
 
@@ -131,7 +143,7 @@ public class ShadowScript : MonoBehaviour
             else//
             {
                 shadowVertices.Add(currVertex);//
-                //print("No HIt" + transform.name);
+                //print("No Hit" + transform.name);
             }
         }
 
