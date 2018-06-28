@@ -107,6 +107,7 @@ public class ShadowScript : MonoBehaviour
                 shadow.GetComponent<MeshCollider>().sharedMesh = new Mesh();
                 shadow.GetComponent<MeshFilter>().mesh = new Mesh();
             }
+            lastLightSrc = null;
             yield break;
         }
 
