@@ -13,6 +13,10 @@ public class ConsoleSwitch : MonoBehaviour {
         Data.interactableObjects.Add(gameObject);
     }
 
+    void Update()
+    {
+        message.transform.parent.forward = Camera.main.transform.forward;
+    }
     // Update is called once per frame
     void Action()
     {
