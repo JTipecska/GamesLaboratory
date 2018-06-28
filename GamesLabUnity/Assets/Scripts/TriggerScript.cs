@@ -39,18 +39,17 @@ public class TriggerScript : MonoBehaviour {
             message.SetActive(true);
             key.SetActive(false);
         }
-        if(Input.GetButtonDown("Action") && door!=null && other.transform.root == Data.realCharacter.transform.root)
+        if(Input.GetButtonDown("Action") && door!=null && other.transform.root == Data.realCharacter.transform.root && door.tag != "Final")
         {
             door.GetComponent<Animator>().SetBool("character_nearby", !door.GetComponent<Animator>().GetBool("character_nearby"));
-            if (door.tag == "Final") {
-                message.SetActive(true);
-            }
-        }
-        
+            
+        }  
+
     }
     private void OnTriggerExit(Collider other)
     {
         key.gameObject.SetActive(false);
         message.SetActive(false);
     }
+
 }

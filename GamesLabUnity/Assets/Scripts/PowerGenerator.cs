@@ -34,7 +34,8 @@ public class PowerGenerator : MonoBehaviour {
 
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             elevator.SetActive(true);
-
+            elevatorShadow.GetComponent<ConsoleSwitch>().enabled = true;
+            Data.activeDoor = true;
         }
     }
 }
