@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CutSceneEnd : MonoBehaviour
 {
-
+    public bool exitGame = false;
     // Use this for initialization
     void Start()
     {
@@ -19,6 +19,10 @@ public class CutSceneEnd : MonoBehaviour
     }
     void OnEnable()
     {
+        if (exitGame)
+        {
+            Application.Quit();
+        }
         SceneManager.LoadScene("Spaceship");
     }
 }

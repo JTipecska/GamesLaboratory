@@ -15,7 +15,7 @@ public class OutlineShader : MonoBehaviour {
     {
         Data.outlineCam = gameObject;
         GameObject p = GameObject.Find("Puzzles");
-        all  = p.GetComponentsInChildren<Renderer>();
+        all  = p.GetComponentsInChildren<Renderer>(true);
         gameObject.SetActive(false);
         //startPos = Data.cam.transform.position.y;
         startPos2 = transform.position.y;
