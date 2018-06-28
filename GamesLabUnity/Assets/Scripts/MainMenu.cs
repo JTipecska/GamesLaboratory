@@ -47,11 +47,16 @@ public class MainMenu : MonoBehaviour {
         s.maxValue = resolutions.Length - 1;
         t.text = Screen.currentResolution.ToString ();
         s.value = Array.IndexOf (resolutions, Screen.currentResolution);
+        if (music != null && startedMusic)
+        {
+            music.SetActive(false);
+        }
         if (music!= null && !startedMusic)
         {
             startedMusic = true;
             DontDestroyOnLoad(music);
         }
+        
             
     }
 
