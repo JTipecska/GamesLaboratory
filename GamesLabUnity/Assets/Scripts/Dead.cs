@@ -5,14 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Dead : MonoBehaviour
 {
-    Vector3 resetCamPos;
-    Quaternion resetCamRot;
+
     // Use this for initialization
     void Start()
     {
         Data.dead = this.gameObject;
-        resetCamPos = Data.cam.transform.position;
-        resetCamRot = Data.cam.transform.localRotation;
         gameObject.SetActive(false);
     }
 
