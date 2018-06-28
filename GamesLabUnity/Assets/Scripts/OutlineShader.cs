@@ -7,7 +7,7 @@ public class OutlineShader : MonoBehaviour {
     public List<Renderer> materials = new List<Renderer>();
     public List<Renderer> dontChange = new List<Renderer>();
     Renderer[] all;
-    float startPos = 4.620232f;
+    float startPos = 3.589873f;
     float startPos2;
 
 
