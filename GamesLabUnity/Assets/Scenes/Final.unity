@@ -1024,14 +1024,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Finally you made it out of your destroyed spaceship.
+  m_Text: 'Finally, you made it out of your destroyed spaceship.
 
     But your journey has not ended yet...
 
 
-    In the future you will be tasked with exploring the planet further.
+    In the future, you will be tasked with exploring the planet further.
 
-    But for now you may rest.'
+    But for now, you may rest.'
 --- !u!222 &1600379828
 CanvasRenderer:
   m_ObjectHideFlags: 0
