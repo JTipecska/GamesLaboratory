@@ -27,8 +27,16 @@ public class Dead : MonoBehaviour
     public void resetScene()
     {
         if (Data.shadow)
+        {
             Data.cam.GetComponent<TransformCamera>().changePlane();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        Data.realCharacter.transform.position = new Vector3(-21.44f, 0.12f, -1.3f);
+        //gameObject.SetActive(false);
+    }
+
+    public void disable()
+    {
+        gameObject.SetActive(false);
     }
 
 
