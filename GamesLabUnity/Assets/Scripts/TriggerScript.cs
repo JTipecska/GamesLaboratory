@@ -42,6 +42,9 @@ public class TriggerScript : MonoBehaviour {
         if(Input.GetButtonDown("Action") && door!=null && other.transform.root == Data.realCharacter.transform.root)
         {
             door.GetComponent<Animator>().SetBool("character_nearby", !door.GetComponent<Animator>().GetBool("character_nearby"));
+            if (door.tag == "Final") {
+                message.SetActive(true);
+            }
         }
         
     }
