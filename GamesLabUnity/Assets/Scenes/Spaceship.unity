@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204871, g: 0.41352865, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19818,7 +19818,7 @@ GameObject:
   - component: {fileID: 409386542}
   - component: {fileID: 409386541}
   - component: {fileID: 409386540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54934,6 +54934,13 @@ MonoBehaviour:
   - {fileID: 1640194589}
   - {fileID: 104381060}
   - {fileID: 1904494928}
+  - {fileID: 409386542}
+  - {fileID: 1754978903}
+  - {fileID: 1749473985}
+  - {fileID: 264380128}
+  - {fileID: 165287557}
+  - {fileID: 1904494928}
+  - {fileID: 1177293103}
   dontChange:
   - {fileID: 247599093}
   - {fileID: 1033592328}
