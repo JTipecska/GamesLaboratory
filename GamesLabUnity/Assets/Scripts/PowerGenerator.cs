@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PowerGenerator : MonoBehaviour {
 
     //public List<GameObject> objects = new List<GameObject>();
 
     public GameObject elevator, elevatorShadow;
+    public Sprite sphere, capsule;
 
 
     // Use this for initialization
@@ -27,6 +28,7 @@ public class PowerGenerator : MonoBehaviour {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
             elevatorShadow.SetActive(true);
+            GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = sphere;
 
         }
 
@@ -36,6 +38,7 @@ public class PowerGenerator : MonoBehaviour {
             elevator.SetActive(true);
             elevatorShadow.GetComponent<ConsoleSwitch>().enabled = true;
             Data.activeDoor = true;
+            GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = capsule;
         }
     }
 }

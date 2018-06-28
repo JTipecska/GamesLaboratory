@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204871, g: 0.41352865, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2812,9 +2812,9 @@ RectTransform:
   m_Father: {fileID: 453584369}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 193, y: 61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71959234
@@ -19900,7 +19900,7 @@ GameObject:
   - component: {fileID: 409386542}
   - component: {fileID: 409386541}
   - component: {fileID: 409386540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29069,7 +29069,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 675390327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e5d9262e7ca9b4fbd3e129bf49a02b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aeea1a37ef8bf645b9a2cc40b180940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1332354429}
@@ -42206,6 +42206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elevator: {fileID: 409386538}
   elevatorShadow: {fileID: 1699603712}
+  sphere: {fileID: 21300000, guid: 983772153b68dfc4ea069ed3f0067ce6, type: 3}
+  capsule: {fileID: 21300000, guid: b84ca8524f33b014b9823f8aef29c3d8, type: 3}
 --- !u!1 &894360229
 GameObject:
   m_ObjectHideFlags: 0
@@ -51017,6 +51019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elevator: {fileID: 246319723}
   elevatorShadow: {fileID: 675390327}
+  sphere: {fileID: 21300000, guid: 983772153b68dfc4ea069ed3f0067ce6, type: 3}
+  capsule: {fileID: 21300000, guid: b84ca8524f33b014b9823f8aef29c3d8, type: 3}
 --- !u!1 &1144105304
 GameObject:
   m_ObjectHideFlags: 0
@@ -55592,18 +55596,18 @@ MonoBehaviour:
   - {fileID: 1640194589}
   - {fileID: 104381060}
   - {fileID: 1904494928}
-  - {fileID: 409386542}
+  - {fileID: 1177293103}
   - {fileID: 1754978903}
   - {fileID: 1749473985}
   - {fileID: 264380128}
   - {fileID: 165287557}
   - {fileID: 1904494928}
-  - {fileID: 1177293103}
   dontChange:
   - {fileID: 247599093}
   - {fileID: 1033592328}
   - {fileID: 1028238345}
   - {fileID: 168910151}
+  - {fileID: 409386542}
 --- !u!124 &1272630911
 Behaviour:
   m_ObjectHideFlags: 0
@@ -58300,9 +58304,9 @@ RectTransform:
   m_Father: {fileID: 453584369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 83, y: 61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359506066
@@ -78752,7 +78756,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1660007428}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 16.15, y: -33.06, z: -2.79}
+  m_LocalPosition: {x: 16.15, y: 2.03, z: -2.79}
   m_LocalScale: {x: 3.3333328, y: 3.3333328, z: 3.333333}
   m_Children:
   - {fileID: 975678133}
@@ -80157,7 +80161,7 @@ GameObject:
   - component: {fileID: 1699603716}
   - component: {fileID: 1699603715}
   - component: {fileID: 1699603714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ElevatorShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80185,7 +80189,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1699603712}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 0.15101436, z: 4}
