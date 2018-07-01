@@ -28,7 +28,7 @@ public class PowerGenerator : MonoBehaviour {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
             elevatorShadow.SetActive(true);
-            GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = sphere;
+            //GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = sphere;
 
         }
 
@@ -38,7 +38,7 @@ public class PowerGenerator : MonoBehaviour {
             elevator.SetActive(true);
             elevatorShadow.GetComponent<ConsoleSwitch>().enabled = true;
             Data.activeDoor = true;
-            GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = capsule;
+            //GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = capsule;
         }
     }
 }

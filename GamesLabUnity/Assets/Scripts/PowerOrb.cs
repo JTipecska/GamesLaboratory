@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class PowerOrb : MonoBehaviour {
 
-    public Sprite sphereBlue, CapsuleBlue;
-    public Image UiSprite;
+    public GameObject collectible;
 
 
     // Use this for initialization
@@ -26,13 +25,13 @@ public class PowerOrb : MonoBehaviour {
         {
             Data.holdingOrb = true;
             Debug.Log("Holding Sphere");
-            UiSprite.sprite = sphereBlue;
+            collectible.SetActive(true);
         }
         if (this.gameObject.name == "Capsule")
         {
             Data.holdingRod = true;
             Debug.Log("Holding Capsule");
-            UiSprite.sprite = CapsuleBlue;
+            collectible.SetActive(true);
         }
         Data.interactableObjects.Remove(gameObject);
 
