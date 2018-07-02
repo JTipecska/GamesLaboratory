@@ -41,8 +41,8 @@ public class RealCharacterController : MonoBehaviour {
 
         if (!GUIController.GetMenuActive())
         {
-            if (transform.position.y < lastShadowPlaneHeight - 0.1f)
-                 transform.position = new Vector3(transform.position.x, lastShadowPlaneHeight, transform.position.z);
+            //if (transform.position.y < lastShadowPlaneHeight - 0.1f)
+            //     transform.position = new Vector3(transform.position.x, lastShadowPlaneHeight, transform.position.z);
 
             float characterMovement = Input.GetAxis("CharacterHorizontal");
 

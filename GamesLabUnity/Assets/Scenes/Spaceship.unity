@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204801, g: 0.4135345, b: 0.68625015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51080,7 +51080,13 @@ Prefab:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 65117819483242628, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 65117819483242628, guid: ea88d38c38a57d4489ba5ff1cc0bc15b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ea88d38c38a57d4489ba5ff1cc0bc15b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1136785238
@@ -87897,6 +87903,19 @@ GameObject:
   m_PrefabParentObject: {fileID: 1337214792252676, guid: ea88d38c38a57d4489ba5ff1cc0bc15b,
     type: 2}
   m_PrefabInternal: {fileID: 1133947969}
+--- !u!136 &1940935732
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1940935729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 7.3
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.8, z: 0}
 --- !u!114 &1940935733
 MonoBehaviour:
   m_ObjectHideFlags: 0
