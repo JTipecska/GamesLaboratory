@@ -25,7 +25,7 @@ public class RealCharacterController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + 0.16f * Vector3.up, Vector3.down, out hit, float.MaxValue, LayerMask.GetMask("ShadowPlane")))
@@ -77,8 +77,9 @@ public class RealCharacterController : MonoBehaviour {
                 anim.SetTrigger("StopWalking");
                 anim.ResetTrigger("StartWalking");
             }
-
-            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
+            Debug.Log((Vector3.right * characterMovement * Data.speed).ToString());
+            Rigidbody rig = GetComponent<Rigidbody>();
+            rig.velocity = new Vector3(characterMovement * Data.speed, rig.velocity.y, rig.velocity.z);
 
             if (!Data.shadow)
             {

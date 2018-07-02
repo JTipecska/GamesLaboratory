@@ -17,7 +17,7 @@ public class ShadowCharacterController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
@@ -57,7 +57,8 @@ public class ShadowCharacterController : MonoBehaviour {
                 animCharacter.ResetTrigger("StartWalking");
             }
 
-            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
+            Rigidbody rig = GetComponent<Rigidbody>();
+            rig.velocity = new Vector3(characterMovement * Data.speed, rig.velocity.y, rig.velocity.z);
             Data.cam.transform.position = new Vector3(transform.position.x, Data.cam.transform.position.y, Data.cam.transform.position.z);
             Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + Data.realCharacter.GetComponent<RealCharacterController>().lastShadowPlaneHeight + 1.3f, -1.3f);
             //.GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * characterMovement * Time.deltaTime * Data.speed);
