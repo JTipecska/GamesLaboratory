@@ -19919,9 +19919,32 @@ Prefab:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65198595301765502, guid: b23ac4c15aa3141489f5c6bed550144e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b23ac4c15aa3141489f5c6bed550144e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &405404673 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1817174624427662, guid: b23ac4c15aa3141489f5c6bed550144e,
+    type: 2}
+  m_PrefabInternal: {fileID: 405404672}
+--- !u!136 &405404674
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 405404673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.16558266
+  m_Height: 1.7884412
+  m_Direction: 1
+  m_Center: {x: 0.0029830933, y: 0.92735934, z: 0}
 --- !u!1 &408323715
 GameObject:
   m_ObjectHideFlags: 0
@@ -27355,8 +27378,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 602503157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.10923195, y: -0.16, z: -1.056471}
-  m_LocalScale: {x: 10, y: 1, z: 0.15}
+  m_LocalPosition: {x: -0.10923195, y: -0.16, z: -1.193}
+  m_LocalScale: {x: 10, y: 1, z: 0.5938426}
   m_Children: []
   m_Father: {fileID: 156781478}
   m_RootOrder: 1
@@ -54731,8 +54754,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237495492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.10923195, y: 3.83, z: -1.056471}
-  m_LocalScale: {x: 10, y: 1, z: 0.14999999}
+  m_LocalPosition: {x: -0.10923195, y: 3.83, z: -1.362}
+  m_LocalScale: {x: 10, y: 1, z: 0.7125828}
   m_Children: []
   m_Father: {fileID: 156781478}
   m_RootOrder: 3
@@ -80695,6 +80718,7 @@ GameObject:
   - component: {fileID: 1699603716}
   - component: {fileID: 1699603715}
   - component: {fileID: 1699603714}
+  - component: {fileID: 1699603717}
   m_Layer: 8
   m_Name: ElevatorShadow
   m_TagString: Untagged
@@ -80772,6 +80796,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1699603712}
   m_Mesh: {fileID: 4300000, guid: 8d199d8824e784743af821727659334b, type: 3}
+--- !u!114 &1699603717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699603712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c959448bb8b92041bcf64a9be0ce497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1700329050
 Prefab:
   m_ObjectHideFlags: 0
