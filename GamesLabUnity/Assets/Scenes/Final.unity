@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.062374942, g: 0.05803688, b: 0.037784174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -168,14 +168,16 @@ PlayableDirector:
     value: {fileID: 649675395}
   - key: {fileID: 114727276336693462, guid: 1fcef3e528f03bd4691b3709866da92b, type: 2}
     value: {fileID: 1600379823}
-  - key: {fileID: 114202819452239010, guid: 1fcef3e528f03bd4691b3709866da92b, type: 2}
-    value: {fileID: 1548714836}
+  - key: {fileID: 0}
+    value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 114274939663287158, guid: 1fcef3e528f03bd4691b3709866da92b, type: 2}
     value: {fileID: 0}
   - key: {fileID: 114801288322001704, guid: 1fcef3e528f03bd4691b3709866da92b, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 114560893608324226, guid: 1fcef3e528f03bd4691b3709866da92b, type: 2}
+    value: {fileID: 1589311631}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &88643570
@@ -913,42 +915,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1548714836
+--- !u!1 &1589311631
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1548714838}
-  - component: {fileID: 1548714837}
+  - component: {fileID: 1589311633}
+  - component: {fileID: 1589311632}
   m_Layer: 0
-  m_Name: Exit
+  m_Name: Change to Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1548714837
+--- !u!114 &1589311632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1548714836}
+  m_GameObject: {fileID: 1589311631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5c37fe2ef36c545ae55de1b04c7e6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 455e13b38ca20b440ba13f737ae9637c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitGame: 1
---- !u!4 &1548714838
+--- !u!4 &1589311633
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1548714836}
+  m_GameObject: {fileID: 1589311631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.755066, y: 6.287838, z: 1.2627435}
+  m_LocalPosition: {x: -24.472414, y: 0.22167969, z: -1.0236969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

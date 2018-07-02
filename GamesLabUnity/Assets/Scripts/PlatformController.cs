@@ -7,20 +7,21 @@ public class PlatformController : MonoBehaviour {
     public float distance;
     public Vector3 direction = Vector3.up;
     private Vector3 startPosition;
-    private float currSpeed;
+    //private float currSpeed;
+    private float currDistance = 0;
     private float finishedMoving = 0;
     private bool setFinishedMoving = false; 
 
 	// Use this for initialization
 	void Start () {
         startPosition = transform.position;
-        currSpeed = speed;
+        //currSpeed = speed;
+        direction = Vector3.Normalize(direction);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        direction = Vector3.Normalize(direction);
-        bool platformAtStart = Vector3.Normalize(transform.position - startPosition) == -direction;
+        /*bool platformAtStart = Vector3.Normalize(transform.position - startPosition) == -direction;
         bool platformAtMaxDistance = Vector3.Distance(startPosition, transform.position) > distance;
    
         if (platformAtStart && !setFinishedMoving)
@@ -51,7 +52,14 @@ public class PlatformController : MonoBehaviour {
 
 
         if (finishedMoving == 0)
-            transform.position += direction * Time.deltaTime * currSpeed;
+            transform.position += direction * Time.deltaTime * currSpeed;*/
+
+        currDistance += Time.deltaTime * speed;
+        currDistance = Clamp(0, distance, currDistance);
+        transform.position = startPosition + currDistance * direction;
+
+        if (currDistance == 0 || currDistance == distance)
+            speed = -speed;
     }
 
     void Action()
@@ -60,5 +68,10 @@ public class PlatformController : MonoBehaviour {
         speed = 0.5f;
         distance = 4;
         Start();
+    }
+
+    float Clamp(float min, float max, float val)
+    {
+        return val < min ? min : max < val ? max : val;
     }
 }
