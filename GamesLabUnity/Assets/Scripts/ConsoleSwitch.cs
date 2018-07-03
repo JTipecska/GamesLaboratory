@@ -7,7 +7,7 @@ public class ConsoleSwitch : MonoBehaviour {
 
     public GameObject door;
     public GameObject message;
-
+    public GameObject lockCamera;
     // Use this for initialization
     void Start () {
         Data.interactableObjects.Add(gameObject);
@@ -27,8 +27,10 @@ public class ConsoleSwitch : MonoBehaviour {
             door.GetComponent<Animator>().SetBool("character_nearby", !door.GetComponent<Animator>().GetBool("character_nearby"));
             message.SetActive(true);
             Debug.Log("final door");
-
-            StartCoroutine(FinalScene());
+            Data.onElevator = true;
+            if (lockCamera)
+                lockCamera.GetComponent<LockCamera>().active = false;
+            //StartCoroutine(FinalScene());
         }
 
 
