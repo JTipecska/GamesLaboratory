@@ -29,7 +29,11 @@ public class ConsoleSwitch : MonoBehaviour {
             Debug.Log("final door");
             Data.onElevator = true;
             if (lockCamera)
+            {
                 lockCamera.GetComponent<LockCamera>().active = false;
+                Data.lockCamera = false;
+            }
+                
             //StartCoroutine(FinalScene());
         }
 
