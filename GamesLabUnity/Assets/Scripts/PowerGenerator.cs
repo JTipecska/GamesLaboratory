@@ -29,6 +29,7 @@ public class PowerGenerator : MonoBehaviour {
             elevator.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
             elevatorShadow.SetActive(true);
             //GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = sphere;
+            Data.activatedElevator = true;
 
         }
 

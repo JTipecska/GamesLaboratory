@@ -17,6 +17,7 @@ public class Data : MonoBehaviour
     public static bool holdingOrb = false;
     public static bool holdingRod = false;
     public static bool onElevator = false;
+    public static bool activatedElevator = false;
     public static bool activeDoor = false;
     public static bool lockCamera = false;
     public static int amtLights = 0;

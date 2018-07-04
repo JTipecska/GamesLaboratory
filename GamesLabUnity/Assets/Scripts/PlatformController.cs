@@ -60,6 +60,7 @@ public class PlatformController : MonoBehaviour {
 
         if (currDistance == 0 || currDistance == distance)
             speed = -speed;
+
     }
 
     void Action()

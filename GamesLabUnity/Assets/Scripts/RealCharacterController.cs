@@ -51,31 +51,45 @@ public class RealCharacterController : MonoBehaviour {
                 if (anim.GetBool("LookingForward") && characterMovement < -0.001f)
                 {
                     GetComponent<Transform>().Rotate(0, 180, 0);
-                    rigidShadow.Rotate(0, 180, 0); 
+                    rigidShadow.Rotate(0, 180, 0);
                     anim.SetBool("LookingForward", false);
                     animShadow.SetBool("LookingForward", false);
                 }
                 else if (!anim.GetBool("LookingForward") && characterMovement > 0.001f)
                 {
-                    GetComponent<Transform>().Rotate( 0, -180, 0);
+                    GetComponent<Transform>().Rotate(0, -180, 0);
                     rigidShadow.Rotate(0, -180, 0);
                     anim.SetBool("LookingForward", true);
                     animShadow.SetBool("LookingForward", true);
                 }
+
+                else if(Input.GetButtonDown("Run")) {
+
+                    animShadow.SetTrigger("StartRunning");
+                    animShadow.ResetTrigger("StopWalking");
+                    anim.SetTrigger("StartRunning");
+                    anim.ResetTrigger("StopWalking");
+                }
+
                 else
                 {
                     animShadow.SetTrigger("StartWalking");
                     animShadow.ResetTrigger("StopWalking");
+                    animShadow.ResetTrigger("StartRunning");
                     anim.SetTrigger("StartWalking");
                     anim.ResetTrigger("StopWalking");
+                    anim.ResetTrigger("StartRunning");
+
                 }
             }
             else
             {
                 animShadow.SetTrigger("StopWalking");
                 animShadow.ResetTrigger("StartWalking");
+                animShadow.ResetTrigger("StartRunning");
                 anim.SetTrigger("StopWalking");
                 anim.ResetTrigger("StartWalking");
+               anim.ResetTrigger("StartRunning");
             }
             Debug.Log((Vector3.right * characterMovement * Data.speed).ToString());
             Rigidbody rig = GetComponent<Rigidbody>();
@@ -140,7 +154,7 @@ public class RealCharacterController : MonoBehaviour {
             //}
 
             //Grab
-            if (Input.GetButtonDown("Grab"))
+          /*  if (Input.GetButtonDown("Grab"))
             {
                 if (grabbedObject)
                 {
@@ -153,7 +167,7 @@ public class RealCharacterController : MonoBehaviour {
                     grabParent = grabbedObject.transform.parent;
                     grabbedObject.transform.parent = transform;
                 }
-            }
+            }*/
 
             //Inquire
             if (Input.GetButtonDown("Inquire") && !inquiredObject && inquirableObjects.Count > 0)
@@ -187,7 +201,7 @@ public class RealCharacterController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+  /*  private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag.ToLower().Contains("grabable"))
         {
@@ -201,7 +215,7 @@ public class RealCharacterController : MonoBehaviour {
         {
             grabableObjects.Remove(collision.gameObject);
         }
-    }
+    }*/
 
     public void SetLightController(GameObject lightController)
     {
