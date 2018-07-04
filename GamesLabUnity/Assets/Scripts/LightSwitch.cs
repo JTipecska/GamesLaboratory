@@ -26,7 +26,13 @@ public class LightSwitch : MonoBehaviour {
 
                 lights[0].SendMessage("Action", SendMessageOptions.DontRequireReceiver);
                 lights[1].SendMessage("Action", SendMessageOptions.DontRequireReceiver);
-           // }
+            // }
+
+            foreach (Transform child in transform)
+            {
+                if (child.name.StartsWith("Billboard_O"))
+                    child.gameObject.SetActive(!child.gameObject.activeSelf);
+            }
 
         }
 
