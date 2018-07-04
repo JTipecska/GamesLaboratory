@@ -114,7 +114,9 @@ public class TransformCamera : MonoBehaviour {
     {
         if (finished && blendfinished)
         {
-            
+            Data.realCharacter.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Data.shadowCharacter.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
             if (shadow)
             {
                 //BlendToMatrix(GetComponent<Camera>().projectionMatrix, .75f);
