@@ -27,6 +27,9 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GetComponent<Rigidbody>().velocity.y < -8f && transform.position.y < 0.2f)
+            Data.dead.SetActive(true);
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position + 0.16f * Vector3.up, Vector3.down, out hit, float.MaxValue, LayerMask.GetMask("ShadowPlane")))
         {
