@@ -7,7 +7,7 @@ public class OutlineShader : MonoBehaviour {
     public List<Renderer> materials = new List<Renderer>();
     public List<Renderer> dontChange = new List<Renderer>();
     Renderer[] all;
-    float startPos = 3.589873f;
+    public float startPos = 1.18f;
     float startPos2;
 
 
@@ -24,8 +24,10 @@ public class OutlineShader : MonoBehaviour {
 
     public void Update()
     {
-        //if (Data.cam.transform.position.y > 5f)
-            this.transform.position = new Vector3(Data.cam.transform.position.x, startPos2 + Data.cam.transform.position.y - startPos, this.transform.position.z);
+        if (Data.realCharacter.transform.position.y > 3.5f)
+            this.transform.position = new Vector3(Data.cam.transform.position.x, startPos + 4, this.transform.position.z);
+        else
+            this.transform.position = new Vector3(Data.cam.transform.position.x,  startPos, this.transform.position.z);
     }
 
 
