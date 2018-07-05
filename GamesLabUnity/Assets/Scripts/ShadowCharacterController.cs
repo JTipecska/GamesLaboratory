@@ -44,29 +44,29 @@ public class ShadowCharacterController : MonoBehaviour {
                 else if (Input.GetButtonDown("Run"))
                 {
 
-                    animShadow.SetTrigger("StartRunning");
+                    animShadow.SetBool("Running", true);
                     animShadow.ResetTrigger("StopWalking");
-                    animCharacter.SetTrigger("StartRunning");
+                    animCharacter.SetBool("Running", true);
                     animCharacter.ResetTrigger("StopWalking");
                 }
                 else
                 {
                     animShadow.SetTrigger("StartWalking");
                     animShadow.ResetTrigger("StopWalking");
-                    animShadow.ResetTrigger("StartRunning");
+                    animShadow.SetBool("Running", false);
                     animCharacter.SetTrigger("StartWalking");
                     animCharacter.ResetTrigger("StopWalking");
-                    animCharacter.ResetTrigger("StartRunning");
+                    animCharacter.SetBool("Running", false);
                 }
             }
             else
             {
                 animShadow.SetTrigger("StopWalking");
                 animShadow.ResetTrigger("StartWalking");
-                animShadow.ResetTrigger("StartRunning");
+                animShadow.SetBool("Running", false);
                 animCharacter.SetTrigger("StopWalking");
                 animCharacter.ResetTrigger("StartWalking");
-                animCharacter.ResetTrigger("StartRunning");
+                animCharacter.SetBool("Running", false);
             }
 
             Rigidbody rig = GetComponent<Rigidbody>();
