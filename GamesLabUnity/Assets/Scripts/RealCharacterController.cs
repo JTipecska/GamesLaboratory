@@ -27,7 +27,7 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GetComponent<Rigidbody>().velocity.y < -8f && transform.position.y < 0.2f)
+        if (GetComponent<Rigidbody>().velocity.y < -6f && Physics.Raycast(transform.position, Vector3.down, 0.2f))
             Data.dead.SetActive(true);
 
         RaycastHit hit;
