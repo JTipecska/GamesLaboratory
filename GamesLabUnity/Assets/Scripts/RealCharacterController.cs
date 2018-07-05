@@ -28,6 +28,7 @@ public class RealCharacterController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (GetComponent<Rigidbody>().velocity.y < -6f && Physics.Raycast(transform.position, Vector3.down, 0.2f))
             Data.dead.SetActive(true);
 
@@ -75,6 +76,7 @@ public class RealCharacterController : MonoBehaviour {
                     anim.SetTrigger("StartRunning");
                     anim.ResetTrigger("StopWalking");
                     anim.SetBool("Running", true);
+                    Data.speed = 4f;
                 }
 
                 else
@@ -89,6 +91,7 @@ public class RealCharacterController : MonoBehaviour {
                     anim.ResetTrigger("StartRunning");
                     anim.SetTrigger("StopRunning");
                     anim.SetBool("Running", false);
+                    Data.speed = 2f;
 
                 }
             }
