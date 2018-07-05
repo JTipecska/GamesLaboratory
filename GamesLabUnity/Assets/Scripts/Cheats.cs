@@ -16,15 +16,15 @@ public class Cheats : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Data.realCharacter.transform.position = new Vector3(-6.0f, 0.12f, -1.3f);
+            Data.realCharacter.transform.position = new Vector3(-24, 0.12f, -1.3f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Data.realCharacter.transform.position = new Vector3(24.0f, 0.12f, -1.3f);
+            Data.realCharacter.transform.position = new Vector3(14.0f, 0.12f, -1.3f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Data.realCharacter.transform.position = new Vector3(9.0f, 0.12f, -1.3f);
+            Data.realCharacter.transform.position = new Vector3(32.0f, 0.12f, -1.3f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -40,7 +40,7 @@ public class Cheats : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            Data.realCharacter.transform.position = new Vector3(-10.0f, 4.12f, -1.3f);
+            Data.realCharacter.transform.position = new Vector3(-22.0f, 4.12f, -1.3f);
         }
 
         if (Input.GetKeyDown(KeyCode.G))
