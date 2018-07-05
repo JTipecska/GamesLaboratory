@@ -26,7 +26,7 @@ public class StaticLight : MonoBehaviour {
 
     }
 
-    void Action()
+    void ToggleLight()
     {
         GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
     }

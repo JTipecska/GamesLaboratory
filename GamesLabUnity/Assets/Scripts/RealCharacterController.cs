@@ -10,6 +10,7 @@ public class RealCharacterController : MonoBehaviour {
     private List<GameObject> inquirableObjects = new List<GameObject>();
     private GameObject currentLightController;
     private Transform grabParent;
+    private Color controlledLightColor;
     public float lastShadowPlaneHeight;
     public float cameraOffsetY = 3.589873f;
 
@@ -110,7 +111,7 @@ public class RealCharacterController : MonoBehaviour {
 
             if (!Data.shadow)
             {
-                Data.shadowCharacter.transform.position = new Vector3(transform.position.x, 0.16f + lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
+                Data.shadowCharacter.transform.position = new Vector3(transform.position.x, lastShadowPlaneHeight, transform.position.y - lastShadowPlaneHeight - 1.3f);
                 if (!Data.lockCamera)
                 {
                     if (Data.onElevator)
@@ -119,11 +120,8 @@ public class RealCharacterController : MonoBehaviour {
                     }
                     else
                     {
-
                             int floor = (int)Data.realCharacter.transform.position.y / 4;
                             Data.cam.transform.position = new Vector3(transform.position.x, 3.589873f + 4 * floor, Data.cam.transform.position.z);
-                        
-                        
                     }
                 }
                
@@ -132,11 +130,11 @@ public class RealCharacterController : MonoBehaviour {
 
             if (currentLightController)
             {
-                currentLightController.GetComponent<LightController>().controlledLight.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
-                currentLightController.GetComponent<LightController>().controlledLight.transform.Translate(0, 0, -Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
+                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
+                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(0, 0, -Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
 
                 //Light
-                if (Vector3.Distance(transform.position, currentLightController.transform.position) > Data.characterReach)
+                if (Mathf.Abs(transform.position.x - currentLightController.transform.position.x) > Data.characterReach)
                     currentLightController.SendMessage("Action");
             }
 
@@ -189,7 +187,7 @@ public class RealCharacterController : MonoBehaviour {
             if (Input.GetButtonDown("Inquire") && !inquiredObject && inquirableObjects.Count > 0)
             {
                 GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.inquirableObjects);
-                if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
+                if (Mathf.Abs(transform.position.x - targetObject.transform.position.x) <= Data.characterReach)
                 {
                     inquiredObject = targetObject;
                     inquiredObject.SendMessage("Inquire", true, SendMessageOptions.DontRequireReceiver);
@@ -205,7 +203,7 @@ public class RealCharacterController : MonoBehaviour {
             if (Input.GetButtonDown("Action"))
             {
                 GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.interactableObjects);
-                if (Vector3.Distance(transform.position, targetObject.transform.position) <= Data.characterReach)
+                if (Mathf.Abs(transform.position.x - targetObject.transform.position.x) <= Data.characterReach)
                 {
                     targetObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
                 }
@@ -237,9 +235,15 @@ public class RealCharacterController : MonoBehaviour {
     {
         //No LightConroller set or set LightController is not the controller found
         if (!currentLightController || currentLightController.GetInstanceID() != lightController.GetInstanceID())
+        {
             currentLightController = lightController;
+            currentLightController.GetComponent<LightController>().GetControlledLight().color = Color.white;
+        }
         else // Controller is set and is the new LightController
+        {
+            currentLightController.GetComponent<LightController>().GetControlledLight().color = currentLightController.GetComponent<LightController>().GetControlledLightColor();
             currentLightController = null;
+        }
     }
 
     private void ChangeToShadowWorld()

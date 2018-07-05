@@ -24,7 +24,7 @@ public class Data : MonoBehaviour
     public static float lastWorldSwitch = 0.0f;
     public static readonly float waitWorldSwitch = 0.3f;
     public static readonly float speed = 4f;
-    public static readonly float characterReach = 5.3f;
+    public static readonly float characterReach = 2f;
     public static List<GameObject> shadowObjects = new List<GameObject>();
     public static List<GameObject> shadowFloors = new List<GameObject>();
     public static List<GameObject> lights = new List<GameObject>();

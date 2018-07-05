@@ -33,7 +33,7 @@ public class MovableLightController : MonoBehaviour {
             currSpeed = speed;
 
         }
-        else if (lightAtMaxDistance )
+        else if (lightAtMaxDistance)
         {
             currSpeed = -speed;
 

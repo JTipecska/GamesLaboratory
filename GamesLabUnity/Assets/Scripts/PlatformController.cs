@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour {
     public float speed;
     public float distance;
+    public float stopTime = 2.0f;
     public Vector3 direction = Vector3.up;
     private Vector3 startPosition;
     //private float currSpeed;
     private float currDistance = 0;
     private float finishedMoving = 0;
-    private bool setFinishedMoving = false; 
 
 	// Use this for initialization
 	void Start () {
@@ -54,13 +54,17 @@ public class PlatformController : MonoBehaviour {
         if (finishedMoving == 0)
             transform.position += direction * Time.deltaTime * currSpeed;*/
 
+        if (finishedMoving + stopTime > Time.time) return;
+
         currDistance += Time.deltaTime * speed;
         currDistance = Clamp(0, distance, currDistance);
         transform.position = startPosition + currDistance * direction;
 
         if (currDistance == 0 || currDistance == distance)
+        {
             speed = -speed;
-
+            finishedMoving = Time.time;
+        }
     }
 
     void Action()

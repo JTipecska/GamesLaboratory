@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public GameObject controlledLight;
+    public GameObject controlledLightObject;
     public Material movePlaneMaterial;
     public float limitX = 10;
     public float limitZ = 10;
+    private Light controlledLight;
+    private Color controlledLightColor;
 
     GameObject movePlane;
     Vector3 anchor;
@@ -15,7 +17,12 @@ public class LightController : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         Data.interactableObjects.Add(gameObject);
-        anchor = controlledLight.transform.position;
+        anchor = controlledLightObject.transform.position;
+        if (controlledLightObject.GetComponent<Light>())
+            controlledLight = controlledLightObject.GetComponent<Light>();
+        else
+            controlledLight = controlledLightObject.GetComponentInChildren<Light>();
+        controlledLightColor = controlledLight.color;
 
         if (movePlaneMaterial)
         {
@@ -33,7 +40,7 @@ public class LightController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        controlledLight.transform.position = new Vector3(Clamp(anchor.x - limitX, anchor.x + limitX, controlledLight.transform.position.x), controlledLight.transform.position.y, Clamp(anchor.z - limitZ, anchor.z + limitZ, controlledLight.transform.position.z));
+        controlledLightObject.transform.position = new Vector3(Clamp(anchor.x - limitX, anchor.x + limitX, controlledLightObject.transform.position.x), controlledLightObject.transform.position.y, Clamp(anchor.z - limitZ, anchor.z + limitZ, controlledLightObject.transform.position.z));
     }
 
     void Action()
@@ -50,5 +57,14 @@ public class LightController : MonoBehaviour
     private float Clamp(float min, float max, float val)
     {
         return val < min ? min : (val < max ? val : max);
+    }
+
+    public Light GetControlledLight()
+    {
+        return controlledLight;
+    }
+    public Color GetControlledLightColor()
+    {
+        return controlledLightColor;
     }
 }
