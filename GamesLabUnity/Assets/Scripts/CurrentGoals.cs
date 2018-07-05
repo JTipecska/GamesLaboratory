@@ -8,7 +8,6 @@ public class CurrentGoals : MonoBehaviour {
 
     public GameObject text;
 
-    private bool secondLevel = false;
 
     // Use this for initialization
     void Start () {
@@ -20,30 +19,23 @@ public class CurrentGoals : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-    
-        if (secondLevel)
+        if (Data.holdingOrb && Data.realCharacter.gameObject.transform.position.y > 4)
         {
 
             text.GetComponent<Text>().text = "Switch on the Main Console";
+
         }
 
-        if (Data.activatedElevator) {
+        else if (Data.activatedElevator) {
 
             text.GetComponent<Text>().text = "Proceed to the upper Level";
         }
 
 
-        else if (Data.holdingOrb) {
+        else if (Data.holdingOrb && !Data.activatedElevator) {
 
             text.GetComponent<Text>().text = "Repair the broken Generator";
 
-        }
-
-        else if (Data.holdingOrb && Data.onElevator)
-        {
-
-            text.GetComponent<Text>().text = "Switch on the Main Console";
-            secondLevel = true;
         }
 
         else if (Data.holdingRod) {
