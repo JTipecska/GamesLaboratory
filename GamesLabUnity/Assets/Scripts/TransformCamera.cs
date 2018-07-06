@@ -17,6 +17,7 @@ public class TransformCamera : MonoBehaviour {
     public int speed = 80;
     public float transitduration = .75f;
     public float offset = 1.2f;
+    float saveY;
     Matrix4x4 pMatrix;
 
     public static Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float time)
@@ -81,6 +82,7 @@ public class TransformCamera : MonoBehaviour {
         {
             
             finished = true;
+            saveY = Data.cam.transform.position.y;
             BlendToMatrix(c.projectionMatrix, transitduration);
         }
         if (!shadow && !finished && blendfinished)
@@ -104,6 +106,7 @@ public class TransformCamera : MonoBehaviour {
                 Data.realCharacter.SendMessage("ChangeToShadowWorld");
                 this.transform.parent.GetComponentInChildren<OutlineShader>().addOutline();
                 Data.timer.SetActive(true);
+                Data.cam.transform.position =  new Vector3(Data.cam.transform.position.x, saveY, Data.cam.transform.position.z);
             }
             called = true;
         }

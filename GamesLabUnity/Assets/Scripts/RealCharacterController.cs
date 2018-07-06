@@ -124,7 +124,7 @@ public class RealCharacterController : MonoBehaviour {
                     else
                     {
                             int floor = (int)Data.realCharacter.transform.position.y / 4;
-                            Data.cam.transform.position = new Vector3(transform.position.x, 3.589873f + 4 * floor, Data.cam.transform.position.z);
+                            Data.cam.transform.position = new Vector3(transform.position.x, cameraOffsetY + 4 * floor, Data.cam.transform.position.z);
                     }
                 }
                
@@ -271,8 +271,6 @@ public class RealCharacterController : MonoBehaviour {
         Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
-        if (Data.cam.transform.position.y <3.8f)
-            Data.cam.transform.position = new Vector3(transform.position.x, 4.5f, Data.cam.transform.position.z);
         InitPuzzles.changeTrigger();
     }
 

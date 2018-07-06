@@ -70154,7 +70154,7 @@ MonoBehaviour:
   - {fileID: 168910151}
   - {fileID: 409386542}
   - {fileID: 1699603715}
-  startPos: 1.18
+  startPos: 1.3
 --- !u!124 &1272630911
 Behaviour:
   m_ObjectHideFlags: 0
@@ -105972,7 +105972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2284ea27a6266b14abf10b635ef0fce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlledLight: {fileID: 1474807189}
+  controlledLightObject: {fileID: 0}
   movePlaneMaterial: {fileID: 0}
   limitX: 1
   limitZ: 1

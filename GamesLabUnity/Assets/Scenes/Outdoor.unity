@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7494499, g: 0.56017447, b: 0.784668, a: 1}
+  m_IndirectSpecularColor: {r: 0.7494627, g: 0.56017643, b: 0.78482896, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9083,6 +9083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials: []
   dontChange: []
+  startPos: 1.18
 --- !u!124 &546803824
 Behaviour:
   m_ObjectHideFlags: 0
@@ -18788,7 +18789,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4403081683996422, guid: d6ebe562af2ce06418c60a8f9e21cf70, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.580209
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4403081683996422, guid: d6ebe562af2ce06418c60a8f9e21cf70, type: 2}
       propertyPath: m_LocalPosition.z
@@ -18831,7 +18832,7 @@ Prefab:
     - target: {fileID: 114349892410618328, guid: d6ebe562af2ce06418c60a8f9e21cf70,
         type: 2}
       propertyPath: offset
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ebe562af2ce06418c60a8f9e21cf70, type: 2}
@@ -29178,6 +29179,11 @@ Prefab:
         type: 2}
       propertyPath: m_Interpolate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697740559207874, guid: b23ac4c15aa3141489f5c6bed550144e,
+        type: 2}
+      propertyPath: cameraOffsetY
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b23ac4c15aa3141489f5c6bed550144e, type: 2}
