@@ -13,7 +13,7 @@ public class TransformCamera : MonoBehaviour {
     public bool blendfinished = true;
     bool called = true;
     RaycastHit hit;
-    public float counter = 52f;
+    public float counter = 43f;
     public int speed = 80;
     public float transitduration = .75f;
     public float offset = 1.2f;
