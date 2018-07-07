@@ -42,6 +42,11 @@ public class Cheats : MonoBehaviour {
         {
             Data.realCharacter.transform.position = new Vector3(-22.0f, 4.12f, -1.3f);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Data.realCharacter.transform.position = new Vector3(-40.0f, 0, -1.3f);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.G))
         {

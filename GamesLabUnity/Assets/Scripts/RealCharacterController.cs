@@ -70,10 +70,8 @@ public class RealCharacterController : MonoBehaviour {
 
                 else if(Input.GetButton("Run")) {
 
-                    animShadow.SetTrigger("StartRunning");
                     animShadow.ResetTrigger("StopWalking");
                     animShadow.SetBool("Running", true);
-                    anim.SetTrigger("StartRunning");
                     anim.ResetTrigger("StopWalking");
                     anim.SetBool("Running", true);
                     Data.speed = 4f;
@@ -83,13 +81,9 @@ public class RealCharacterController : MonoBehaviour {
                 {
                     animShadow.SetTrigger("StartWalking");
                     animShadow.ResetTrigger("StopWalking");
-                    animShadow.ResetTrigger("StartRunning");
-                    animShadow.SetTrigger("StopRunning");
                     animShadow.SetBool("Running", false);
                     anim.SetTrigger("StartWalking");
                     anim.ResetTrigger("StopWalking");
-                    anim.ResetTrigger("StartRunning");
-                    anim.SetTrigger("StopRunning");
                     anim.SetBool("Running", false);
                     Data.speed = 2f;
 
@@ -98,14 +92,10 @@ public class RealCharacterController : MonoBehaviour {
             else
             {
                 animShadow.SetTrigger("StopWalking");
-                animShadow.SetTrigger("StopRunning");
                 animShadow.ResetTrigger("StartWalking");
-                animShadow.ResetTrigger("StartRunning");
                 animShadow.SetBool("Running", false);
                 anim.SetTrigger("StopWalking");
-                anim.SetTrigger("StopRunning");
                 anim.ResetTrigger("StartWalking");
-                anim.ResetTrigger("StartRunning");
                 anim.SetBool("Running", false);
             }
             Debug.Log((Vector3.right * characterMovement * Data.speed).ToString());
