@@ -21,7 +21,7 @@ public class ShadowCharacterController : MonoBehaviour {
         if (!Data.cam || !Data.cam.GetComponent<TransformCamera>().finished || !Data.cam.GetComponent<TransformCamera>().blendfinished)
             return;
 
-        if (!GUIController.GetMenuActive())
+        if (!GUIController.GetMenuActive() && !StoryBoxContinue.storyBoxActive)
         {
             float characterMovement = Input.GetAxis("CharacterHorizontal");
 

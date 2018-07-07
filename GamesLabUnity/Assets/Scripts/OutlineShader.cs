@@ -24,7 +24,7 @@ public class OutlineShader : MonoBehaviour {
 
     public void Update()
     {
-        if (Data.realCharacter.transform.position.y > 3.5f)
+        if (Data.realCharacter.transform.position.y > 3.5f && !Data.onElevator)
             this.transform.position = new Vector3(Data.cam.transform.position.x, startPos + 4, this.transform.position.z);
         else
             this.transform.position = new Vector3(Data.cam.transform.position.x,  startPos, this.transform.position.z);

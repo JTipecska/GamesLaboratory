@@ -11,7 +11,7 @@ public class GUIController : MonoBehaviour {
 
     public GameObject IngameMenu, Eventsystem;
 
-    private static bool menuActive = false;
+    public static bool menuActive = false;
 
 
     private void Start()
