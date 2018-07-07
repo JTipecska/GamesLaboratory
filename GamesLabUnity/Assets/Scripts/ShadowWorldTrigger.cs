@@ -30,6 +30,8 @@ public class ShadowWorldTrigger : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        if (Data.shadow)
+            message.gameObject.SetActive(true);
         message.transform.parent.forward = Camera.main.transform.forward;
         if (follow)
             message.transform.position = new Vector3(Data.shadowCharacter.transform.position.x, message.transform.parent.position.y, message.transform.parent.position.z);
