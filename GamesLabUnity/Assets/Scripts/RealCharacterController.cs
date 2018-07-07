@@ -124,7 +124,7 @@ public class RealCharacterController : MonoBehaviour {
             if (currentLightController)
             {
                 currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
-                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(0, 0, -Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
+                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(0, 0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
 
                 //Light
                 if (Mathf.Abs(transform.position.x - currentLightController.transform.position.x) > Data.characterReach)
