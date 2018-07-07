@@ -44,7 +44,7 @@ public class RealCharacterController : MonoBehaviour {
             return;
 
 
-        if (!GUIController.GetMenuActive())
+        if (!GUIController.GetMenuActive() && !StoryBoxContinue.storyBoxActive)
         {
             //if (transform.position.y < lastShadowPlaneHeight - 0.1f)
             //     transform.position = new Vector3(transform.position.x, lastShadowPlaneHeight, transform.position.z);
