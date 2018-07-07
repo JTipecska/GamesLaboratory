@@ -98,7 +98,7 @@ public class RealCharacterController : MonoBehaviour {
                 anim.ResetTrigger("StartWalking");
                 anim.SetBool("Running", false);
             }
-            Debug.Log((Vector3.right * characterMovement * Data.speed).ToString());
+
             Rigidbody rig = GetComponent<Rigidbody>();
             rig.velocity = new Vector3(characterMovement * Data.speed, rig.velocity.y, rig.velocity.z);
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OutlineShader : MonoBehaviour {
 
@@ -24,7 +25,7 @@ public class OutlineShader : MonoBehaviour {
 
     public void Update()
     {
-        if (Data.realCharacter.transform.position.y > 3.5f && !Data.onElevator)
+        if (Data.shadowCharacter.transform.position.y > 3.5f && SceneManager.GetActiveScene().name.Equals("Spaceship"))
             this.transform.position = new Vector3(Data.cam.transform.position.x, startPos + 4, this.transform.position.z);
         else
             this.transform.position = new Vector3(Data.cam.transform.position.x,  startPos, this.transform.position.z);
