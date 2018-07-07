@@ -109,7 +109,7 @@ public class RealCharacterController : MonoBehaviour {
                 {
                     if (Data.onElevator)
                     {
-                        Data.cam.transform.position = new Vector3(transform.position.x, 3.45f + Data.realCharacter.transform.position.y, Data.cam.transform.position.z);
+                        Data.cam.transform.position = new Vector3(transform.position.x, cameraOffsetY + Data.realCharacter.transform.position.y, Data.cam.transform.position.z);
                     }
                     else
                     {
