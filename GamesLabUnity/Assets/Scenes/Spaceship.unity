@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8204801, g: 0.4135345, b: 0.68625015, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204871, g: 0.41352865, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22817,6 +22817,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 409386538}
   m_Mesh: {fileID: 4300000, guid: 8d199d8824e784743af821727659334b, type: 3}
+--- !u!1 &410142678 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1918441580178102, guid: 43782366c6534df4e81a609f6d8fd42c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2143988137}
 --- !u!1 &413265341
 GameObject:
   m_ObjectHideFlags: 0
@@ -42923,7 +42928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 662, y: -239}
+  m_AnchoredPosition: {x: 663.45, y: -139.88}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764241659
@@ -43023,7 +43028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7403bcc7c01494bbf7ba12ec861e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next: {fileID: 0}
+  next:
+  - {fileID: 410142678}
+  - {fileID: 519680652}
 --- !u!224 &767045806 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224092745775845096, guid: b3d0586bfad0a2441882724b0928752e,
@@ -114377,6 +114384,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1614123043520326, guid: 2f7ea9f0c71f33244a2de4cc8c62a25c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f7ea9f0c71f33244a2de4cc8c62a25c, type: 2}
   m_IsPrefabParent: 0
@@ -117589,6 +117600,10 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.y
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918441580178102, guid: 43782366c6534df4e81a609f6d8fd42c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43782366c6534df4e81a609f6d8fd42c, type: 2}
