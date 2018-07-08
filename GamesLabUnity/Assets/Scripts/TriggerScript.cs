@@ -39,11 +39,11 @@ public class TriggerScript : MonoBehaviour {
             message.SetActive(true);
             key.SetActive(false);
         }
-        if(Input.GetButtonDown("Action") && door!=null && other.transform.root == Data.realCharacter.transform.root && door.tag != "Final")
+        /*if(Input.GetButtonDown("Action") && door!=null && other.transform.root == Data.realCharacter.transform.root && door.tag != "Final")
         {
             door.GetComponent<Animator>().SetBool("character_nearby", !door.GetComponent<Animator>().GetBool("character_nearby"));
             
-        }  
+        }*/
 
     }
     private void OnTriggerExit(Collider other)

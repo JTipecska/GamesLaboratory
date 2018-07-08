@@ -38,14 +38,16 @@ public class Data : MonoBehaviour
         float distance = float.MaxValue;
         foreach (GameObject g in objects)
         {
-            float tempDist = Vector3.Distance(g.transform.position, target.transform.position);
+            if ((int)(g.transform.position.y / 4) != (int)(target.transform.position.y / 4)) continue;
+            float tempDist = Mathf.Abs(g.transform.position.x - target.transform.position.x);
             if (tempDist < distance)
             {
                 closest = g;
                 distance = tempDist;
             }
         }
-        
+
+        print("Closest Object: " + closest.name);
         return closest;
     }
 }

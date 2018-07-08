@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
+  m_IndirectSpecularColor: {r: 0.8204801, g: 0.4135345, b: 0.68625015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21331,7 +21331,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1918441580178102, guid: 43782366c6534df4e81a609f6d8fd42c, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114148765547420292, guid: 43782366c6534df4e81a609f6d8fd42c,
         type: 2}
@@ -29655,6 +29655,17 @@ BoxCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 141970, guid: ac7a01ca06ca9044eb15b32cb7a936f8, type: 2}
   m_PrefabInternal: {fileID: 150696846}
+--- !u!114 &474101128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474101123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa85cf4f1c34e0a46a105267b66f6d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &474414909
 GameObject:
   m_ObjectHideFlags: 0
@@ -30581,6 +30592,7 @@ MonoBehaviour:
   lights:
   - {fileID: 492375913}
   - {fileID: 1990709828}
+  SwitchMode: 0
 --- !u!23 &504609387
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42477,7 +42489,7 @@ MonoBehaviour:
   m_Text: 'Inside the Shadow World you will be stopped if you collide with another
     shadow.
 
-    You can change out of the Shadow World as long as you are not were a real object
+    You can change out of the Shadow World as long as you are not where a real object
     will be.'
 --- !u!222 &744306737
 CanvasRenderer:
@@ -46334,7 +46346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1176592404307774, guid: 929a3cb090a0ed94ca5b333fb824d66e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929a3cb090a0ed94ca5b333fb824d66e, type: 2}
@@ -59710,6 +59722,11 @@ Prefab:
       propertyPath: lights.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114687221060556254, guid: 51e8f129583a51a4093515aa5e6b849c,
+        type: 2}
+      propertyPath: lights.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 51e8f129583a51a4093515aa5e6b849c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8
@@ -64214,7 +64231,7 @@ MonoBehaviour:
 
     Restore its power to access
 
-    higer levels!'
+    higher levels!'
 --- !u!222 &1290337312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68457,6 +68474,11 @@ Prefab:
       propertyPath: lights.Array.data[3]
       value: 
       objectReference: {fileID: 1995540770}
+    - target: {fileID: 114687221060556254, guid: 51e8f129583a51a4093515aa5e6b849c,
+        type: 2}
+      propertyPath: SwitchMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e8f129583a51a4093515aa5e6b849c, type: 2}
   m_IsPrefabParent: 0
@@ -96627,7 +96649,6 @@ GameObject:
   - component: {fileID: 1749473984}
   - component: {fileID: 1749473986}
   - component: {fileID: 1749473985}
-  - component: {fileID: 1749473987}
   - component: {fileID: 1749473988}
   - component: {fileID: 1749473989}
   m_Layer: 10
@@ -96695,18 +96716,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1749473983}
   m_Mesh: {fileID: 4300006, guid: 5c5915e3b1cd1e9498fc34258639b7e5, type: 3}
---- !u!114 &1749473987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1749473983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ea5797f7046c743851e8e92f57ea24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
 --- !u!114 &1749473988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101831,6 +101840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lights:
   - {fileID: 1482245480}
+  SwitchMode: 0
 --- !u!1001 &1772357462
 Prefab:
   m_ObjectHideFlags: 0
@@ -101838,6 +101848,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 815341531}
     m_Modifications:
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lights.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lightSwitch.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4251791262214554, guid: a0fbc8245292a6d438b9a24e219a60d2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -101884,7 +101904,7 @@ Prefab:
         type: 2}
       propertyPath: lights.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 492375913}
     - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
         type: 2}
       propertyPath: lights.Array.data[3]
@@ -101910,6 +101930,26 @@ Prefab:
       propertyPath: lightSwitch.Array.data[3]
       value: 
       objectReference: {fileID: 1198463830}
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lights.Array.data[4]
+      value: 
+      objectReference: {fileID: 1539330570}
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lights.Array.data[5]
+      value: 
+      objectReference: {fileID: 1995540770}
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lightSwitch.Array.data[4]
+      value: 
+      objectReference: {fileID: 1820485622}
+    - target: {fileID: 114817306588244396, guid: a0fbc8245292a6d438b9a24e219a60d2,
+        type: 2}
+      propertyPath: lightSwitch.Array.data[5]
+      value: 
+      objectReference: {fileID: 1968723377}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0fbc8245292a6d438b9a24e219a60d2, type: 2}
   m_IsPrefabParent: 0
@@ -103093,6 +103133,7 @@ MonoBehaviour:
   lights:
   - {fileID: 1990709828}
   - {fileID: 1995540770}
+  SwitchMode: 0
 --- !u!23 &1820485624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -106667,6 +106708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lights:
   - {fileID: 1539330570}
+  SwitchMode: 0
 --- !u!23 &1968723379
 MeshRenderer:
   m_ObjectHideFlags: 0
