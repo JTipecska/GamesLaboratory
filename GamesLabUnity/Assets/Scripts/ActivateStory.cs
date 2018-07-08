@@ -14,7 +14,7 @@ public class ActivateStory : MonoBehaviour {
             if ((once && !triggered) || !once)
             {
                 triggered = true;
-                g.SetActive(true);
+                g.SetActive(!g.activeSelf);
             }
         }
 
