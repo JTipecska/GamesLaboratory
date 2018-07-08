@@ -17745,6 +17745,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000013068196122, guid: b11f5819e22aec94bbd1f8b9060032b9,
     type: 2}
   m_PrefabInternal: {fileID: 499776942}
+--- !u!23 &276798061 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000013201334606, guid: b11f5819e22aec94bbd1f8b9060032b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 499776942}
 --- !u!4 &276798063 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014233188020, guid: b11f5819e22aec94bbd1f8b9060032b9,
@@ -31515,6 +31520,11 @@ Transform:
 --- !u!1 &521939029 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013068196122, guid: b11f5819e22aec94bbd1f8b9060032b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 900600316}
+--- !u!23 &521939030 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000013201334606, guid: b11f5819e22aec94bbd1f8b9060032b9,
     type: 2}
   m_PrefabInternal: {fileID: 900600316}
 --- !u!4 &521939032 stripped
@@ -63840,11 +63850,12 @@ MonoBehaviour:
   - {fileID: 1904494928}
   - {fileID: 1177293103}
   - {fileID: 118578798}
-  - {fileID: 1749473985}
+  - {fileID: 521939030}
   - {fileID: 264380128}
   - {fileID: 165287557}
   - {fileID: 1904494928}
   - {fileID: 411988320}
+  - {fileID: 276798061}
   dontChange:
   - {fileID: 247599093}
   - {fileID: 1033592328}
@@ -63853,16 +63864,17 @@ MonoBehaviour:
   - {fileID: 409386542}
   - {fileID: 1699603715}
   thiccness:
+  - 0.1
+  - 0.04
   - 0
-  - 0
-  - 0
-  - 0
+  - 0.05
   - 2
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.05
+  - 0.03
+  - 0.03
+  - 0.05
   - 2
+  - 0.05
   startPos: 1.3
 --- !u!124 &1272630911
 Behaviour:

@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
     Resolution[] resolutions;
     public GameObject music;
     static bool startedMusic = false;
-    static int levels = 1;
+    public static int levels = 1;
     bool applyMenu = false;
     float timer = 10;
     Resolution old;
