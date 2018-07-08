@@ -113,8 +113,14 @@ public class MainMenu : MonoBehaviour {
     }
     public void resetRes()
     {
+        applyMenu = false;
         Screen.SetResolution(old.width, old.height, true);
         PlayerPrefs.SetInt("width", old.width);
         PlayerPrefs.SetInt("height", old.height);
+    }
+
+    public void setBoolApply()
+    {
+        applyMenu = !applyMenu;
     }
 }

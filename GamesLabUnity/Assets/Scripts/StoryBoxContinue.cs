@@ -29,7 +29,8 @@ public class StoryBoxContinue : MonoBehaviour {
             storyBoxActive = false;
             foreach (GameObject g in next)
             {
-               g.SetActive(!g.activeSelf);
+                if(g!=null)
+                    g.SetActive(!g.activeSelf);
             }
             gameObject.SetActive(false);
         }
