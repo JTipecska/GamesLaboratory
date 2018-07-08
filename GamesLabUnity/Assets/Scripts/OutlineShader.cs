@@ -68,8 +68,12 @@ public class OutlineShader : MonoBehaviour {
     {
         foreach (Renderer m in materials)
         {
-            foreach (Material mat in m.materials)
-            mat.shader = Shader.Find("Standard");
+            if (m != null)
+            {
+                foreach (Material mat in m.materials)
+                    mat.shader = Shader.Find("Standard");
+            }
+            
             //m.material.SetColor("_Color", new Color(1, 1, 1, 1));
         }
         foreach (Renderer r in all)
