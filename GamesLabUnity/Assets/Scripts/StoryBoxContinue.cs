@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoryBoxContinue : MonoBehaviour {
     public static bool storyBoxActive = false;
-    public GameObject next;
+    public GameObject[] next;
     RealCharacterController c;
     Animator anim;
     
@@ -27,11 +27,9 @@ public class StoryBoxContinue : MonoBehaviour {
         if (Input.GetButtonDown("Action"))
         {
             storyBoxActive = false;
-            Data.radio = true;
-            
-            if (next != null)
+            foreach (GameObject g in next)
             {
-                next.SetActive(true);
+               g.SetActive(!g.activeSelf);
             }
             gameObject.SetActive(false);
         }
