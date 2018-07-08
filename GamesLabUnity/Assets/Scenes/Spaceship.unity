@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8204801, g: 0.4135345, b: 0.68625015, a: 1}
+  m_IndirectSpecularColor: {r: 0.820485, g: 0.41352457, b: 0.68628746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4290,6 +4290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &136471428
 Light:
   m_ObjectHideFlags: 0
@@ -30268,6 +30269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &497426090
 Light:
   m_ObjectHideFlags: 0
@@ -45755,6 +45757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1 &833055040
 GameObject:
   m_ObjectHideFlags: 0
@@ -47952,6 +47955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1001 &900600316
 Prefab:
   m_ObjectHideFlags: 0
@@ -50058,6 +50062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1 &969848367
 GameObject:
   m_ObjectHideFlags: 0
@@ -58900,6 +58905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &1123723510
 Light:
   m_ObjectHideFlags: 0
@@ -65481,6 +65487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &1344437229
 Light:
   m_ObjectHideFlags: 0
@@ -66417,6 +66424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &1368334694
 Light:
   m_ObjectHideFlags: 0
@@ -67027,6 +67035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1001 &1393082409
 Prefab:
   m_ObjectHideFlags: 0
@@ -75994,6 +76003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!108 &1527062829
 Light:
   m_ObjectHideFlags: 0
@@ -87320,6 +87330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!114 &1592381699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87497,6 +87508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1001 &1598914191
 Prefab:
   m_ObjectHideFlags: 0
@@ -104927,13 +104939,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894597678}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100, y: 0, z: 100}
+  m_LocalRotation: {x: -0.13917309, y: 0, z: 0, w: 0.9902681}
+  m_LocalPosition: {x: -100, y: 7.5, z: 69.6}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 1320333347}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -16, y: 0, z: 0}
 --- !u!64 &1894597680
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -105415,13 +105427,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918417800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalRotation: {x: -0.13917309, y: 0, z: 0, w: 0.9902681}
+  m_LocalPosition: {x: 0, y: 7.5, z: 69.6}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 1320333347}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -16, y: 0, z: 0}
 --- !u!64 &1918417802
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -108940,6 +108952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!114 &2027402099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114517,6 +114530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!1001 &2063308078
 Prefab:
   m_ObjectHideFlags: 0
@@ -117257,6 +117271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: -1
+  correspondingLights: []
 --- !u!114 &2136483326
 MonoBehaviour:
   m_ObjectHideFlags: 0
