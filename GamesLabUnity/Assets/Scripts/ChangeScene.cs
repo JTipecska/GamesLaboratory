@@ -17,6 +17,11 @@ public class ChangeScene : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (MainMenu.levels < 3)
+        {
+            PlayerPrefs.SetInt("level", 3);
+            MainMenu.levels = 3;
+        }
         SceneManager.LoadScene("Outdoor");
         Data.realCharacter.GetComponentInChildren<Animator>().SetTrigger("TurnForward");
         Data.realCharacter.GetComponentInChildren<Animator>().ResetTrigger("TurnBack");

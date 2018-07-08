@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7494499, g: 0.56017447, b: 0.784668, a: 1}
+  m_IndirectSpecularColor: {r: 0.7494521, g: 0.56017447, b: 0.784668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14408,6 +14408,11 @@ MonoBehaviour:
   - {fileID: 834195737}
   - {fileID: 176260305}
   dontChange: []
+  thiccness:
+  - 0.05
+  - 0.01
+  - 0.4
+  - 0.08
   startPos: 1.18
 --- !u!124 &546803824
 Behaviour:
@@ -17876,6 +17881,7 @@ MonoBehaviour:
   lights:
   - {fileID: 321631113}
   - {fileID: 1789722949}
+  SwitchMode: 0
 --- !u!114 &712890683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31281,6 +31287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lights:
   - {fileID: 321631113}
+  SwitchMode: 0
 --- !u!23 &1186612164
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43046,11 +43053,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 5
-    m_MaxSize: 50
+    m_MinSize: 4
+    m_MaxSize: 44
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1

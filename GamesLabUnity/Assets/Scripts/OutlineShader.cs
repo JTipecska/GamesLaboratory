@@ -41,20 +41,25 @@ public class OutlineShader : MonoBehaviour {
         }
         foreach (Renderer r in dontChange)
         {
-            r.enabled = true;
+            if (r!=null)
+                r.enabled = true;
         }
         for(int i = 0; i< materials.Count; i++)
         {
-            materials[i].enabled = true;
-            foreach(Material mat in materials[i].materials)
+            if (materials[i] != null)
             {
-                mat.shader = Shader.Find("Outlined/Silhouette Only");
-                mat.SetColor("_OutlineColor", new Color(0, 56, 255, 0.5f));
-                if (thiccness.Count > i && thiccness[i]>0)
-                    mat.SetFloat("_Outline", thiccness[i]);
-                else
-                    mat.SetFloat("_Outline", 0.1f);
+                materials[i].enabled = true;
+                foreach (Material mat in materials[i].materials)
+                {
+                    mat.shader = Shader.Find("Outlined/Silhouette Only");
+                    mat.SetColor("_OutlineColor", new Color(0, 56, 255, 0.5f));
+                    if (thiccness.Count > i && thiccness[i] > 0)
+                        mat.SetFloat("_Outline", thiccness[i]);
+                    else
+                        mat.SetFloat("_Outline", 0.1f);
+                }
             }
+            
         }
        
     }
