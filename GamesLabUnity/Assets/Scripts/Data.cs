@@ -14,6 +14,7 @@ public class Data : MonoBehaviour
     public static GameObject timer;
     public static GameObject dead;
     public static bool shadow = false;
+    public static bool radio = false;
     public static bool holdingOrb = false;
     public static bool holdingRod = false;
     public static bool onElevator = false;

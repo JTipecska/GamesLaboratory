@@ -27,6 +27,7 @@ public class StoryBoxContinue : MonoBehaviour {
         if (Input.GetButtonDown("Action"))
         {
             storyBoxActive = false;
+            Data.radio = true;
             
             if (next != null)
             {

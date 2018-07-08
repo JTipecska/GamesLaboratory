@@ -13,7 +13,8 @@ public class ChangeScene2 : MonoBehaviour {
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Final");
+        if (Data.radio)
+            SceneManager.LoadScene("Final");
 
     }
 }
