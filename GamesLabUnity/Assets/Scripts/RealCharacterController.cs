@@ -26,7 +26,7 @@ public class RealCharacterController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         if (GetComponent<Rigidbody>().velocity.y < -6f && Physics.Raycast(transform.position, Vector3.down, 0.2f))
@@ -195,9 +195,11 @@ public class RealCharacterController : MonoBehaviour {
             //Take Action
             if (Input.GetButtonDown("Action"))
             {
+                print("Action pressed " + Time.frameCount);
                 GameObject targetObject = Data.GetClosestGameObjectFromList(gameObject, Data.interactableObjects);
                 if (Mathf.Abs(transform.position.x - targetObject.transform.position.x) <= Data.characterReach)
                 {
+                    print("Interacting with " + targetObject.name);
                     targetObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
                 }
                 else
