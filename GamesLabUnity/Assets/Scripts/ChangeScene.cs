@@ -18,9 +18,9 @@ public class ChangeScene : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         SceneManager.LoadScene("Outdoor");
-        Data.realCharacter.GetComponent<Animator>().SetTrigger("TurnForward");
-        Data.realCharacter.GetComponent<Animator>().ResetTrigger("TurnBack");
-        Data.shadowCharacter.GetComponent<Animator>().SetTrigger("TurnForward");
-        Data.shadowCharacter.GetComponent<Animator>().ResetTrigger("TurnBack");
+        Data.realCharacter.GetComponentInChildren<Animator>().SetTrigger("TurnForward");
+        Data.realCharacter.GetComponentInChildren<Animator>().ResetTrigger("TurnBack");
+        Data.shadowCharacter.GetComponentInChildren<Animator>().SetTrigger("TurnForward");
+        Data.shadowCharacter.GetComponentInChildren<Animator>().ResetTrigger("TurnBack");
     }
 }
