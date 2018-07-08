@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7494521, g: 0.56017447, b: 0.784668, a: 1}
+  m_IndirectSpecularColor: {r: 0.7494499, g: 0.56017447, b: 0.784668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4930,6 +4930,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+--- !u!23 &176260305 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23147368691005170, guid: d7de6c400fc6dce4e847672adb026364,
+    type: 2}
+  m_PrefabInternal: {fileID: 410152001}
 --- !u!1 &179701104
 GameObject:
   m_ObjectHideFlags: 0
@@ -9599,7 +9604,6 @@ Transform:
   - {fileID: 856798952}
   - {fileID: 688056310}
   - {fileID: 4446940}
-  - {fileID: 1552960092}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11110,9 +11114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7403bcc7c01494bbf7ba12ec861e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next:
-  - {fileID: 374437717}
-  - {fileID: 0}
+  next: []
 --- !u!114 &431645337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14402,6 +14404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials:
   - {fileID: 1727327503}
+  - {fileID: 708689383}
+  - {fileID: 834195737}
+  - {fileID: 176260305}
   dontChange: []
   startPos: 1.18
 --- !u!124 &546803824
@@ -17128,7 +17133,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1176592404307774, guid: 929a3cb090a0ed94ca5b333fb824d66e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929a3cb090a0ed94ca5b333fb824d66e, type: 2}
@@ -17668,6 +17673,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowMat: {fileID: 2100000, guid: 7dd2c410558456241821a89849c8ce88, type: 2}
+--- !u!23 &708689383 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23527068386015058, guid: c53e680fdc8fae04d91b4ce9e548d2df,
+    type: 2}
+  m_PrefabInternal: {fileID: 1070430964}
 --- !u!65 &708689385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21830,7 +21840,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 834195734}
   m_LocalRotation: {x: -0.000000002924935, y: -1, z: 0.000000020489097, w: 9.313226e-10}
-  m_LocalPosition: {x: -0.79183, y: 0.25000048, z: 1.2999983}
+  m_LocalPosition: {x: -0.79183, y: 0.37, z: 1.3}
   m_LocalScale: {x: 5.093069, y: 5.091549, z: 5.002322}
   m_Children: []
   m_Father: {fileID: 1720016204}
@@ -39674,34 +39684,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1550860461}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1552960091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1552960092}
-  m_Layer: 0
-  m_Name: Runes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1552960092
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552960091}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 376781492}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553783526
 Prefab:
   m_ObjectHideFlags: 0
