@@ -17,37 +17,17 @@ public class LightSwitch : MonoBehaviour {
 
     void Action()
     {
+        if (GetComponent<Puzzle2>())
+            GetComponent<Puzzle2>().ChangeLights();
         // Toggle Billboard_ON and Billboard_OFF
-
-        if (lights.Count == 2) {
-
-           // if (lights[0].GetComponent<Light>().enabled == false)
-           // {
-
-                lights[0].SendMessage("ToggleLight", SendMessageOptions.DontRequireReceiver);
-                lights[1].SendMessage("ToggleLight", SendMessageOptions.DontRequireReceiver);
-            // }
-
-            foreach (Transform child in transform)
-            {
-                if (child.name.StartsWith("Billboard_O"))
-                    child.gameObject.SetActive(!child.gameObject.activeSelf);
-            }
-
-        }
-
-
-        else
+        foreach (Transform child in transform)
         {
-            foreach (Transform child in transform)
-            {
-                if (child.name.StartsWith("Billboard_O"))
-                    child.gameObject.SetActive(!child.gameObject.activeSelf);
-            }
-
-            // Toggle every light attached to this object
-            foreach (GameObject g in lights)
-                g.SendMessage("ToggleLight", SendMessageOptions.DontRequireReceiver);
+            if (child.name.StartsWith("Billboard_O"))
+                child.gameObject.SetActive(!child.gameObject.activeSelf);
         }
+
+        // Toggle every light attached to this object
+        foreach (GameObject g in lights)
+            g.SendMessage("ToggleLight", SendMessageOptions.DontRequireReceiver);
     }
 }

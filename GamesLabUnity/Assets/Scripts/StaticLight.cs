@@ -8,6 +8,7 @@ public class StaticLight : MonoBehaviour {
     private bool isON;
     public float duration = -1;
     float currentTime;
+    public List<Light> correspondingLights = new List<Light>();
 	// Use this for initialization
 	void Start () {
 
@@ -42,7 +43,7 @@ public class StaticLight : MonoBehaviour {
             }
         }
 
-        if (duration >0)
+        if (duration > 0)
             transform.parent.GetComponentInChildren<Canvas>().transform.forward = Data.cam.transform.forward;
 
     }
@@ -50,6 +51,11 @@ public class StaticLight : MonoBehaviour {
     void ToggleLight()
     {
         GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
+        foreach(Light l in correspondingLights)
+        {
+            l.enabled = GetComponent<Light>().enabled;
+        }
+
         if (duration > 0)
         {
             transform.parent.GetComponentInChildren<Text>(true).gameObject.SetActive(true);
@@ -57,7 +63,6 @@ public class StaticLight : MonoBehaviour {
             {
                 currentTime = duration;
             }
-                 
         }
     }
 
