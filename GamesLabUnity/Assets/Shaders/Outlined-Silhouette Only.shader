@@ -3,7 +3,7 @@
 Shader "Outlined/Silhouette Only" {
 	Properties {
 		_OutlineColor ("Outline Color", Color) = (0,1,0,1)
-		_Outline ("Outline width", Range (0.0, 0.1)) = .1
+		_Outline ("Outline width", Range (0.0, 10)) = .1
 	}
  
 CGINCLUDE

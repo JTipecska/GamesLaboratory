@@ -7,6 +7,7 @@ public class OutlineShader : MonoBehaviour {
 
     public List<Renderer> materials = new List<Renderer>();
     public List<Renderer> dontChange = new List<Renderer>();
+    public List<float> thiccness = new List<float>();
     Renderer[] all;
     public float startPos = 1.18f;
     float startPos2;
@@ -42,19 +43,20 @@ public class OutlineShader : MonoBehaviour {
         {
             r.enabled = true;
         }
-        foreach(Renderer m in materials)
+        for(int i = 0; i< materials.Count; i++)
         {
-            m.enabled = true;
-            foreach(Material mat in m.materials)
+            materials[i].enabled = true;
+            foreach(Material mat in materials[i].materials)
             {
                 mat.shader = Shader.Find("Outlined/Silhouette Only");
                 mat.SetColor("_OutlineColor", new Color(0, 56, 255, 0.5f));
-                mat.SetFloat("_Outline", 0.1f);
-                /*m.material.shader = Shader.Find("Additive Tint");
-                m.material.SetColor("_Color", new Color(0, 56, 255, 1));*/
+                if (thiccness.Count > i && thiccness[i]>0)
+                    mat.SetFloat("_Outline", thiccness[i]);
+                else
+                    mat.SetFloat("_Outline", 0.1f);
             }
-
         }
+       
     }
 
     public void removeOutline()
