@@ -65,6 +65,14 @@ public class StaticLight : MonoBehaviour {
             }
         }
     }
+    void SetLight(bool setOn)
+    {
+        GetComponent<Light>().enabled = setOn;
+        foreach (Light l in correspondingLights)
+        {
+            l.enabled = setOn;
+        }
+    }
 
     void Reset()
     {
