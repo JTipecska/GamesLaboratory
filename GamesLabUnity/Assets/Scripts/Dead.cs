@@ -26,18 +26,26 @@ public class Dead : MonoBehaviour
 
     public void resetScene()
     {
-        if (Data.shadow)
+        if (SceneManager.GetActiveScene().name.Equals("Spaceship"))
         {
-            Data.cam.GetComponent<TransformCamera>().changePlane();
-        }
-        if (Data.realCharacter.transform.position.y > 3f)
-        {
-            Data.realCharacter.transform.position = new Vector3(12f, 4f, -1.3f);
+            if (Data.shadow)
+            {
+                Data.cam.GetComponent<TransformCamera>().changePlane();
+            }
+            if (Data.realCharacter.transform.position.y > 3f)
+            {
+                Data.realCharacter.transform.position = new Vector3(12f, 4f, -1.3f);
+            }
+            else
+            {
+                Data.realCharacter.transform.position = new Vector3(-21.1f, 0.12f, -1.3f);
+            }
         }
         else
         {
-            Data.realCharacter.transform.position = new Vector3(-21.1f, 0.12f, -1.3f);
+            SceneManager.LoadScene("Outdoor");
         }
+        
         
         //Data.cam.transform.position = new Vector3(-21f,3.5f,-2.8f);
         //Data.cam.transform.localRotation = resetCamRot;

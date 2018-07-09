@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.062374942, g: 0.05803688, b: 0.037784174, a: 1}
+  m_IndirectSpecularColor: {r: 0.06237489, g: 0.05803685, b: 0.03778421, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Finally, you made it out of you the woods.
+  m_Text: 'Finally, you made it out of the woods.
 
     But your journey has not ended yet...
 
