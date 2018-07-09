@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RealCharacterController : MonoBehaviour {
     private GameObject grabbedObject;
@@ -30,7 +31,8 @@ public class RealCharacterController : MonoBehaviour {
     {
 
         if (GetComponent<Rigidbody>().velocity.y < -6f && Physics.Raycast(transform.position, Vector3.down, 0.2f))
-            Data.dead.SetActive(true);
+            if(!(SceneManager.GetActiveScene().name.Equals("Spaceship")&&transform.position.x < -25))
+                Data.dead.SetActive(true);
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position + 0.16f * Vector3.up, Vector3.down, out hit, float.MaxValue, LayerMask.GetMask("ShadowPlane")))
@@ -199,7 +201,7 @@ public class RealCharacterController : MonoBehaviour {
             {
                 if (Data.onElevator)
                 {
-                    Data.cam.transform.position = new Vector3(transform.position.x, cameraOffsetY + Data.realCharacter.transform.position.y, Data.cam.transform.position.z);
+                    Data.cam.transform.position = new Vector3(transform.position.x, cameraOffsetY + Data.realCharacter.transform.position.y -0.1f, Data.cam.transform.position.z);
                 }
                 else
                 {
