@@ -22,7 +22,7 @@ public class Cheats : MonoBehaviour {
         {
             Data.realCharacter.transform.position = new Vector3(14.0f, 0.12f, -1.3f);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        /*else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Data.realCharacter.transform.position = new Vector3(32.0f, 0.12f, -1.3f);
         }
@@ -33,18 +33,23 @@ public class Cheats : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Data.realCharacter.transform.position = new Vector3(-2.0f, 4.12f, -1.3f);
-        }
+        }*/
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Data.realCharacter.transform.position = new Vector3(-16.0f, 4.12f, -1.3f);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        /*else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             Data.realCharacter.transform.position = new Vector3(-22.0f, 4.12f, -1.3f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             Data.realCharacter.transform.position = new Vector3(-40.0f, 0, -1.3f);
+        }*/
+
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Data.realCharacter.transform.position = new Vector3(17.0f, 0, 0);
         }
 
 
