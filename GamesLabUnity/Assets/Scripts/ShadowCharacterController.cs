@@ -41,13 +41,14 @@ public class ShadowCharacterController : MonoBehaviour {
                     animShadow.SetBool("LookingForward", true);
                     animCharacter.SetBool("LookingForward", true);
                 }
-                else if (Input.GetButtonDown("Run"))
+                else if (Input.GetButton("Run"))
                 {
 
                     animShadow.SetBool("Running", true);
                     animShadow.ResetTrigger("StopWalking");
                     animCharacter.SetBool("Running", true);
                     animCharacter.ResetTrigger("StopWalking");
+                    Data.speed = 4f;
                 }
                 else
                 {
@@ -57,6 +58,7 @@ public class ShadowCharacterController : MonoBehaviour {
                     animCharacter.SetTrigger("StartWalking");
                     animCharacter.ResetTrigger("StopWalking");
                     animCharacter.SetBool("Running", false);
+                    Data.speed = 2f;
                 }
             }
             else
@@ -107,11 +109,12 @@ public class ShadowCharacterController : MonoBehaviour {
             g.SetActive(false);
         }
         GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<ShadowCharacterController>().enabled = false;
+
         Data.shadow = false;
         Data.realCharacter.transform.position = new Vector3(transform.position.x, transform.position.z + Data.realCharacter.GetComponent<RealCharacterController>().lastShadowPlaneHeight + 1.3f, -1.3f);
         Data.realCharacter.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         InitPuzzles.changeTrigger();
-
+        Data.realCharacter.GetComponent<RealCharacterController>().enabled = true;
+        GetComponent<ShadowCharacterController>().enabled = false;
     }
 }

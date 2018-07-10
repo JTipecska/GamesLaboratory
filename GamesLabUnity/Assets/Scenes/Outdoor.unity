@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7494499, g: 0.56017447, b: 0.784668, a: 1}
+  m_IndirectSpecularColor: {r: 0.7494627, g: 0.56017643, b: 0.78482896, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8546,7 +8546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
-  correspondingLights: []
+  correspondingLights:
+  - {fileID: 1982703768}
 --- !u!1 &321961740
 GameObject:
   m_ObjectHideFlags: 0
@@ -9607,7 +9608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &376781491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34858,7 +34859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
-  correspondingLights: []
+  correspondingLights:
+  - {fileID: 1149596966}
 --- !u!108 &1335761144
 Light:
   m_ObjectHideFlags: 0
@@ -44610,7 +44612,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
-  correspondingLights: []
+  correspondingLights:
+  - {fileID: 2121490950}
 --- !u!1 &1792173722
 GameObject:
   m_ObjectHideFlags: 0
@@ -45246,6 +45249,7 @@ GameObject:
   - component: {fileID: 1818518091}
   - component: {fileID: 1818518090}
   - component: {fileID: 1818518089}
+  - component: {fileID: 1818518092}
   m_Layer: 10
   m_Name: Area
   m_TagString: Untagged
@@ -45287,7 +45291,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1818518087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae8176e10375e3f4eb2180322853cc24, type: 3}
   m_Name: 
@@ -45332,6 +45336,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1818518092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818518087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab1ab79333aff74184be1398182378f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: -1
+  correspondingLights: []
 --- !u!4 &1819457242 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4134681848416826, guid: 48876baceca28b54580c05f93952851c,

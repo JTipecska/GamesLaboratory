@@ -109,8 +109,8 @@ public class RealCharacterController : MonoBehaviour {
 
             if (currentLightController)
             {
-                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed, 0, 0);
-                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(0, 0, Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed);
+                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(Input.GetAxis("LightHorizontal") * Time.deltaTime * Data.speed * Vector3.right, Space.World);
+                currentLightController.GetComponent<LightController>().controlledLightObject.transform.Translate(Input.GetAxis("LightVertical") * Time.deltaTime * Data.speed * Vector3.forward, Space.World);
 
                 //Light
                 if (Mathf.Abs(transform.position.x - currentLightController.transform.position.x) > Data.characterReach)
@@ -267,6 +267,7 @@ public class RealCharacterController : MonoBehaviour {
         Data.cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("ShadowWorld", "ShadowPlane");
         Data.outlineCam.SetActive(true);
         InitPuzzles.changeTrigger();
+        GetComponent<RealCharacterController>().enabled = false;
     }
 
     //private GameObject GetFirstReachableLight()
