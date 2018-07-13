@@ -22,7 +22,7 @@ public class CollisionShadow : MonoBehaviour {
             canChange = true;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //Debug.Log("parent:" + other.gameObject.transform.parent.name);
         if (other.gameObject.transform.root.name.Equals("_Dynamic"))

@@ -19279,6 +19279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1343962780}
+  elevator: {fileID: 0}
 --- !u!1001 &762069475
 Prefab:
   m_ObjectHideFlags: 0
@@ -34765,6 +34766,26 @@ Prefab:
     - target: {fileID: 4313514449246108, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634067001648252, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634067001648252, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.72998327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634067001648252, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634067001648252, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.683465
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634067001648252, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -93.77
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d2fcc67dc3c3b446ae5162e14c1255a, type: 2}

@@ -104,8 +104,12 @@ public class ShadowScript : MonoBehaviour
         {
             if (!Data.shadow)
             {
-                shadow.GetComponent<MeshCollider>().sharedMesh = new Mesh();
-                shadow.GetComponent<MeshFilter>().mesh = new Mesh();
+                if(shadow.GetComponent<MeshCollider>().sharedMesh && shadow.GetComponent<MeshCollider>().sharedMesh.vertices.Length > 0)
+                {
+                    shadow.GetComponent<MeshCollider>().sharedMesh = new Mesh();
+                    shadow.GetComponent<MeshFilter>().mesh = new Mesh();
+                    Data.shadowCharacter.SendMessage("OnTriggerExit", shadow.GetComponent<Collider>());
+                }
             }
             lastLightSrc = null;
             yield break;
