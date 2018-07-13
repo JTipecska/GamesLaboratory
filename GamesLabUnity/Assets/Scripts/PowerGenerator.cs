@@ -30,7 +30,7 @@ public class PowerGenerator : MonoBehaviour {
             elevatorShadow.SetActive(true);
             //GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = sphere;
             Data.activatedElevator = true;
-
+            Data.interactableObjects.Remove(gameObject);
         }
 
         if (Data.holdingRod) {
@@ -40,6 +40,7 @@ public class PowerGenerator : MonoBehaviour {
             elevatorShadow.GetComponent<ConsoleSwitch>().enabled = true;
             Data.activeDoor = true;
             //GameObject.Find("GUI/HUD/Sphere").GetComponent<Image>().sprite = capsule;
+            Data.interactableObjects.Remove(gameObject);
         }
     }
 }

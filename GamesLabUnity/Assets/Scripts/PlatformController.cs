@@ -8,19 +8,20 @@ public class PlatformController : MonoBehaviour {
     public float stopTime = 2.0f;
     public Vector3 direction = Vector3.up;
     private Vector3 startPosition;
-    //private float currSpeed;
+    private float currSpeed;
     private float currDistance = 0;
     private float finishedMoving = 0;
 
 	// Use this for initialization
 	void Start () {
         startPosition = transform.position;
-        //currSpeed = speed;
+        currSpeed = speed;
         direction = Vector3.Normalize(direction);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (!Data.activatedElevator) return;
         /*bool platformAtStart = Vector3.Normalize(transform.position - startPosition) == -direction;
         bool platformAtMaxDistance = Vector3.Distance(startPosition, transform.position) > distance;
    
@@ -56,13 +57,13 @@ public class PlatformController : MonoBehaviour {
 
         if (finishedMoving + stopTime > Time.time) return;
 
-        currDistance += Time.deltaTime * speed;
+        currDistance += Time.deltaTime * currSpeed;
         currDistance = Clamp(0, distance, currDistance);
         transform.position = startPosition + currDistance * direction;
 
         if (currDistance == 0 || currDistance == distance)
         {
-            speed = -speed;
+            currSpeed = -currSpeed;
             finishedMoving = Time.time;
         }
     }
@@ -70,7 +71,7 @@ public class PlatformController : MonoBehaviour {
     void Action()
     {
         transform.position += new Vector3(0, 0.05f, 0);
-        speed = 0.5f;
+        currSpeed = 0.5f;
         distance = 4;
         Start();
     }
@@ -78,5 +79,12 @@ public class PlatformController : MonoBehaviour {
     float Clamp(float min, float max, float val)
     {
         return val < min ? min : max < val ? max : val;
+    }
+
+    public void ResetElevator()
+    {
+        transform.position = startPosition;
+        currDistance = 0;
+        currSpeed = speed;
     }
 }
